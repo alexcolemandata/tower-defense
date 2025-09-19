@@ -1,0 +1,45 @@
+[gd_scene load_steps=4 format=3 uid="uid://eou4mq5n6oh3"]
+
+[ext_resource type="Texture2D" uid="uid://8doeehu0sj6y" path="res://tower.png" id="1_k1sas"]
+[ext_resource type="Script" uid="uid://dhnso5msyby6y" path="res://tower.gd" id="1_vedim"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_stebd"]
+resource_local_to_scene = true
+radius = 219.67
+
+[node name="Tower" type="Node2D"]
+script = ExtResource("1_vedim")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("1_k1sas")
+
+[node name="VisionArea" type="Area2D" parent="."]
+unique_name_in_owner = true
+
+[node name="VisionShape" type="CollisionShape2D" parent="VisionArea"]
+unique_name_in_owner = true
+shape = SubResource("CircleShape2D_stebd")
+
+[node name="SpeechBox" type="Label" parent="."]
+unique_name_in_owner = true
+offset_left = 46.0
+offset_top = -59.0
+offset_right = 159.0
+offset_bottom = -27.0
+
+[node name="CurrentLevelDisplay" type="Label" parent="."]
+unique_name_in_owner = true
+offset_left = -27.0
+offset_top = 32.0
+offset_right = 31.0
+offset_bottom = 55.0
+text = "Level: 1"
+
+[node name="XPLevelProgressBar" type="ProgressBar" parent="."]
+unique_name_in_owner = true
+offset_left = -66.0
+offset_top = 55.0
+offset_right = 65.0
+offset_bottom = 61.0
+show_percentage = false

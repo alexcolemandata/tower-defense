@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://dxmbscpv7glme"]
+
+[ext_resource type="Script" uid="uid://14wsyf2i0he3" path="res://monster_trail.gd" id="1_bjd3o"]
+
+[sub_resource type="Curve2D" id="Curve2D_80nbo"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 572, 664, 0, 0, 0, 0, 571, 452, 0, 0, 0, 0, 434, 398, 0, 0, 0, 0, 261, 370, 0, 0, 0, 0, 139, 200, 0, 0, 0, 0, 293, 40, 0, 0, 0, 0, 777, 41, 0, 0, 0, 0, 1080, 75, 0, 0, 0, 0, 1031, 255, 0, 0, 0, 0, 452, 130, 0, 0, 0, 0, 377, 193, 0, 0, 0, 0, 672, 353, 0, 0, 0, 0, 1054, 481, 0, 0, 0, 0, 1159, 482)
+}
+point_count = 14
+
+[node name="MonsterTrail" type="Path2D"]
+curve = SubResource("Curve2D_80nbo")
+script = ExtResource("1_bjd3o")
+line_color = Color(0.84927785, 0.510549, 0.24348637, 1)
+line_width = 12.0
