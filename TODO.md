@@ -1,6 +1,7 @@
 # TODO
 
 ## Basic Gameplay
+- [x] Monsters that attack town shouldn't "die"
 - [x] Ability to trigger next wave when victorious
 - [x] Cancel tower placement
 - [x] Restrict tower placement
@@ -34,7 +35,7 @@
 
 ## Graphics, Sauce, QoL
 - [ ] Monster "Bobbing" animation
-- [ ] Monster Death Animation
+- [ ] Monster Death Animation + Gibs/Blood
 - [ ] XP Particles
 - [ ] Fix layers/z index for towers/monters/labels/etc
 - [ ] Trail Art

@@ -35,7 +35,7 @@ func _process(delta: float) -> void:
 		
 func attack_town() -> void:
 	destination_town.take_damage()
-	die()
+	queue_free()
 
 func take_damage(damage: float, from: Node2D) -> void:
 	health -= damage
