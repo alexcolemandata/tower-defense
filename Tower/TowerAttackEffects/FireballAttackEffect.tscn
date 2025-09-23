@@ -1,0 +1,34 @@
+[gd_scene load_steps=5 format=3 uid="uid://de0anlp4yjdlu"]
+
+[ext_resource type="Script" uid="uid://3nar2n5s2m8r" path="res://Tower/TowerAttackEffects/fireball_attack_effect.gd" id="1_qw342"]
+[ext_resource type="Texture2D" uid="uid://7rmh2bc32j2k" path="res://Tower/TowerAttackEffects/fireball_sprite.png" id="2_i1hs4"]
+[ext_resource type="Texture2D" uid="uid://d340j47j55hr5" path="res://Tower/TowerAttackEffects/explosion_sprite.png" id="2_vnt1e"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vnt1e"]
+radius = 178.47409
+
+[node name="FireballAttackEffect" type="Node2D"]
+script = ExtResource("1_qw342")
+
+[node name="TargetCoord" type="Marker2D" parent="."]
+position = Vector2(275, 2)
+
+[node name="Explosion" type="Node2D" parent="TargetCoord"]
+unique_name_in_owner = true
+
+[node name="ExplosionSprite" type="Sprite2D" parent="TargetCoord/Explosion"]
+position = Vector2(1.0000067, 0)
+scale = Vector2(0.34187496, 0.34187496)
+texture = ExtResource("2_vnt1e")
+
+[node name="ExplosionHitBox" type="Area2D" parent="TargetCoord/Explosion"]
+unique_name_in_owner = true
+collision_layer = 0
+collision_mask = 2
+
+[node name="ExplosionHitBoxShape" type="CollisionShape2D" parent="TargetCoord/Explosion/ExplosionHitBox"]
+shape = SubResource("CircleShape2D_vnt1e")
+
+[node name="FireballSprite" type="Sprite2D" parent="."]
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("2_i1hs4")

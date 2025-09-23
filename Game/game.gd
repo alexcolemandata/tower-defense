@@ -23,8 +23,9 @@ enum GameState {PLAYING, PLACING_TOWER, GAME_OVER, VICTORY}
 var game_state = GameState.PLAYING
 
 var tower_stats: Array[TowerStats] = [
-	TowerStats.new("Basic Tower", 160., 2, 1., 15, TOWER_TEXTURE, BeamTowerAttack.new()),
-	TowerStats.new("Spiffy Tower", 240., 4, 1.1, 80, SPIFFY_TOWER_TEXTURE, BeamTowerAttack.new())
+	TowerStats.new("Basic Tower", 160., 1, 1., 15, TOWER_TEXTURE, BeamTowerAttack.new()),
+	TowerStats.new("Spiffy Tower", 200., 2, 1.1, 80, SPIFFY_TOWER_TEXTURE, BeamTowerAttack.new()),
+	TowerStats.new("Fireball Tower", 300, 5, 0.8, 10, TOWER_TEXTURE, FireballTowerAttack.new())
 ]
 
 func _ready() -> void:
