@@ -106,7 +106,6 @@ func attempt_placement(new_global_position: Vector2) -> void:
 	return
 	
 
-
 func attempt_shot() -> void:
 	var overlaps: Array[Area2D] = vision_area.get_overlapping_areas()
 	if len(overlaps) == 0:
@@ -120,27 +119,11 @@ func attempt_shot() -> void:
 	return
 
 func shoot_at(target) -> void:
-	create_shot_line(target)
-	
-	target.take_damage(stats.damage_per_shot, self)
+	stats.attack_strategy.shoot_at_target(target, self, stats.damage_per_shot)	
 	last_shot_time = 0.
-	
 	return
 	
-func create_shot_line(target) -> void:
-	var shot_line: Line2D = Line2D.new()
-	shot_line.add_point(
-		Vector2.ZERO,
-	)
-	shot_line.add_point(
-		to_local(target.global_position)
-	)
-	shot_line.default_color = Color.CYAN
-	shot_line.width = 4.
-	add_child(shot_line)
-	await get_tree().create_timer(.1).timeout
-	shot_line.queue_free()
-	return
+
 	
 	
 func gain_xp(amount: int) -> void:
