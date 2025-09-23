@@ -1,9 +1,9 @@
 # TODO
 
 ## Basic Gameplay
-- [x] Fail state
 - [ ] Win State
-- [ ] Ability to place towers with mouse
+- [x] Ability to place towers with mouse
+- [x] Fail state
 
 ## Advanced Gameplay
 - [ ] Ramping/diverse spawn rate
@@ -16,6 +16,8 @@
   - [ ] Melee Tower (v. short range, high damage)
   - [ ] Explosive Tower (medium range, area of attack)
 - [ ] Basic tower level up system (more damage..)
+- [ ] Spells
+  - [ ] Chain Lightning
 
 ## Backend
 - [ ] Repo: Basic Directory Structure
@@ -27,3 +29,5 @@
 - [ ] Fix layers/z index for towers/monters/labels/etc
 - [ ] Trail Art
 - [ ] Tower DPS Meters (think WoW raid to see all tower DPS)
+- [ ] Basic Music
+- [ ] Basic Sound Effects

@@ -1,24 +1,26 @@
-[gd_scene load_steps=6 format=3 uid="uid://bka00kwm83sv3"]
+[gd_scene load_steps=7 format=3 uid="uid://bka00kwm83sv3"]
 
 [ext_resource type="Script" uid="uid://dry28hs6v2cxv" path="res://game.gd" id="1_80nbo"]
 [ext_resource type="PackedScene" uid="uid://dxmbscpv7glme" path="res://monster_trail.tscn" id="2_e2o6t"]
 [ext_resource type="PackedScene" uid="uid://eou4mq5n6oh3" path="res://tower.tscn" id="3_feb5d"]
 [ext_resource type="PackedScene" uid="uid://du65lrtiyds3j" path="res://town.tscn" id="4_fc0e3"]
+[ext_resource type="PackedScene" uid="uid://dwc1hnjb0rhp5" path="res://in_game_ui.tscn" id="5_7jktm"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_fc0e3"]
 font_size = 80
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_80nbo")
-seconds_per_monster = 0.1
+seconds_per_monster = 2.0
 
 [node name="BackgroundGrass" type="ColorRect" parent="."]
 z_index = -100
-offset_left = -11.0
-offset_top = -10.0
-offset_right = 1160.0
-offset_bottom = 657.0
+offset_left = -94.0
+offset_top = -96.0
+offset_right = 1306.0
+offset_bottom = 704.0
 color = Color(4.548356e-06, 0.36466426, 0.101144485, 1)
+metadata/_edit_use_anchors_ = true
 
 [node name="MonsterTrail" parent="." instance=ExtResource("2_e2o6t")]
 unique_name_in_owner = true
@@ -28,10 +30,6 @@ position = Vector2(344, 295)
 
 [node name="Tower2" parent="." instance=ExtResource("3_feb5d")]
 position = Vector2(975, 168)
-
-[node name="Town" parent="." instance=ExtResource("4_fc0e3")]
-unique_name_in_owner = true
-position = Vector2(1101, 465)
 
 [node name="GameOverScreen" type="ColorRect" parent="."]
 unique_name_in_owner = true
@@ -59,3 +57,19 @@ text = "GAME OVER"
 label_settings = SubResource("LabelSettings_fc0e3")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Town" parent="." instance=ExtResource("4_fc0e3")]
+unique_name_in_owner = true
+position = Vector2(1020, 559)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(582, 314)
+zoom = Vector2(1.5, 1.5)
+
+[node name="InGameUI" parent="." instance=ExtResource("5_7jktm")]
+unique_name_in_owner = true
+z_index = 100
+offset_left = -59.0
+offset_top = -47.0
+offset_right = 1221.0
+offset_bottom = 679.0

@@ -10,6 +10,10 @@ class_name Tower extends Node2D
 @onready var current_level_display: Label = %CurrentLevelDisplay
 @onready var xp_level_progress_bar: ProgressBar = %XPLevelProgressBar
 
+signal placed
+
+enum State {PLACING, ACTIVE}
+var state = State.ACTIVE
 
 var xp: int = 0
 var level: int = 1
@@ -23,14 +27,39 @@ func _ready() -> void:
 	refresh_level_display()
 
 func _process(delta: float) -> void:
-	last_shot_time += delta
-	if last_shot_time >= 1/shoots_per_second:
-		attempt_shot()
+	if state == State.ACTIVE:
+		_process_active(delta)
+	elif state == State.PLACING:
+		_process_placing(delta)
 	
 	return
 	
+func _process_active(delta):
+	last_shot_time += delta
+	if last_shot_time >= 1/shoots_per_second:
+		attempt_shot()
+
+func _process_placing(_delta) -> void:
+	modulate.a = 0.3
+	global_position = get_global_mouse_position()
+	
 func _draw() -> void:
-	draw_circle(Vector2.ZERO, vision_range, Color.WHITE, false, 2.0, true)
+	draw_circle(Vector2.ZERO, vision_range, Color(1., 1., 1., 0.4), false, 2.0, true)
+	
+func _input(event: InputEvent) -> void:
+	if not state == State.PLACING:
+		return
+		
+	if (event is InputEventMouseButton) and event.is_released():
+		print("mouse event!!")
+		attempt_placement(get_global_mouse_position())
+
+func attempt_placement(new_global_position: Vector2) -> void:
+	global_position = new_global_position
+	state = State.ACTIVE
+	modulate.a = 1.
+	placed.emit()
+	return
 
 func attempt_shot() -> void:
 	var overlaps: Array[Area2D] = vision_area.get_overlapping_areas()
@@ -46,7 +75,6 @@ func attempt_shot() -> void:
 
 func shoot_at(target) -> void:
 	create_shot_line(target)
-	
 	
 	target.take_damage(damage_per_shot, self)
 	last_shot_time = 0.

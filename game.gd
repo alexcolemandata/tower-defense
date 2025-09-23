@@ -1,28 +1,72 @@
 extends Node2D
 
+const TOWER = preload("uid://eou4mq5n6oh3")
+
 @onready var monster_trail: Path2D = %MonsterTrail
 @onready var town: Town = %Town
 @onready var game_over_screen: ColorRect = %GameOverScreen
+@onready var in_game_ui: InGameUI = %InGameUI
 
 @export var seconds_per_monster: float = 1.0
+
 var seconds_since_monster: float = 0.
-var is_game_over: bool = false
+var money: int = 100
+var purchase_tower_button: Button
+
+enum GameState {PLAYING, PLACING_TOWER, GAME_OVER}
+var game_state = GameState.PLAYING
 
 func _ready() -> void:
 	spawn_monster()
 	town.death_manager = self
 	monster_trail.destination_town = town
 	game_over_screen.visible = false
+	refresh_money()
+	purchase_tower_button = in_game_ui.tower_purchase_menu.add_tower_to_purchase("Basic Tower", 10)
+	purchase_tower_button.pressed.connect(_attempt_purchase.bind("Basic Tower", 10))
+	
+	return
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("quit"):
 		exit_game()
 		
+func _attempt_purchase(tower_name: String, cost: int) -> void:
+	if not game_state == GameState.PLAYING:
+		return
+		
+	if cost > money:
+		print("not enough money")
+		return
+	money -= cost
+	print("purchased ", tower_name, " for $", str(cost))
+	choosing_tower_placement("Basic Tower")
+	refresh_money()
+	
+	return
+
+func choosing_tower_placement(tower_name: String) -> void:
+	print("placing: " + tower_name)
+	game_state = GameState.PLACING_TOWER
+	
+	var new_tower: Tower = TOWER.instantiate()
+	new_tower.state = Tower.State.PLACING
+	new_tower.placed.connect(finished_placing_tower)
+	add_child(new_tower)
+	
+	return
+	
+func finished_placing_tower() -> void:
+	game_state = GameState.PLAYING
+	
+func refresh_money() -> void:
+	in_game_ui.set_money(money)
+		
 func exit_game() -> void:
 	get_tree().quit()
 
 func _process(delta: float) -> void:
-	if is_game_over:
+	if game_state == GameState.GAME_OVER:
 		return
 	seconds_since_monster += delta
 	if seconds_since_monster >= seconds_per_monster:
@@ -40,5 +84,5 @@ func handle_death(died) -> void:
 		game_over()
 		
 func game_over() -> void:
-	is_game_over = true
+	game_state = GameState.GAME_OVER
 	game_over_screen.visible = true
