@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://dwc1hnjb0rhp5"]
 
-[ext_resource type="Script" uid="uid://2m4xc5qluom4" path="res://in_game_ui.gd" id="1_kenku"]
-[ext_resource type="Script" uid="uid://b2n7jq12tyr8s" path="res://tower_purchase_menu.gd" id="2_onc8m"]
-[ext_resource type="Script" uid="uid://clsra33cl10n0" path="res://ui_footprint.gd" id="3_e6quo"]
+[ext_resource type="Script" uid="uid://2m4xc5qluom4" path="res://UI/in_game_ui.gd" id="1_kenku"]
+[ext_resource type="Script" uid="uid://b2n7jq12tyr8s" path="res://UI/tower_purchase_menu.gd" id="2_onc8m"]
+[ext_resource type="Script" uid="uid://clsra33cl10n0" path="res://UI/ui_footprint.gd" id="3_e6quo"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_onc8m"]
 size = Vector2(154, 1081)

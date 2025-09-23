@@ -1,9 +1,9 @@
 [gd_scene load_steps=6 format=3 uid="uid://bka00kwm83sv3"]
 
-[ext_resource type="Script" uid="uid://dry28hs6v2cxv" path="res://game.gd" id="1_80nbo"]
-[ext_resource type="PackedScene" uid="uid://dxmbscpv7glme" path="res://monster_trail.tscn" id="2_e2o6t"]
-[ext_resource type="PackedScene" uid="uid://du65lrtiyds3j" path="res://town.tscn" id="4_fc0e3"]
-[ext_resource type="PackedScene" uid="uid://dwc1hnjb0rhp5" path="res://in_game_ui.tscn" id="5_7jktm"]
+[ext_resource type="Script" uid="uid://dry28hs6v2cxv" path="res://Game/game.gd" id="1_80nbo"]
+[ext_resource type="PackedScene" uid="uid://dxmbscpv7glme" path="res://Monsters/monster_trail.tscn" id="2_e2o6t"]
+[ext_resource type="PackedScene" uid="uid://du65lrtiyds3j" path="res://Town/town.tscn" id="4_fc0e3"]
+[ext_resource type="PackedScene" uid="uid://dwc1hnjb0rhp5" path="res://UI/in_game_ui.tscn" id="5_7jktm"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_fc0e3"]
 font_size = 80

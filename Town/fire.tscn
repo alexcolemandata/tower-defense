@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://lo3xxa5dppt8"]
 
-[ext_resource type="Texture2D" uid="uid://fwt4sbba4aw0" path="res://fire.png" id="1_2pqqt"]
+[ext_resource type="Texture2D" uid="uid://fwt4sbba4aw0" path="res://Town/fire.png" id="1_2pqqt"]
 
 [node name="Fire" type="Node2D"]
 

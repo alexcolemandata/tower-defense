@@ -1,7 +1,7 @@
 @tool
 class_name MonsterTrail extends Path2D
 
-const MONSTER = preload("res://monster.tscn")
+const MONSTER = preload("uid://dt26jdmea8bpa")
 
 @onready var footprint_polygon: CollisionPolygon2D = $Footprint/FootprintPolygon
 

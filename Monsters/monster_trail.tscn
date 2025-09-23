@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://dxmbscpv7glme"]
 
-[ext_resource type="Script" uid="uid://14wsyf2i0he3" path="res://monster_trail.gd" id="1_bjd3o"]
+[ext_resource type="Script" uid="uid://14wsyf2i0he3" path="res://Monsters/monster_trail.gd" id="1_bjd3o"]
 
 [sub_resource type="Curve2D" id="Curve2D_80nbo"]
 _data = {

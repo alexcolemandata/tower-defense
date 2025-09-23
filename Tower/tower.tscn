@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://eou4mq5n6oh3"]
 
-[ext_resource type="Texture2D" uid="uid://8doeehu0sj6y" path="res://tower.png" id="1_k1sas"]
-[ext_resource type="Script" uid="uid://dhnso5msyby6y" path="res://tower.gd" id="1_vedim"]
+[ext_resource type="Texture2D" uid="uid://8doeehu0sj6y" path="res://Tower/tower.png" id="1_k1sas"]
+[ext_resource type="Script" uid="uid://dhnso5msyby6y" path="res://Tower/tower.gd" id="1_vedim"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_stebd"]
 resource_local_to_scene = true

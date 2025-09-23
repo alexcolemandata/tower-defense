@@ -30,7 +30,7 @@
   - [ ] Wall
 
 ## Backend
-- [ ] Repo: Basic Directory Structure
+- [x] Repo: Basic Directory Structure
 
 ## Graphics, Sauce, QoL
 - [ ] Monster Death Animation
