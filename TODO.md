@@ -13,6 +13,9 @@
 - [x] Ability to place towers with mouse
 - [x] Fail state
 
+## UI
+- [ ] Tower purchase menu has pictures + stats of towers
+
 ## Advanced Gameplay
 - [ ] Ramping/diverse spawn rate
 - [ ] Different Monsters
@@ -21,7 +24,7 @@
   - [ ] Projectile Tower (arrow, magic ball, single target)
   - [ ] Flame Tower (Short range area)
   - [ ] Melee Tower (v. short range, high damage)
-  - [ ] Explosive Tower (medium range, area of attack)
+  - [x] Fireball Tower (medium range, area of attack)
 - [ ] Basic tower level up system (more damage..)
 - [ ] Spells
   - [ ] Chain Lightning
