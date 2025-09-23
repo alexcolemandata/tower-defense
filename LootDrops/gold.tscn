@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://ncncsppuo7x2"]
+
+[ext_resource type="Texture2D" uid="uid://bwqy3nfbfeay3" path="res://LootDrops/gold.png" id="1_kfljt"]
+[ext_resource type="Script" uid="uid://d1vfijudle8ab" path="res://LootDrops/gold.gd" id="1_lgctu"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_lgctu"]
+radius = 19.0
+
+[node name="Gold" type="Node2D"]
+script = ExtResource("1_lgctu")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("1_kfljt")
+
+[node name="MouseOverArea" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MouseOverArea"]
+shape = SubResource("CircleShape2D_lgctu")
+
+[connection signal="mouse_entered" from="MouseOverArea" to="." method="_on_mouse_over_area_mouse_entered"]

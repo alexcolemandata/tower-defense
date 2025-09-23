@@ -13,7 +13,6 @@
 - [x] Fail state
 
 ## Advanced Gameplay
-- [ ] Monsters Drop Gold Piles which need to be collected with mouse
 - [ ] Ramping/diverse spawn rate
 - [ ] Different Monsters
 - [ ] Different Maps
@@ -28,11 +27,13 @@
   - [ ] Chain Lightning
   - [ ] Slow
   - [ ] Wall
+- [x] Monsters Drop Gold Piles which need to be collected with mouse
 
 ## Backend
 - [x] Repo: Basic Directory Structure
 
 ## Graphics, Sauce, QoL
+- [ ] Monster "Bobbing" animation
 - [ ] Monster Death Animation
 - [ ] XP Particles
 - [ ] Fix layers/z index for towers/monters/labels/etc

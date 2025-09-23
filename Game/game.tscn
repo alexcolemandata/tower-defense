@@ -12,12 +12,22 @@ font_size = 80
 script = ExtResource("1_80nbo")
 seconds_per_monster = 2.0
 
+[node name="InGameUI" parent="." instance=ExtResource("5_7jktm")]
+unique_name_in_owner = true
+z_index = 100
+offset_left = -59.0
+offset_top = -47.0
+offset_right = 1221.0
+offset_bottom = 679.0
+mouse_filter = 2
+
 [node name="BackgroundGrass" type="ColorRect" parent="."]
 z_index = -100
 offset_left = -94.0
 offset_top = -96.0
 offset_right = 1306.0
 offset_bottom = 704.0
+mouse_filter = 2
 color = Color(4.548356e-06, 0.36466426, 0.101144485, 1)
 metadata/_edit_use_anchors_ = true
 
@@ -33,6 +43,7 @@ offset_left = -16.0
 offset_top = -16.0
 offset_right = 1171.0
 offset_bottom = 668.0
+mouse_filter = 2
 color = Color(0, 0, 0, 1)
 
 [node name="GameOverText" type="Label" parent="GameOverScreen"]
@@ -60,11 +71,3 @@ position = Vector2(1020, 559)
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(582, 314)
 zoom = Vector2(1.5, 1.5)
-
-[node name="InGameUI" parent="." instance=ExtResource("5_7jktm")]
-unique_name_in_owner = true
-z_index = 100
-offset_left = -59.0
-offset_top = -47.0
-offset_right = 1221.0
-offset_bottom = 679.0

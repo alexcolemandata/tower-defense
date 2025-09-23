@@ -12,6 +12,7 @@ const MONSTER = preload("uid://dt26jdmea8bpa")
 
 var destination_town: Town
 var count_monsters: int = 0
+var loot_handler
 
 func _ready() -> void:
 	generate_footprint()
@@ -44,19 +45,21 @@ func generate_footprint() -> void:
 	footprint_points.append_array(right_edges)
 	
 	footprint_polygon.polygon = footprint_points
-	return	
-	
+	return
 	
 
 func _process(_delta: float) -> void:
 	queue_redraw()
 
-func spawn_monster() -> void:
+func spawn_monster() -> Monster:
 	var monster: Monster = MONSTER.instantiate()
 	monster.destination_town = destination_town
+	monster.loot_handler = loot_handler
 	count_monsters += 1
 	monster.destroyed.connect(decrement_monster_count)
 	add_child(monster)
+	
+	return monster
 	
 func decrement_monster_count() -> void:
 	count_monsters -= 1

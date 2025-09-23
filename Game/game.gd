@@ -28,6 +28,7 @@ var tower_costs: Dictionary[String, int] = {
 func _ready() -> void:
 	town.death_manager = self
 	monster_trail.destination_town = town
+	monster_trail.loot_handler = self
 	game_over_screen.visible = false
 	refresh_ui()
 	for tower_name in tower_costs:
@@ -82,9 +83,8 @@ func choosing_tower_placement(tower_name: String) -> void:
 	
 	return
 	
-func finished_placing_tower(tower: Tower) -> void:
+func finished_placing_tower(_tower: Tower) -> void:
 	game_state = GameState.PLAYING
-	tower.gained_money.connect(gain_money)
 	return
 	
 func refund_tower(tower_name: String) -> void:
@@ -149,3 +149,6 @@ func game_over() -> void:
 	print("DIED")
 	game_state = GameState.GAME_OVER
 	game_over_screen.visible = true
+	
+func collect_loot(money_value: int) -> void:
+	gain_money(money_value)

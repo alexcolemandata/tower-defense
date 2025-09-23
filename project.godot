@@ -39,6 +39,7 @@ debug_spawn_monster={
 
 2d_physics/layer_1="PlacementFootprints"
 2d_physics/layer_2="MonsterHurt"
+2d_physics/layer_3="LootDrops"
 
 [rendering]
 

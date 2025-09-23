@@ -17,7 +17,6 @@ class_name Tower extends Node2D
 
 signal placed
 signal refunded
-signal gained_money(money_gained: int)
 
 enum State {PLACING, ACTIVE}
 var state = State.ACTIVE
@@ -120,7 +119,7 @@ func shoot_at(target) -> void:
 	
 	target.take_damage(damage_per_shot, self)
 	last_shot_time = 0.
-	print("shot at ", target, " for ", damage_per_shot, " damage")
+	
 	return
 	
 func create_shot_line(target) -> void:
@@ -141,7 +140,6 @@ func create_shot_line(target) -> void:
 	
 func gain_xp(amount: int) -> void:
 	xp += amount
-	gained_money.emit(amount)
 	
 	if xp >= xp_to_next_level:
 		level_up()
