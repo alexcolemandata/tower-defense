@@ -54,5 +54,6 @@ show_percentage = false
 unique_name_in_owner = true
 
 [node name="FootprintShape" type="CollisionShape2D" parent="Footprint"]
+unique_name_in_owner = true
 position = Vector2(-2, 6)
 shape = SubResource("CircleShape2D_vedim")

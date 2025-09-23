@@ -13,6 +13,7 @@ class_name Tower extends Node2D
 @onready var current_level_display: Label = %CurrentLevelDisplay
 @onready var xp_level_progress_bar: ProgressBar = %XPLevelProgressBar
 @onready var footprint: Area2D = %Footprint
+@onready var footprint_shape: CollisionShape2D = %FootprintShape
 
 signal placed
 signal refunded
@@ -39,7 +40,7 @@ func _process(delta: float) -> void:
 		_process_active(delta)
 	elif state == State.PLACING:
 		_process_placing(delta)
-	
+	queue_redraw()
 	return
 	
 func _process_active(delta):
@@ -71,7 +72,14 @@ func is_placeable() -> bool:
 	return true
 	
 func _draw() -> void:
-	draw_circle(Vector2.ZERO, vision_range, Color(1., 1., 1., 0.4), false, 2.0, true)
+	if (state == State.PLACING) or _is_mouse_on_footprint():
+		draw_circle(Vector2.ZERO, vision_range, Color(1., 1., 1., 0.4), false, 2.0, true)
+	
+func _is_mouse_on_footprint() -> bool:
+	var mouse_pos = get_global_mouse_position()
+	var overlap_shape: CircleShape2D = footprint_shape.shape
+	var distance = mouse_pos.distance_to(footprint.global_position)
+	return distance <= overlap_shape.radius
 	
 func _input(event: InputEvent) -> void:
 	if not state == State.PLACING:
@@ -135,14 +143,14 @@ func gain_xp(amount: int) -> void:
 	xp += amount
 	gained_money.emit(amount)
 	
-	speech_box.text = "+" + str(amount) + "XP!"
-	await get_tree().create_timer(1.).timeout
-	speech_box.text = ""
-	
 	if xp >= xp_to_next_level:
 		level_up()
 	else:
 		xp_level_progress_bar.value = xp
+		
+	speech_box.text = "+" + str(amount) + "XP!"
+	await get_tree().create_timer(1.).timeout
+	speech_box.text = ""
 		
 	return
 	

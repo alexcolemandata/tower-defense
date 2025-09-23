@@ -34,7 +34,6 @@
 
 ## Graphics, Sauce, QoL
 - [ ] Monster Death Animation
-- [ ] Towers only show range on mouse over
 - [ ] XP Particles
 - [ ] Fix layers/z index for towers/monters/labels/etc
 - [ ] Trail Art
@@ -42,3 +41,4 @@
 - [ ] Tower DPS Meters (think WoW raid to see all tower DPS)
 - [ ] Basic Music
 - [ ] Basic Sound Effects
+- [x] Towers only show range on mouse over and placement
