@@ -1,21 +1,29 @@
 # TODO
 
-- [ ] Fail state
+## Basic Gameplay
+- [x] Fail state
 - [ ] Win State
-- [ ] Tower fire tactics: (Front, Back, Lowest Health, Highest Health)
+- [ ] Ability to place towers with mouse
+
+## Advanced Gameplay
 - [ ] Ramping/diverse spawn rate
-- [ ] Monster Death Animation
+- [ ] Different Monsters
+- [ ] Different maps
+- [ ] Tower fire tactics: (Front, Back, Lowest Health, Highest Health)
 - [ ] Different Towers
   - [ ] Projectile Tower (arrow, magic ball, single target)
   - [ ] Flame Tower (Short range area)
   - [ ] Melee Tower (v. short range, high damage)
   - [ ] Explosive Tower (medium range, area of attack)
-- [ ] Different Monsters
-- [ ] Ability to place towers with mouse
 - [ ] Basic tower level up system (more damage..)
-- [ ] Different maps
+
+## Backend
+- [ ] Repo: Basic Directory Structure
+
+
+## Graphics, Sauce, QoL
+- [ ] Monster Death Animation
+- [ ] XP Particles
 - [ ] Fix layers/z index for towers/monters/labels/etc
 - [ ] Trail Art
 - [ ] Tower DPS Meters (think WoW raid to see all tower DPS)
-
-

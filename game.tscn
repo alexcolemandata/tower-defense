@@ -1,14 +1,19 @@
-[gd_scene load_steps=4 format=3 uid="uid://bka00kwm83sv3"]
+[gd_scene load_steps=6 format=3 uid="uid://bka00kwm83sv3"]
 
 [ext_resource type="Script" uid="uid://dry28hs6v2cxv" path="res://game.gd" id="1_80nbo"]
 [ext_resource type="PackedScene" uid="uid://dxmbscpv7glme" path="res://monster_trail.tscn" id="2_e2o6t"]
 [ext_resource type="PackedScene" uid="uid://eou4mq5n6oh3" path="res://tower.tscn" id="3_feb5d"]
+[ext_resource type="PackedScene" uid="uid://du65lrtiyds3j" path="res://town.tscn" id="4_fc0e3"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_fc0e3"]
+font_size = 80
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_80nbo")
-seconds_per_monster = 4.0
+seconds_per_monster = 0.1
 
 [node name="BackgroundGrass" type="ColorRect" parent="."]
+z_index = -100
 offset_left = -11.0
 offset_top = -10.0
 offset_right = 1160.0
@@ -23,3 +28,34 @@ position = Vector2(344, 295)
 
 [node name="Tower2" parent="." instance=ExtResource("3_feb5d")]
 position = Vector2(975, 168)
+
+[node name="Town" parent="." instance=ExtResource("4_fc0e3")]
+unique_name_in_owner = true
+position = Vector2(1101, 465)
+
+[node name="GameOverScreen" type="ColorRect" parent="."]
+unique_name_in_owner = true
+visible = false
+offset_left = -16.0
+offset_top = -16.0
+offset_right = 1171.0
+offset_bottom = 668.0
+color = Color(0, 0, 0, 1)
+
+[node name="GameOverText" type="Label" parent="GameOverScreen"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -46.0
+offset_top = -11.5
+offset_right = 46.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "GAME OVER"
+label_settings = SubResource("LabelSettings_fc0e3")
+horizontal_alignment = 1
+vertical_alignment = 1

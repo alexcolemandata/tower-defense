@@ -10,6 +10,8 @@ class_name Monster extends PathFollow2D
 var health: float = max_health
 var is_dead: bool = false
 
+var destination_town: Town
+
 func _ready() -> void:
 	health_bar.max_value = max_health
 	health_bar.value = health
@@ -17,8 +19,17 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if is_dead:
 		return
-	progress_ratio += percent_per_second * delta / 100.0
-	global_rotation = 0.
+	
+	var movement = percent_per_second * delta / 100.0
+	if progress_ratio + movement >= 1.:
+		attack_town()
+	else:
+		progress_ratio += percent_per_second * delta / 100.0
+		global_rotation = 0.
+		
+func attack_town() -> void:
+	destination_town.take_damage()
+	die()
 
 func take_damage(damage: float, from: Node2D) -> void:
 	health -= damage
