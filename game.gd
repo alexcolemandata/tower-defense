@@ -18,13 +18,20 @@ var purchase_tower_button: Button
 enum GameState {PLAYING, PLACING_TOWER, GAME_OVER, VICTORY}
 var game_state = GameState.PLAYING
 
+
+var tower_costs: Dictionary[String, int] = {
+	"Basic Tower": 10
+}
+
 func _ready() -> void:
 	town.death_manager = self
 	monster_trail.destination_town = town
 	game_over_screen.visible = false
 	refresh_ui()
-	purchase_tower_button = in_game_ui.tower_purchase_menu.add_tower_to_purchase("Basic Tower", 10)
-	purchase_tower_button.pressed.connect(_attempt_purchase.bind("Basic Tower", 10))
+	for tower_name in tower_costs:
+		var tower_cost = tower_costs[tower_name]
+		purchase_tower_button = in_game_ui.tower_purchase_menu.add_tower_to_purchase(tower_name, tower_cost)
+		purchase_tower_button.pressed.connect(_attempt_purchase.bind(tower_name, tower_cost))
 	
 	return
 
@@ -56,6 +63,7 @@ func choosing_tower_placement(tower_name: String) -> void:
 	var new_tower: Tower = TOWER.instantiate()
 	new_tower.state = Tower.State.PLACING
 	new_tower.placed.connect(finished_placing_tower.bind(new_tower))
+	new_tower.refunded.connect(refund_tower.bind(tower_name))
 	add_child(new_tower)
 	
 	return
@@ -63,6 +71,12 @@ func choosing_tower_placement(tower_name: String) -> void:
 func finished_placing_tower(tower: Tower) -> void:
 	game_state = GameState.PLAYING
 	tower.gained_money.connect(gain_money)
+	return
+	
+func refund_tower(tower_name: String) -> void:
+	game_state = GameState.PLAYING
+	money += tower_costs[tower_name]
+	refresh_money()
 	return
 	
 func gain_money(amount: int) -> void:

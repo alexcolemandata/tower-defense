@@ -4,6 +4,9 @@ class_name Tower extends Node2D
 @export var shoots_per_second: float = 1.2
 @export var damage_per_shot: float = 1.
 
+@export var cost: int = 10
+@export var tower_name: String = "Basic Tower"
+
 @onready var vision_shape: CollisionShape2D = %VisionShape
 @onready var vision_area: Area2D = %VisionArea
 @onready var speech_box: Label = %SpeechBox
@@ -12,6 +15,7 @@ class_name Tower extends Node2D
 @onready var footprint: Area2D = %Footprint
 
 signal placed
+signal refunded
 signal gained_money(money_gained: int)
 
 enum State {PLACING, ACTIVE}
@@ -51,6 +55,14 @@ func _process_placing(_delta) -> void:
 		modulate = Color(1, 0, 0, 0.3)
 	global_position = get_global_mouse_position()
 	
+func is_refundable() -> bool:
+	var overlapping = footprint.get_overlapping_areas()
+	for overlap in overlapping:
+		if overlap.has_method("refund_tower"):
+			return true
+	return false
+			
+	
 func is_placeable() -> bool:
 	var overlapping = footprint.get_overlapping_areas()
 	for overlap in overlapping:
@@ -69,13 +81,19 @@ func _input(event: InputEvent) -> void:
 		attempt_placement(get_global_mouse_position())
 
 func attempt_placement(new_global_position: Vector2) -> void:
-	if not is_placeable():
+	if is_refundable():
+		refunded.emit()
+		queue_free()
+		return
+	elif not is_placeable():
 		return
 	global_position = new_global_position
 	state = State.ACTIVE
 	modulate.a = 1.
 	placed.emit()
 	return
+	
+
 
 func attempt_shot() -> void:
 	var overlaps: Array[Area2D] = vision_area.get_overlapping_areas()

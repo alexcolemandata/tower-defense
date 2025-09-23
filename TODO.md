@@ -1,17 +1,19 @@
 # TODO
 
 ## Basic Gameplay
+- [ ] Ability to trigger next wave when victorious
+- [x] Cancel tower placement
 - [x] Restrict tower placement
   - [x] Not on path
   - [x] Not on other towers
   - [x] Not outside map
-- [ ] Cancel tower placement
 - [x] Monsters give money
 - [x] Win State
 - [x] Ability to place towers with mouse
 - [x] Fail state
 
 ## Advanced Gameplay
+- [ ] Monsters Drop Gold Piles which need to be collected with mouse
 - [ ] Ramping/diverse spawn rate
 - [ ] Different Monsters
 - [ ] Different Maps
