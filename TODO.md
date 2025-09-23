@@ -1,10 +1,11 @@
 # TODO
 
 ## Basic Gameplay
-- [ ] Restrict tower placement
+- [-] Restrict tower placement
   - [ ] Not on path
-  - [ ] Not on other towers
+  - [x] Not on other towers
   - [ ] Not outside map
+- [ ] Cancel tower placement
 - [x] Monsters give money
 - [x] Win State
 - [x] Ability to place towers with mouse

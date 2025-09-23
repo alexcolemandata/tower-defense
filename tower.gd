@@ -9,6 +9,7 @@ class_name Tower extends Node2D
 @onready var speech_box: Label = %SpeechBox
 @onready var current_level_display: Label = %CurrentLevelDisplay
 @onready var xp_level_progress_bar: ProgressBar = %XPLevelProgressBar
+@onready var footprint: Area2D = %Footprint
 
 signal placed
 signal gained_money(money_gained: int)
@@ -21,6 +22,8 @@ var level: int = 1
 var xp_to_next_level = 30
 
 var last_shot_time: float = 0.
+
+var placement_checker: Callable
 
 func _ready() -> void:
 	var shape: CircleShape2D = vision_shape.shape
@@ -41,8 +44,19 @@ func _process_active(delta):
 		attempt_shot()
 
 func _process_placing(_delta) -> void:
-	modulate.a = 0.3
+	var can_place = is_placeable()
+	if can_place:
+		modulate = Color(1, 1, 1, 0.3)
+	else:
+		modulate = Color(1, 0, 0, 0.3)
 	global_position = get_global_mouse_position()
+	
+func is_placeable() -> bool:
+	var overlapping = footprint.get_overlapping_areas()
+	for overlap in overlapping:
+		if footprint != overlap:
+			return false
+	return true
 	
 func _draw() -> void:
 	draw_circle(Vector2.ZERO, vision_range, Color(1., 1., 1., 0.4), false, 2.0, true)
@@ -52,10 +66,11 @@ func _input(event: InputEvent) -> void:
 		return
 		
 	if (event is InputEventMouseButton) and event.is_released():
-		print("mouse event!!")
 		attempt_placement(get_global_mouse_position())
 
 func attempt_placement(new_global_position: Vector2) -> void:
+	if not is_placeable():
+		return
 	global_position = new_global_position
 	state = State.ACTIVE
 	modulate.a = 1.

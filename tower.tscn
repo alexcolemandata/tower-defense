@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://eou4mq5n6oh3"]
+[gd_scene load_steps=5 format=3 uid="uid://eou4mq5n6oh3"]
 
 [ext_resource type="Texture2D" uid="uid://8doeehu0sj6y" path="res://tower.png" id="1_k1sas"]
 [ext_resource type="Script" uid="uid://dhnso5msyby6y" path="res://tower.gd" id="1_vedim"]
@@ -6,6 +6,9 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_stebd"]
 resource_local_to_scene = true
 radius = 219.67
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vedim"]
+radius = 29.017237
 
 [node name="Tower" type="Node2D"]
 script = ExtResource("1_vedim")
@@ -16,6 +19,8 @@ texture = ExtResource("1_k1sas")
 
 [node name="VisionArea" type="Area2D" parent="."]
 unique_name_in_owner = true
+visible = false
+collision_layer = 0
 
 [node name="VisionShape" type="CollisionShape2D" parent="VisionArea"]
 unique_name_in_owner = true
@@ -43,3 +48,10 @@ offset_top = 55.0
 offset_right = 65.0
 offset_bottom = 61.0
 show_percentage = false
+
+[node name="Footprint" type="Area2D" parent="."]
+unique_name_in_owner = true
+
+[node name="FootprintShape" type="CollisionShape2D" parent="Footprint"]
+position = Vector2(-1, 20)
+shape = SubResource("CircleShape2D_vedim")
