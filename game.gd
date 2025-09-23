@@ -64,6 +64,7 @@ func trigger_next_wave() -> void:
 	wave += 1
 	monsters_spawned = 0
 	total_monsters_to_spawn *= 2
+	seconds_per_monster *= 0.9
 	refresh_monster_counts()
 	in_game_ui.set_next_wave_button_enabled(false)
 	town.stop_celebrating()
