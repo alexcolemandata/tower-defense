@@ -23,6 +23,7 @@ value = 60.0
 rounded = true
 
 [node name="HurtBox" type="Area2D" parent="."]
+collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
 position = Vector2(0, -2)

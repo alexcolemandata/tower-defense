@@ -36,6 +36,11 @@ debug_spawn_monster={
 ]
 }
 
+[layer_names]
+
+2d_physics/layer_1="PlacementFootprints"
+2d_physics/layer_2="MonsterHurt"
+
 [rendering]
 
 renderer/rendering_method="mobile"

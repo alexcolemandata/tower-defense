@@ -13,3 +13,8 @@ curve = SubResource("Curve2D_80nbo")
 script = ExtResource("1_bjd3o")
 line_color = Color(0.84927785, 0.510549, 0.24348637, 1)
 line_width = 12.0
+num_collision_points = null
+
+[node name="Footprint" type="Area2D" parent="."]
+
+[node name="FootprintPolygon" type="CollisionPolygon2D" parent="Footprint"]

@@ -2,7 +2,7 @@
 
 ## Basic Gameplay
 - [-] Restrict tower placement
-  - [ ] Not on path
+  - [x] Not on path
   - [x] Not on other towers
   - [ ] Not outside map
 - [ ] Cancel tower placement
