@@ -62,6 +62,7 @@ vertical_alignment = 1
 [node name="Town" parent="." instance=ExtResource("4_fc0e3")]
 unique_name_in_owner = true
 position = Vector2(1020, 559)
+max_health = null
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(582, 314)

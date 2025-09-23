@@ -2,6 +2,8 @@ class_name Town extends Node2D
 
 @onready var health_bar: ProgressBar = %HealthBar
 @onready var fire_sprites: Node2D = %FireSprites
+@onready var celebrate_sprites: Node2D = %CelebrateSprites
+@onready var speech_bubble: Label = %SpeechBubble
 
 @export var max_health: int = 20
 var is_on_fire: bool = false
@@ -13,6 +15,11 @@ func _ready() -> void:
 	health = max_health
 	health_bar.max_value = max_health
 	health_bar.value = health
+	
+	speech_bubble.text = ""
+	fire_sprites.visible = false
+	celebrate_sprites.visible = false
+	
 	return
 	
 func take_damage(damage: int = 1) -> void:
@@ -30,4 +37,9 @@ func _process(_delta: float) -> void:
 
 func die() -> void:
 	death_manager.handle_death(self)
+	
+func start_celebrating() -> void:
+	speech_bubble.text = "Hooray, Hoorah!"
+	celebrate_sprites.visible = true
+	
 	

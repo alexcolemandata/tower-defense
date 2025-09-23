@@ -1,12 +1,12 @@
 # TODO
 
 ## Basic Gameplay
-- [ ] Win State
 - [ ] Monsters give money
 - [ ] Restrict tower placement
 	- [ ] Not on path
 	- [ ] Not on other towers
 	- [ ] Not outside map
+- [x] Win State
 - [x] Ability to place towers with mouse
 - [x] Fail state
 

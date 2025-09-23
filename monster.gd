@@ -12,6 +12,8 @@ var is_dead: bool = false
 
 var destination_town: Town
 
+signal destroyed
+
 func _ready() -> void:
 	health_bar.max_value = max_health
 	health_bar.value = health
@@ -45,5 +47,6 @@ func die() -> void:
 	health_bar.visible = false
 	speech_box.text = "I'm Slain!"
 	await get_tree().create_timer(2).timeout
+	destroyed.emit()
 	queue_free()
 	
