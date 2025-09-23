@@ -55,7 +55,7 @@ func _attempt_purchase(tower_name: String, cost: int) -> void:
 		return
 	money -= cost
 	print("purchased ", tower_name, " for $", str(cost))
-	choosing_tower_placement("Basic Tower")
+	choosing_tower_placement(tower_name)
 	refresh_money()
 	
 	return
