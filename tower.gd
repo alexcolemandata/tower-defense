@@ -11,6 +11,7 @@ class_name Tower extends Node2D
 @onready var xp_level_progress_bar: ProgressBar = %XPLevelProgressBar
 
 signal placed
+signal gained_money(money_gained: int)
 
 enum State {PLACING, ACTIVE}
 var state = State.ACTIVE
@@ -99,6 +100,7 @@ func create_shot_line(target) -> void:
 	
 func gain_xp(amount: int) -> void:
 	xp += amount
+	gained_money.emit(amount)
 	
 	speech_box.text = "+" + str(amount) + "XP!"
 	await get_tree().create_timer(1.).timeout

@@ -55,13 +55,19 @@ func choosing_tower_placement(tower_name: String) -> void:
 	
 	var new_tower: Tower = TOWER.instantiate()
 	new_tower.state = Tower.State.PLACING
-	new_tower.placed.connect(finished_placing_tower)
+	new_tower.placed.connect(finished_placing_tower.bind(new_tower))
 	add_child(new_tower)
 	
 	return
 	
-func finished_placing_tower() -> void:
+func finished_placing_tower(tower: Tower) -> void:
 	game_state = GameState.PLAYING
+	tower.gained_money.connect(gain_money)
+	return
+	
+func gain_money(amount: int) -> void:
+	money += amount
+	refresh_money()
 	
 func refresh_ui() -> void:
 	refresh_money()

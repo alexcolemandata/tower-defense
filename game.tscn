@@ -1,8 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://bka00kwm83sv3"]
+[gd_scene load_steps=6 format=3 uid="uid://bka00kwm83sv3"]
 
 [ext_resource type="Script" uid="uid://dry28hs6v2cxv" path="res://game.gd" id="1_80nbo"]
 [ext_resource type="PackedScene" uid="uid://dxmbscpv7glme" path="res://monster_trail.tscn" id="2_e2o6t"]
-[ext_resource type="PackedScene" uid="uid://eou4mq5n6oh3" path="res://tower.tscn" id="3_feb5d"]
 [ext_resource type="PackedScene" uid="uid://du65lrtiyds3j" path="res://town.tscn" id="4_fc0e3"]
 [ext_resource type="PackedScene" uid="uid://dwc1hnjb0rhp5" path="res://in_game_ui.tscn" id="5_7jktm"]
 
@@ -24,12 +23,6 @@ metadata/_edit_use_anchors_ = true
 
 [node name="MonsterTrail" parent="." instance=ExtResource("2_e2o6t")]
 unique_name_in_owner = true
-
-[node name="Tower" parent="." instance=ExtResource("3_feb5d")]
-position = Vector2(344, 295)
-
-[node name="Tower2" parent="." instance=ExtResource("3_feb5d")]
-position = Vector2(975, 168)
 
 [node name="GameOverScreen" type="ColorRect" parent="."]
 unique_name_in_owner = true

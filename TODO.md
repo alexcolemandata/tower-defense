@@ -1,11 +1,11 @@
 # TODO
 
 ## Basic Gameplay
-- [ ] Monsters give money
 - [ ] Restrict tower placement
-	- [ ] Not on path
-	- [ ] Not on other towers
-	- [ ] Not outside map
+  - [ ] Not on path
+  - [ ] Not on other towers
+  - [ ] Not outside map
+- [x] Monsters give money
 - [x] Win State
 - [x] Ability to place towers with mouse
 - [x] Fail state
@@ -31,6 +31,7 @@
 
 ## Graphics, Sauce, QoL
 - [ ] Monster Death Animation
+- [ ] Towers only show range on mouse over
 - [ ] XP Particles
 - [ ] Fix layers/z index for towers/monters/labels/etc
 - [ ] Trail Art
