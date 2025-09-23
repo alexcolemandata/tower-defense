@@ -2,6 +2,9 @@ extends Node2D
 
 const TOWER = preload("uid://eou4mq5n6oh3")
 
+const TOWER_TEXTURE = preload("uid://8doeehu0sj6y")
+const SPIFFY_TOWER_TEXTURE = preload("uid://c5ktq13ybkphg")
+
 @onready var monster_trail: MonsterTrail = %MonsterTrail
 @onready var town: Town = %Town
 @onready var game_over_screen: ColorRect = %GameOverScreen
@@ -19,11 +22,10 @@ var wave: int = 1
 enum GameState {PLAYING, PLACING_TOWER, GAME_OVER, VICTORY}
 var game_state = GameState.PLAYING
 
-
-var tower_costs: Dictionary[String, int] = {
-	"Basic Tower": 10,
-	"Spiffy Tower": 20,
-}
+var tower_stats: Array[TowerStats] = [
+	TowerStats.new("Basic Tower", 160., 2, 1., 15, TOWER_TEXTURE),
+	TowerStats.new("Spiffy Tower", 240., 4, 1.1, 80, SPIFFY_TOWER_TEXTURE)
+]
 
 func _ready() -> void:
 	town.death_manager = self
@@ -31,10 +33,9 @@ func _ready() -> void:
 	monster_trail.loot_handler = self
 	game_over_screen.visible = false
 	refresh_ui()
-	for tower_name in tower_costs:
-		var tower_cost = tower_costs[tower_name]
-		purchase_tower_button = in_game_ui.tower_purchase_menu.add_tower_to_purchase(tower_name, tower_cost)
-		purchase_tower_button.pressed.connect(_attempt_purchase.bind(tower_name, tower_cost))
+	for tower_stat in tower_stats:
+		purchase_tower_button = in_game_ui.tower_purchase_menu.add_tower_to_purchase(tower_stat)
+		purchase_tower_button.pressed.connect(_attempt_purchase.bind(tower_stat))
 		
 	in_game_ui.next_wave_button.pressed.connect(trigger_next_wave)
 	
@@ -47,16 +48,16 @@ func _input(event: InputEvent) -> void:
 	if event.is_action_released("debug_spawn_monster"):
 		spawn_monster()
 		
-func _attempt_purchase(tower_name: String, cost: int) -> void:
+func _attempt_purchase(tower_stat: TowerStats) -> void:
 	if not game_state == GameState.PLAYING:
 		return
 		
-	if cost > money:
+	if tower_stat.cost > money:
 		print("not enough money")
 		return
-	money -= cost
-	print("purchased ", tower_name, " for $", str(cost))
-	choosing_tower_placement(tower_name)
+	money -= tower_stat.cost
+	print("purchased ", tower_stat.tower_name, " for $", str(tower_stat.cost))
+	choosing_tower_placement(tower_stat)
 	refresh_money()
 	
 	return
@@ -71,14 +72,15 @@ func trigger_next_wave() -> void:
 	town.stop_celebrating()
 	game_state = GameState.PLAYING
 
-func choosing_tower_placement(tower_name: String) -> void:
-	print("placing: " + tower_name)
+func choosing_tower_placement(tower_stat: TowerStats) -> void:
+	print("placing: " + tower_stat.tower_name)
 	game_state = GameState.PLACING_TOWER
 	
 	var new_tower: Tower = TOWER.instantiate()
 	new_tower.state = Tower.State.PLACING
+	new_tower.stats = tower_stat
 	new_tower.placed.connect(finished_placing_tower.bind(new_tower))
-	new_tower.refunded.connect(refund_tower.bind(tower_name))
+	new_tower.refunded.connect(refund_tower.bind(tower_stat))
 	add_child(new_tower)
 	
 	return
@@ -87,9 +89,9 @@ func finished_placing_tower(_tower: Tower) -> void:
 	game_state = GameState.PLAYING
 	return
 	
-func refund_tower(tower_name: String) -> void:
+func refund_tower(tower_stat: TowerStats) -> void:
 	game_state = GameState.PLAYING
-	money += tower_costs[tower_name]
+	money += tower_stat.cost
 	refresh_money()
 	return
 	

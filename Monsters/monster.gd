@@ -48,11 +48,18 @@ func take_damage(damage: float, from: Node2D) -> void:
 func die() -> void:
 	is_dead = true
 	health_bar.visible = false
-	speech_box.text = "I'm Slain!"
 	spawn_loot()
+	death_animation()
+	return
+	
+	
+func death_animation() -> void:
+	speech_box.text = "I'm Slain!"
 	await get_tree().create_timer(2).timeout
 	destroyed.emit()
 	queue_free()
+	return
+	
 	
 func spawn_loot() -> void:
 	var new_loot: Gold = GOLD.instantiate()

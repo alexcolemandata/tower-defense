@@ -1,11 +1,6 @@
 class_name Tower extends Node2D
 
-@export var vision_range: float = 200.
-@export var shoots_per_second: float = 1.2
-@export var damage_per_shot: float = 1.
-
-@export var cost: int = 10
-@export var tower_name: String = "Basic Tower"
+@export var stats: TowerStats
 
 @onready var vision_shape: CollisionShape2D = %VisionShape
 @onready var vision_area: Area2D = %VisionArea
@@ -14,6 +9,8 @@ class_name Tower extends Node2D
 @onready var xp_level_progress_bar: ProgressBar = %XPLevelProgressBar
 @onready var footprint: Area2D = %Footprint
 @onready var footprint_shape: CollisionShape2D = %FootprintShape
+
+@onready var sprite_2d: Sprite2D = $Sprite2D
 
 signal placed
 signal refunded
@@ -31,7 +28,8 @@ var placement_checker: Callable
 
 func _ready() -> void:
 	var shape: CircleShape2D = vision_shape.shape
-	shape.radius = vision_range
+	shape.radius = stats.vision_range
+	sprite_2d.texture = stats.texture
 	refresh_level_display()
 
 func _process(delta: float) -> void:
@@ -44,7 +42,7 @@ func _process(delta: float) -> void:
 	
 func _process_active(delta):
 	last_shot_time += delta
-	if last_shot_time >= 1/shoots_per_second:
+	if last_shot_time >= 1/stats.shoots_per_second:
 		attempt_shot()
 
 func _process_placing(_delta) -> void:
@@ -72,7 +70,14 @@ func is_placeable() -> bool:
 	
 func _draw() -> void:
 	if (state == State.PLACING) or _is_mouse_on_footprint():
-		draw_circle(Vector2.ZERO, vision_range, Color(1., 1., 1., 0.4), false, 2.0, true)
+		draw_circle(
+			Vector2.ZERO, 
+			stats.vision_range, 
+			Color(1., 1., 1., 0.4), 
+			false, 
+			2.0, 
+			true
+		)
 	
 func _is_mouse_on_footprint() -> bool:
 	var mouse_pos = get_global_mouse_position()
@@ -117,7 +122,7 @@ func attempt_shot() -> void:
 func shoot_at(target) -> void:
 	create_shot_line(target)
 	
-	target.take_damage(damage_per_shot, self)
+	target.take_damage(stats.damage_per_shot, self)
 	last_shot_time = 0.
 	
 	return

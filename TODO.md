@@ -15,7 +15,6 @@
 ## Advanced Gameplay
 - [ ] Ramping/diverse spawn rate
 - [ ] Different Monsters
-- [ ] Different Maps
 - [ ] Tower fire tactics: (Front, Back, Lowest Health, Highest Health)
 - [ ] Different Towers
   - [ ] Projectile Tower (arrow, magic ball, single target)
@@ -27,6 +26,7 @@
   - [ ] Chain Lightning
   - [ ] Slow
   - [ ] Wall
+- [ ] Different Maps
 - [x] Monsters Drop Gold Piles which need to be collected with mouse
 
 ## Backend
