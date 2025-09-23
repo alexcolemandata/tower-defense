@@ -1,7 +1,7 @@
 # TODO
-
-- [ ] Fail state
+- [x] Fail state
 - [ ] Win State
+- [ ] Basic Directory Structure
 - [ ] Tower fire tactics: (Front, Back, Lowest Health, Highest Health)
 - [ ] Ramping/diverse spawn rate
 - [ ] Monster Death Animation
@@ -17,5 +17,3 @@
 - [ ] Fix layers/z index for towers/monters/labels/etc
 - [ ] Trail Art
 - [ ] Tower DPS Meters (think WoW raid to see all tower DPS)
-
-
