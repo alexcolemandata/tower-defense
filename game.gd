@@ -14,13 +14,15 @@ var monsters_spawned: int = 0
 var seconds_since_monster: float = 0.
 var money: int = 100
 var purchase_tower_button: Button
+var wave: int = 1
 
 enum GameState {PLAYING, PLACING_TOWER, GAME_OVER, VICTORY}
 var game_state = GameState.PLAYING
 
 
 var tower_costs: Dictionary[String, int] = {
-	"Basic Tower": 10
+	"Basic Tower": 10,
+	"Spiffy Tower": 20,
 }
 
 func _ready() -> void:
@@ -32,6 +34,8 @@ func _ready() -> void:
 		var tower_cost = tower_costs[tower_name]
 		purchase_tower_button = in_game_ui.tower_purchase_menu.add_tower_to_purchase(tower_name, tower_cost)
 		purchase_tower_button.pressed.connect(_attempt_purchase.bind(tower_name, tower_cost))
+		
+	in_game_ui.next_wave_button.pressed.connect(trigger_next_wave)
 	
 	return
 
@@ -55,6 +59,15 @@ func _attempt_purchase(tower_name: String, cost: int) -> void:
 	refresh_money()
 	
 	return
+	
+func trigger_next_wave() -> void:
+	wave += 1
+	monsters_spawned = 0
+	total_monsters_to_spawn *= 2
+	refresh_monster_counts()
+	in_game_ui.set_next_wave_button_enabled(false)
+	town.stop_celebrating()
+	game_state = GameState.PLAYING
 
 func choosing_tower_placement(tower_name: String) -> void:
 	print("placing: " + tower_name)
@@ -92,6 +105,7 @@ func refresh_money() -> void:
 	
 func refresh_monster_counts() -> void:
 	in_game_ui.set_monster_progress(monsters_spawned, total_monsters_to_spawn)
+	in_game_ui.set_wave_number(wave)
 		
 func exit_game() -> void:
 	get_tree().quit()
@@ -123,6 +137,7 @@ func spawn_monster() -> void:
 
 func victory() -> void:
 	game_state = GameState.VICTORY
+	in_game_ui.set_next_wave_button_enabled(true)
 	town.start_celebrating()
 
 func handle_death(died) -> void:

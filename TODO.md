@@ -1,7 +1,7 @@
 # TODO
 
 ## Basic Gameplay
-- [ ] Ability to trigger next wave when victorious
+- [x] Ability to trigger next wave when victorious
 - [x] Cancel tower placement
 - [x] Restrict tower placement
   - [x] Not on path

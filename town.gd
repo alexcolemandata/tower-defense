@@ -42,4 +42,8 @@ func start_celebrating() -> void:
 	speech_bubble.text = "Hooray, Hoorah!"
 	celebrate_sprites.visible = true
 	
+func stop_celebrating() -> void:
+	speech_bubble.text = ""
+	celebrate_sprites.visible = false
+	
 	
