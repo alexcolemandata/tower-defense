@@ -30,6 +30,9 @@ func _ready() -> void:
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("quit"):
 		exit_game()
+	
+	if event.is_action_released("debug_spawn_monster"):
+		spawn_monster()
 		
 func _attempt_purchase(tower_name: String, cost: int) -> void:
 	if not game_state == GameState.PLAYING:
@@ -71,18 +74,18 @@ func _process(delta: float) -> void:
 	seconds_since_monster += delta
 	if seconds_since_monster >= seconds_per_monster:
 		spawn_monster()
-		seconds_since_monster = 0.
 	return
 	
 func spawn_monster() -> void:
+	seconds_since_monster = 0.
 	monster_trail.spawn_monster()
 
 
 func handle_death(died) -> void:
 	if is_instance_of(died, Town):
-		print("DIED")
 		game_over()
 		
 func game_over() -> void:
+	print("DIED")
 	game_state = GameState.GAME_OVER
 	game_over_screen.visible = true
