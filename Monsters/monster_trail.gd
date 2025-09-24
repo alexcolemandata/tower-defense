@@ -44,7 +44,7 @@ func generate_footprint() -> void:
 	right_edges.reverse()
 	footprint_points.append_array(right_edges)
 	
-	footprint_polygon.polygon = footprint_points
+	footprint_polygon.set_polygon(footprint_points)
 	return
 	
 
