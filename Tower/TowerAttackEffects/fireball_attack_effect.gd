@@ -1,29 +1,26 @@
 class_name FireballAttackEffect
 extends Node2D
 
-@onready var fireball_sprite: Sprite2D = $FireballSprite
-@onready var target_coord: Marker2D = $TargetCoord
-@onready var explosion: Node2D = %Explosion
-@onready var explosion_hit_box: Area2D = %ExplosionHitBox
+signal damaged_monster(monster: Monster)
 
+enum State { IDLE, FIRED, EXPLODED }
+
+var damage: float
 # we only want to hit a monster once per fireball
 var hit_monsters: Array[Monster] = []
-
-enum State {IDLE, FIRED, EXPLODED}
-
+var speed: float = 400.
 var state: State = State.IDLE
 
-var speed: float = 400.
-var damage: float
+@onready var explosion: Node2D = %Explosion
+@onready var explosion_hit_box: Area2D = %ExplosionHitBox
+@onready var fireball_sprite: Sprite2D = $FireballSprite
+@onready var target_coord: Marker2D = $TargetCoord
 
-signal damaged_monster(monster: Monster)
 
 func _ready() -> void:
 	explosion.visible = false
 	explosion_hit_box.monitoring = false
 
-func fire() -> void:
-	state = State.FIRED
 
 func _process(delta: float) -> void:
 	if state == State.EXPLODED:
@@ -32,14 +29,15 @@ func _process(delta: float) -> void:
 		return
 	fireball_sprite.look_at(target_coord.global_position)
 	var movement_vector = (
-		target_coord.global_position 
-		- fireball_sprite.global_position).normalized() * speed * delta
-	
+		target_coord.global_position
+		- fireball_sprite.global_position ).normalized() * speed * delta
+
 	fireball_sprite.global_position = fireball_sprite.global_position + movement_vector
-	
+
 	if fireball_sprite.global_position.distance_to(target_coord.global_position) < (speed * delta):
 		explode()
-		
+
+
 func check_monsters_in_blast_radius() -> void:
 	var overlapping: Array[Area2D] = explosion_hit_box.get_overlapping_areas()
 	for overlap in overlapping:
@@ -48,11 +46,12 @@ func check_monsters_in_blast_radius() -> void:
 			var monster: Monster = overlap_parent
 			hit_monsters.append(monster)
 			damaged_monster.emit(monster)
-		
+
+
 func explode():
 	state = State.EXPLODED
 	var tween = get_tree().create_tween()
-	
+
 	fireball_sprite.visible = false
 	explosion.scale = Vector2.ZERO
 	explosion.visible = true
@@ -61,3 +60,7 @@ func explode():
 	tween.tween_property(explosion, "modulate", Color(1., 1., .1, 0.), 0.3)
 	await tween.finished
 	queue_free()
+
+
+func fire() -> void:
+	state = State.FIRED
