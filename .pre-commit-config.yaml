@@ -3,8 +3,6 @@ repos:
     hooks:
       - id: gdscript-formatter
         name: GDScript Formatter
-        # entry: xargs -n 1 echo gdscript-formatter-macos-aarch64b--reorder-code
-        # entry: xargs -n 1 echo gdscript-formatter-macos-aa
         entry: bash -c 'for x in "$@"; do gdscript-formatter-macos-aarch64 --reorder-code "$x"; done'
         language: system
         types: [file]
