@@ -12,6 +12,7 @@ const monster_variations: Dictionary = {
 @export var line_width: float = 4.
 @export var num_collision_points: int = 50
 
+var total_monsters: int = 0
 var count_monsters: int = 0
 var destination_town: Town
 var loot_handler
@@ -66,13 +67,14 @@ func generate_footprint() -> void:
 
 func spawn_monster() -> Monster:
 	var monster: Monster = MONSTER.instantiate()
-	if (count_monsters % 2) == 1:
+	if (total_monsters % 2) == 1:
 		monster.stats = monster_variations["Ninja"]
 	else:
 		monster.stats = monster_variations["LollyGagger"]
 	monster.destination_town = destination_town
 	monster.loot_handler = loot_handler
 	count_monsters += 1
+	total_monsters += 1
 	monster.destroyed.connect(decrement_monster_count)
 	add_child(monster)
 
