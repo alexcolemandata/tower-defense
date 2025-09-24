@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="MonsterStats" load_steps=3 format=3 uid="uid://cbublyn32ri4m"]
+
+[ext_resource type="Script" uid="uid://bt5ffmv6m016a" path="res://Monsters/monster_stats.gd" id="1_6k25l"]
+[ext_resource type="Texture2D" uid="uid://s8tv5uo0tvj1" path="res://Monsters/MonsterVariations/ninja.png" id="2_5bfxo"]
+
+[resource]
+script = ExtResource("1_6k25l")
+gold_on_death = 50
+max_health = 1.0
+speed_perc_per_sec = 20.0
+xp_on_death = 30
+sprite_texture = ExtResource("2_5bfxo")
+death_speech = "Death is Me?"
+metadata/_custom_type_script = "uid://bt5ffmv6m016a"

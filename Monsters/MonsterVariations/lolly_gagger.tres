@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="MonsterStats" load_steps=3 format=3 uid="uid://bd2fp73xxonbw"]
+
+[ext_resource type="Script" uid="uid://bt5ffmv6m016a" path="res://Monsters/monster_stats.gd" id="1_g2bv0"]
+[ext_resource type="Texture2D" uid="uid://b0ox2w53tlsyg" path="res://Monsters/MonsterVariations/lolly_gagger.png" id="2_fhw0t"]
+
+[resource]
+script = ExtResource("1_g2bv0")
+sprite_texture = ExtResource("2_fhw0t")
+death_speech = "I'm Dead Now!"
+metadata/_custom_type_script = "uid://bt5ffmv6m016a"

@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://b0ox2w53tlsyg"
-path="res://.godot/imported/monster.png-523718353119d2d13b36d15510a14e15.ctex"
+path="res://.godot/imported/lolly_gagger.png-4b26e3990c7107f930fa5f1eda705554.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Monsters/monster.png"
-dest_files=["res://.godot/imported/monster.png-523718353119d2d13b36d15510a14e15.ctex"]
+source_file="res://Monsters/MonsterVariations/lolly_gagger.png"
+dest_files=["res://.godot/imported/lolly_gagger.png-4b26e3990c7107f930fa5f1eda705554.ctex"]
 
 [params]
 

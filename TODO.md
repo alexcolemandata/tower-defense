@@ -17,8 +17,9 @@
 - [ ] Tower purchase menu has pictures + stats of towers
 
 ## Advanced Gameplay
-- [ ] Ramping/diverse spawn rate
-- [ ] Different Monsters
+- [ ] Ramping/diverse spawn rate with custom monster compositions
+- [x] Different Monsters
+    - [x] Ninja
 - [ ] Tower fire tactics: (Front, Back, Lowest Health, Highest Health)
 - [ ] Different Towers
   - [ ] Projectile Tower (arrow, magic ball, single target)

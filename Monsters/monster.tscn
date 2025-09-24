@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://dt26jdmea8bpa"]
 
 [ext_resource type="Script" uid="uid://dml0sl5curbo" path="res://Monsters/monster.gd" id="1_ga5te"]
-[ext_resource type="Texture2D" uid="uid://b0ox2w53tlsyg" path="res://Monsters/monster.png" id="1_mrqeg"]
+[ext_resource type="Texture2D" uid="uid://b0ox2w53tlsyg" path="res://Monsters/MonsterVariations/lolly_gagger.png" id="1_mrqeg"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_mrqeg"]
 radius = 19.104973
@@ -10,6 +10,7 @@ radius = 19.104973
 script = ExtResource("1_ga5te")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+unique_name_in_owner = true
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("1_mrqeg")
 

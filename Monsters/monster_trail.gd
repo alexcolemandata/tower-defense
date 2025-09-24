@@ -3,6 +3,10 @@ class_name MonsterTrail
 extends Path2D
 
 const MONSTER = preload("uid://dt26jdmea8bpa")
+const monster_variations: Dictionary = {
+	"LollyGagger": preload("uid://bd2fp73xxonbw"),
+	"Ninja": preload("uid://cbublyn32ri4m"),
+}
 
 @export var line_color: Color = Color.WHITE
 @export var line_width: float = 4.
@@ -62,6 +66,10 @@ func generate_footprint() -> void:
 
 func spawn_monster() -> Monster:
 	var monster: Monster = MONSTER.instantiate()
+	if (count_monsters % 2) == 1:
+		monster.stats = monster_variations["Ninja"]
+	else:
+		monster.stats = monster_variations["LollyGagger"]
 	monster.destination_town = destination_town
 	monster.loot_handler = loot_handler
 	count_monsters += 1
