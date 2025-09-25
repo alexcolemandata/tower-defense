@@ -1,25 +1,11 @@
 # TODO
 
-## Basic Gameplay
-- [x] Monsters that attack town shouldn't "die"
-- [x] Ability to trigger next wave when victorious
-- [x] Cancel tower placement
-- [x] Restrict tower placement
-  - [x] Not on path
-  - [x] Not on other towers
-  - [x] Not outside map
-- [x] Monsters give money
-- [x] Win State
-- [x] Ability to place towers with mouse
-- [x] Fail state
-
 ## UI
 - [ ] Tower purchase menu has pictures + stats of towers
+- [ ] Main Menu
 
 ## Advanced Gameplay
 - [ ] Ramping/diverse spawn rate with custom monster compositions
-- [x] Different Monsters
-    - [x] Ninja
 - [ ] Tower fire tactics: (Front, Back, Lowest Health, Highest Health)
 - [ ] Different Towers
   - [ ] Projectile Tower (arrow, magic ball, single target)
@@ -32,6 +18,8 @@
   - [ ] Slow
   - [ ] Wall
 - [ ] Different Maps
+- [x] Different Monsters
+    - [x] Ninja
 - [x] Monsters Drop Gold Piles which need to be collected with mouse
 
 ## Backend
@@ -47,4 +35,25 @@
 - [ ] Tower DPS Meters (think WoW raid to see all tower DPS)
 - [ ] Basic Music
 - [ ] Basic Sound Effects
+    - [ ] Town Celebration
+    - [ ] Monster Death
+    - [ ] Beam Fire
+    - [ ] Fireball Fire
+    - [ ] Fireball Explosion
+    - [ ] Collect Coins
+    - [ ] Tower Level Up
+    - [ ] Round Start
 - [x] Towers only show range on mouse over and placement
+
+## Basic Gameplay
+- [x] Monsters that attack town shouldn't "die"
+- [x] Ability to trigger next wave when victorious
+- [x] Cancel tower placement
+- [x] Restrict tower placement
+  - [x] Not on path
+  - [x] Not on other towers
+  - [x] Not outside map
+- [x] Monsters give money
+- [x] Win State
+- [x] Ability to place towers with mouse
+- [x] Fail state
