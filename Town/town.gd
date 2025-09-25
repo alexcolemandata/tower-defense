@@ -34,6 +34,10 @@ func die() -> void:
 
 
 func start_celebrating() -> void:
+	AudioManager.play_sfx_at_location(
+		global_position,
+		AudioManager.sounds.town_celebrate,
+	)
 	speech_bubble.text = "Hooray, Hoorah!"
 	celebrate_sprites.visible = true
 
@@ -47,7 +51,7 @@ func take_damage(damage: int = 1) -> void:
 	health -= damage
 	health_bar.value = health
 
-	if health <= max_health / 2:
+	if health <= max_health / 2.0:
 		is_on_fire = true
 	if health <= 0:
 		die()

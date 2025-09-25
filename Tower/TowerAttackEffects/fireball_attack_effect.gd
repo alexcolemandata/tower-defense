@@ -25,6 +25,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if state == State.EXPLODED:
 		check_monsters_in_blast_radius()
+		return
 	elif not state == State.FIRED:
 		return
 	fireball_sprite.look_at(target_coord.global_position)
@@ -36,6 +37,10 @@ func _process(delta: float) -> void:
 
 	if fireball_sprite.global_position.distance_to(target_coord.global_position) < (speed * delta):
 		explode()
+		AudioManager.play_sfx_at_location(
+			target_coord.global_position,
+			AudioManager.sounds.tower_attack_fireball_explosion,
+		)
 
 
 func check_monsters_in_blast_radius() -> void:
@@ -58,9 +63,11 @@ func explode():
 	explosion_hit_box.monitoring = true
 	tween.tween_property(explosion, "scale", Vector2(1., 1.), 0.2)
 	tween.tween_property(explosion, "modulate", Color(1., 1., .1, 0.), 0.3)
+
 	await tween.finished
 	queue_free()
 
 
 func fire() -> void:
+	AudioManager.play_sfx_at_location(global_position, AudioManager.sounds.tower_attack_fireball_shoot)
 	state = State.FIRED

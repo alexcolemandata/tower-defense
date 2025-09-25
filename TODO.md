@@ -1,5 +1,8 @@
 # TODO
 
+## Bugs
+- [ ] Round doesnt end if monster hits town and rest dead
+
 ## UI
 - [ ] Tower purchase menu has pictures + stats of towers
 - [ ] Main Menu
@@ -33,16 +36,21 @@
 - [ ] Trail Art
 - [ ] Grass Art
 - [ ] Tower DPS Meters (think WoW raid to see all tower DPS)
-- [ ] Basic Music
+- [x] Basic Music
 - [ ] Basic Sound Effects
-    - [ ] Town Celebration
+    - [ ] Monster Spawn
+        - [ ] LollyGagger
+        - [ ] Ninja
     - [ ] Monster Death
-    - [ ] Beam Fire
-    - [ ] Fireball Fire
-    - [ ] Fireball Explosion
-    - [ ] Collect Coins
-    - [ ] Tower Level Up
-    - [ ] Round Start
+        - [ ] LollyGagger
+        - [ ] Ninja
+    - [x] Town Celebration
+    - [x] Fireball Shoot
+    - [x] Fireball Explosion
+    - [x] Beam Fire
+    - [x] Tower Level Up
+    - [x] Round Start
+    - [x] Collect Coins
 - [x] Towers only show range on mouse over and placement
 
 ## Basic Gameplay

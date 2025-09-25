@@ -26,7 +26,6 @@ var wave: int = 1
 @onready var monster_trail: MonsterTrail = %MonsterTrail
 @onready var town: Town = %Town
 
-
 func _ready() -> void:
 	town.death_manager = self
 	monster_trail.destination_town = town
@@ -39,6 +38,7 @@ func _ready() -> void:
 
 	in_game_ui.next_wave_button.pressed.connect(trigger_next_wave)
 
+	AudioManager.play_sfx(AudioManager.sounds.round_start)
 	return
 
 
@@ -141,6 +141,7 @@ func spawn_monster() -> void:
 
 
 func trigger_next_wave() -> void:
+	AudioManager.play_sfx(AudioManager.sounds.round_start)
 	wave += 1
 	monsters_spawned = 0
 	total_monsters_to_spawn *= 2

@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="BeamTowerAttack" load_steps=2 format=3 uid="uid://cj7rijhysruge"]
+
+[ext_resource type="Script" uid="uid://dut5jbh6qv5mk" path="res://Tower/TowerAttackStrategies/beam_tower_attack.gd" id="2_3ckqi"]
+
+[resource]
+script = ExtResource("2_3ckqi")
+metadata/_custom_type_script = "uid://dut5jbh6qv5mk"

@@ -14,6 +14,10 @@ config/name="TowerDefense"
 run/main_scene="res://Game/game.tscn"
 config/features=PackedStringArray("4.5", "Mobile")
 
+[autoload]
+
+AudioManager="*res://Audio/audio_manager.tscn"
+
 [display]
 
 window/size/viewport_width=1920

@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://bka00kwm83sv3"]
+[gd_scene load_steps=7 format=3 uid="uid://bka00kwm83sv3"]
 
 [ext_resource type="Script" uid="uid://dry28hs6v2cxv" path="res://Game/game.gd" id="1_80nbo"]
 [ext_resource type="PackedScene" uid="uid://dxmbscpv7glme" path="res://Monsters/monster_trail.tscn" id="2_e2o6t"]
+[ext_resource type="PackedScene" uid="uid://c2r1oiupv6epm" path="res://Audio/audio_manager.tscn" id="2_fwxkx"]
 [ext_resource type="PackedScene" uid="uid://du65lrtiyds3j" path="res://Town/town.tscn" id="4_fc0e3"]
 [ext_resource type="PackedScene" uid="uid://dwc1hnjb0rhp5" path="res://UI/in_game_ui.tscn" id="5_7jktm"]
 
@@ -11,6 +12,8 @@ font_size = 80
 [node name="Game" type="Node2D"]
 script = ExtResource("1_80nbo")
 seconds_per_monster = 2.0
+
+[node name="AudioManager" parent="." instance=ExtResource("2_fwxkx")]
 
 [node name="InGameUI" parent="." instance=ExtResource("5_7jktm")]
 unique_name_in_owner = true

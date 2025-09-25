@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="Sounds" load_steps=9 format=3 uid="uid://cwnljjakm2nix"]
+
+[ext_resource type="Script" uid="uid://kdtihg0uklpe" path="res://Audio/sounds.gd" id="1_qs87w"]
+[ext_resource type="AudioStream" uid="uid://bynqwqto3k6gc" path="res://Audio/badcoin.mp3" id="1_sm6b5"]
+[ext_resource type="AudioStream" uid="uid://csjt31oyqt36r" path="res://Audio/badlvlstart.mp3" id="2_wff8i"]
+[ext_resource type="AudioStream" uid="uid://ql2kntlmohqk" path="res://Audio/badbeam.mp3" id="4_iyxtn"]
+[ext_resource type="AudioStream" uid="uid://cge6426i07hvr" path="res://Audio/badlvlup.mp3" id="5_4yc8t"]
+[ext_resource type="AudioStream" uid="uid://co573t432l8t2" path="res://Audio/badexplosion.mp3" id="5_wff8i"]
+[ext_resource type="AudioStream" uid="uid://42e5lyfdvkpr" path="res://Audio/badfireballthrow.mp3" id="6_iyxtn"]
+[ext_resource type="AudioStream" uid="uid://db0m63ymil5sd" path="res://Audio/badcelebrate.mp3" id="8_4yc8t"]
+
+[resource]
+script = ExtResource("1_qs87w")
+round_start = ExtResource("2_wff8i")
+loot_gold = ExtResource("1_sm6b5")
+town_celebrate = ExtResource("8_4yc8t")
+tower_attack_beam_light = ExtResource("4_iyxtn")
+tower_attack_fireball_explosion = ExtResource("5_wff8i")
+tower_attack_fireball_shoot = ExtResource("6_iyxtn")
+tower_level_up = ExtResource("5_4yc8t")
+metadata/_custom_type_script = "uid://kdtihg0uklpe"

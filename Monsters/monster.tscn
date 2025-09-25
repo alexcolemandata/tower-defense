@@ -1,10 +1,12 @@
-[gd_scene load_steps=4 format=3 uid="uid://dt26jdmea8bpa"]
+[gd_scene load_steps=5 format=3 uid="uid://dt26jdmea8bpa"]
 
 [ext_resource type="Script" uid="uid://dml0sl5curbo" path="res://Monsters/monster.gd" id="1_ga5te"]
 [ext_resource type="Texture2D" uid="uid://b0ox2w53tlsyg" path="res://Monsters/MonsterVariations/lolly_gagger.png" id="1_mrqeg"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_mrqeg"]
 radius = 19.104973
+
+[sub_resource type="AudioStreamInteractive" id="AudioStreamInteractive_l4fi5"]
 
 [node name="Monster" type="PathFollow2D"]
 script = ExtResource("1_ga5te")
@@ -36,3 +38,6 @@ offset_left = 20.0
 offset_top = -26.0
 offset_right = 90.0
 offset_bottom = -3.0
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = SubResource("AudioStreamInteractive_l4fi5")
