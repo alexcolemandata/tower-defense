@@ -35,8 +35,8 @@
 - [ ] Fix layers/z index for towers/monters/labels/etc
 - [ ] Trail Art
 - [ ] Grass Art
+- [ ] Tower Level Up Visual Effect
 - [ ] Tower DPS Meters (think WoW raid to see all tower DPS)
-- [x] Basic Music
 - [ ] Basic Sound Effects
     - [ ] Monster Spawn
         - [ ] LollyGagger
@@ -51,6 +51,7 @@
     - [x] Tower Level Up
     - [x] Round Start
     - [x] Collect Coins
+- [x] Basic Music
 - [x] Towers only show range on mouse over and placement
 
 ## Basic Gameplay
