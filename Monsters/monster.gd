@@ -42,8 +42,12 @@ func attack_town() -> void:
 
 
 func death_animation() -> void:
+	sprite_2d.rotate(PI/2.)
 	speech_box.text = stats.death_speech
-	await get_tree().create_timer(2).timeout
+	
+	var tween = get_tree().create_tween()
+	tween.tween_property(self, "modulate", Color(1., 1., 1., 0.), 2.0)
+	await tween.finished
 	destroyed.emit()
 	queue_free()
 	return
@@ -59,7 +63,7 @@ func die() -> void:
 
 func spawn_loot() -> void:
 	var new_loot: Gold = GOLD.instantiate()
-	new_loot.global_position = global_position
+	new_loot.global_position = global_position + Vector2.from_angle(randf()) * 50.
 	new_loot.money_value = stats.gold_on_death
 	new_loot.z_index = 80
 	new_loot.collected.connect(loot_handler.collect_loot)
