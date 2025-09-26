@@ -34,7 +34,7 @@ func die() -> void:
 
 
 func start_celebrating() -> void:
-	AudioManager.play_sfx_at_location(
+	AudioManager.play_sound_at_location(
 		global_position,
 		AudioManager.sounds.town_celebrate,
 	)

@@ -8,7 +8,7 @@
 - [ ] Main Menu
 
 ## Internals
-- [ ] Sound Manager - default + dynamic volume
+- [x] Sound Manager - default + dynamic volume
 
 ## Advanced Gameplay
 - [ ] Ramping/diverse spawn rate with custom monster compositions

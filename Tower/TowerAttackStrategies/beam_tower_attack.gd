@@ -16,7 +16,7 @@ func create_shot_line(target: Monster, shooter: Tower) -> void:
 
 func shoot_at_target(target: Monster, shooter: Tower, damage: int) -> void:
 	create_shot_line(target, shooter)
-	AudioManager.play_sfx_at_location(
+	AudioManager.play_sound_at_location(
 		shooter.global_position,
 		AudioManager.sounds.tower_attack_beam_light,
 	)

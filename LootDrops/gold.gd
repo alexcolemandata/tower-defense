@@ -10,7 +10,7 @@ var money_value: int = 10
 
 
 func collect_loot():
-	AudioManager.play_sfx_at_location(
+	AudioManager.play_sound_at_location(
 		global_position,
 		AudioManager.sounds.loot_gold,
 	)

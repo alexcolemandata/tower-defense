@@ -122,7 +122,7 @@ func is_refundable() -> bool:
 
 
 func level_up() -> void:
-	AudioManager.play_sfx_at_location(
+	AudioManager.play_sound_at_location(
 		global_position,
 		AudioManager.sounds.tower_level_up,
 	)

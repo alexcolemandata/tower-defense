@@ -37,7 +37,7 @@ func _process(delta: float) -> void:
 
 	if fireball_sprite.global_position.distance_to(target_coord.global_position) < (speed * delta):
 		explode()
-		AudioManager.play_sfx_at_location(
+		AudioManager.play_sound_at_location(
 			target_coord.global_position,
 			AudioManager.sounds.tower_attack_fireball_explosion,
 		)
@@ -69,5 +69,5 @@ func explode():
 
 
 func fire() -> void:
-	AudioManager.play_sfx_at_location(global_position, AudioManager.sounds.tower_attack_fireball_shoot)
+	AudioManager.play_sound_at_location(global_position, AudioManager.sounds.tower_attack_fireball_shoot)
 	state = State.FIRED
