@@ -1,5 +1,4 @@
-class_name Tower
-extends Node2D
+class_name Tower extends Node2D
 
 signal placed
 signal refunded
@@ -66,6 +65,7 @@ func _draw() -> void:
 func attempt_placement(new_global_position: Vector2) -> void:
 	if is_refundable():
 		refunded.emit()
+		AudioManager.play_sound(AudioManager.sounds.tower_refund)
 		queue_free()
 		return
 	elif not is_placeable():
@@ -74,6 +74,10 @@ func attempt_placement(new_global_position: Vector2) -> void:
 	state = State.ACTIVE
 	modulate.a = 1.
 	placed.emit()
+	AudioManager.play_sound_at_location(
+		new_global_position,
+		AudioManager.sounds.tower_place,
+	)
 	return
 
 

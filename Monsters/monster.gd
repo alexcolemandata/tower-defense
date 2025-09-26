@@ -1,5 +1,4 @@
-class_name Monster
-extends PathFollow2D
+class_name Monster extends PathFollow2D
 
 signal destroyed
 
@@ -8,7 +7,7 @@ const GOLD = preload("uid://ncncsppuo7x2")
 @export var stats: MonsterStats = MonsterStats.new()
 
 var destination_town: Town
-var health: float 
+var health: float
 var is_dead: bool = false
 var loot_handler
 
@@ -42,23 +41,29 @@ func attack_town() -> void:
 
 
 func death_animation() -> void:
-	sprite_2d.rotate(PI/2.)
+	sprite_2d.rotate(PI / 2.)
 	speech_box.text = stats.death_speech
-	
+
 	var tween = get_tree().create_tween()
 	tween.tween_property(self, "modulate", Color(1., 1., 1., 0.), 2.0)
 	await tween.finished
 	destroy()
 	return
 
+
 func destroy() -> void:
 	destroyed.emit()
 	queue_free()
 	return
 
+
 func die() -> void:
 	is_dead = true
 	health_bar.visible = false
+
+	if stats.sounds_death:
+		AudioManager.play_sound_at_location(global_position, stats.sounds_death)
+
 	spawn_loot()
 	death_animation()
 	return

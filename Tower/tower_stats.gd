@@ -1,5 +1,4 @@
-class_name TowerStats
-extends Resource
+class_name TowerStats extends Resource
 
 const TOWER = preload("uid://8doeehu0sj6y")
 
@@ -9,8 +8,7 @@ const TOWER = preload("uid://8doeehu0sj6y")
 @export var texture: Texture2D
 @export var tower_name: String
 @export var vision_range: float
-
-var attack_strategy: TowerAttackStrategy
+@export var attack_strategy: TowerAttackStrategy
 
 
 func _init(

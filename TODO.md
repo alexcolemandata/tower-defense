@@ -1,6 +1,7 @@
 # TODO
 
 ## Bugs
+- [ ] Loot always placed in lower right 90degrees (multiply loot angle by 2pi)
 - [x] Round doesnt end if monster hits town and rest dead
 
 ## UI
@@ -8,7 +9,9 @@
 - [ ] Main Menu
 
 ## Internals
+- [ ] Sound Manager - upper limit on per-sound polyphony
 - [x] Sound Manager - default + dynamic volume
+
 
 ## Advanced Gameplay
 - [ ] Ramping/diverse spawn rate with custom monster compositions
@@ -41,14 +44,13 @@
 - [ ] Grass Art
 - [ ] Tower Level Up Visual Effect
 - [ ] Tower DPS Meters (think WoW raid to see all tower DPS)
-- [ ] Basic Sound Effects
-    - [ ] Placed Tower
-    - [ ] Monster Spawn
-        - [ ] LollyGagger
-        - [ ] Ninja
-    - [ ] Monster Death
-        - [ ] LollyGagger
-        - [ ] Ninja
+- [x] Basic Sound Effects
+    - [x] Monster Death
+        - [x] LollyGagger
+        - [x] Ninja
+    - [x] Refunded Tower
+    - [x] Purchased Tower
+    - [x] Placed Tower
     - [x] Town Celebration
     - [x] Fireball Shoot
     - [x] Fireball Explosion

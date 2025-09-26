@@ -1,14 +1,23 @@
-[gd_resource type="Resource" script_class="MonsterStats" load_steps=3 format=3 uid="uid://cbublyn32ri4m"]
+[gd_resource type="Resource" script_class="MonsterStats" load_steps=6 format=3 uid="uid://cbublyn32ri4m"]
 
 [ext_resource type="Script" uid="uid://bt5ffmv6m016a" path="res://Monsters/monster_stats.gd" id="1_6k25l"]
 [ext_resource type="Texture2D" uid="uid://s8tv5uo0tvj1" path="res://Monsters/MonsterVariations/ninja.png" id="2_5bfxo"]
+[ext_resource type="Script" uid="uid://3ticgpq25u8c" path="res://Audio/sound_settings.gd" id="2_rngn6"]
+[ext_resource type="AudioStream" uid="uid://ch0jsho6hdec1" path="res://Audio/short-SQUEAKS AND CREAKS Leather Jacket Creaks 05.M.wav" id="3_yyf3d"]
+
+[sub_resource type="Resource" id="Resource_ttcwd"]
+script = ExtResource("2_rngn6")
+stream = ExtResource("3_yyf3d")
+default_volume = 0.7
+metadata/_custom_type_script = "uid://3ticgpq25u8c"
 
 [resource]
 script = ExtResource("1_6k25l")
+death_speech = "Death is Me?"
 gold_on_death = 50
 max_health = 1.0
 speed_perc_per_sec = 20.0
-xp_on_death = 30
 sprite_texture = ExtResource("2_5bfxo")
-death_speech = "Death is Me?"
+xp_on_death = 30
+sounds_death = SubResource("Resource_ttcwd")
 metadata/_custom_type_script = "uid://bt5ffmv6m016a"

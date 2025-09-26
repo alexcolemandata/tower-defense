@@ -1,10 +1,14 @@
-[gd_scene load_steps=7 format=3 uid="uid://bka00kwm83sv3"]
+[gd_scene load_steps=11 format=3 uid="uid://bka00kwm83sv3"]
 
 [ext_resource type="Script" uid="uid://dry28hs6v2cxv" path="res://Game/game.gd" id="1_80nbo"]
 [ext_resource type="PackedScene" uid="uid://dxmbscpv7glme" path="res://Monsters/monster_trail.tscn" id="2_e2o6t"]
 [ext_resource type="PackedScene" uid="uid://c2r1oiupv6epm" path="res://Audio/audio_manager.tscn" id="2_fwxkx"]
+[ext_resource type="Script" uid="uid://rppbyrb3gjyg" path="res://Tower/tower_stats.gd" id="2_kul4i"]
+[ext_resource type="Resource" uid="uid://dlfj4lfms0w6c" path="res://Tower/TowerVariations/basic_tower.tres" id="3_7gi1t"]
 [ext_resource type="PackedScene" uid="uid://du65lrtiyds3j" path="res://Town/town.tscn" id="4_fc0e3"]
+[ext_resource type="Resource" uid="uid://du2ei4wrolyd7" path="res://Tower/TowerVariations/spiffy_tower.tres" id="4_fsxsm"]
 [ext_resource type="PackedScene" uid="uid://dwc1hnjb0rhp5" path="res://UI/in_game_ui.tscn" id="5_7jktm"]
+[ext_resource type="Resource" uid="uid://bw8ckc10op0ct" path="res://Tower/TowerVariations/fireball_tower.tres" id="5_glinl"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_fc0e3"]
 font_size = 80
@@ -12,6 +16,7 @@ font_size = 80
 [node name="Game" type="Node2D"]
 script = ExtResource("1_80nbo")
 seconds_per_monster = 2.0
+tower_stats = Array[ExtResource("2_kul4i")]([ExtResource("3_7gi1t"), ExtResource("4_fsxsm"), ExtResource("5_glinl")])
 
 [node name="AudioManager" parent="." instance=ExtResource("2_fwxkx")]
 
@@ -26,10 +31,10 @@ mouse_filter = 2
 
 [node name="BackgroundGrass" type="ColorRect" parent="."]
 z_index = -100
-offset_left = -94.0
-offset_top = -96.0
-offset_right = 1306.0
-offset_bottom = 704.0
+offset_left = -95.0
+offset_top = -90.0
+offset_right = 1305.0
+offset_bottom = 710.0
 mouse_filter = 2
 color = Color(4.548356e-06, 0.36466426, 0.101144485, 1)
 metadata/_edit_use_anchors_ = true

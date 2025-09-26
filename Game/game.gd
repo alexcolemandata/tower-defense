@@ -8,17 +8,13 @@ const TOWER_TEXTURE = preload("uid://8doeehu0sj6y")
 
 @export var seconds_per_monster: float = 1.0
 @export var total_monsters_to_spawn: int = 3
+@export var tower_stats: Array[TowerStats]
 
 var game_state = GameState.PLAYING
 var money: int = 100
 var monsters_spawned: int = 0
 var purchase_tower_button: Button
 var seconds_since_monster: float = 0.
-var tower_stats: Array[TowerStats] = [
-	TowerStats.new("Basic Tower", 160., 1, 1., 15, TOWER_TEXTURE, BeamTowerAttack.new()),
-	TowerStats.new("Spiffy Tower", 200., 2, 1.1, 80, SPIFFY_TOWER_TEXTURE, BeamTowerAttack.new()),
-	TowerStats.new("Fireball Tower", 300, 5, 0.8, 10, TOWER_TEXTURE, FireballTowerAttack.new()),
-]
 var wave: int = 1
 
 @onready var game_over_screen: ColorRect = %GameOverScreen
@@ -70,6 +66,7 @@ func _input(event: InputEvent) -> void:
 
 func choosing_tower_placement(tower_stat: TowerStats) -> void:
 	print("placing: " + tower_stat.tower_name)
+	AudioManager.play_sound(AudioManager.sounds.tower_purchase)
 	game_state = GameState.PLACING_TOWER
 
 	var new_tower: Tower = TOWER.instantiate()
