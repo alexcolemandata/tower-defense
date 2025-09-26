@@ -7,6 +7,7 @@ func create_shot_line(target: Monster, shooter: Tower) -> void:
 	shot_line.add_point(shooter.global_position)
 	shot_line.add_point(target.global_position)
 	shot_line.default_color = Color.CYAN
+	shot_line.default_color.a = 0.5
 	shot_line.width = 4.
 	shooter.add_sibling(shot_line)
 	await shooter.get_tree().create_timer(.1).timeout
