@@ -1,7 +1,7 @@
 # TODO
 
 ## Bugs
-- [ ] Loot always placed in lower right 90degrees (multiply loot angle by 2pi)
+- [x] Loot always placed in lower right 90degrees (multiply loot angle by 2pi)
 - [x] Round doesnt end if monster hits town and rest dead
 
 ## UI

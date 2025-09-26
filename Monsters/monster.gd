@@ -71,7 +71,7 @@ func die() -> void:
 
 func spawn_loot() -> void:
 	var new_loot: Gold = GOLD.instantiate()
-	new_loot.global_position = global_position + Vector2.from_angle(randf()) * 50.
+	new_loot.global_position = global_position + Vector2.from_angle(randf() * 2 * PI) * randf_range(20.0, 80.0)
 	new_loot.money_value = stats.gold_on_death
 	new_loot.z_index = 80
 	new_loot.collected.connect(loot_handler.collect_loot)
