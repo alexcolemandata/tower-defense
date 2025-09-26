@@ -38,7 +38,7 @@ func _process(delta: float) -> void:
 
 func attack_town() -> void:
 	destination_town.take_damage()
-	queue_free()
+	destroy()
 
 
 func death_animation() -> void:
@@ -48,10 +48,13 @@ func death_animation() -> void:
 	var tween = get_tree().create_tween()
 	tween.tween_property(self, "modulate", Color(1., 1., 1., 0.), 2.0)
 	await tween.finished
+	destroy()
+	return
+
+func destroy() -> void:
 	destroyed.emit()
 	queue_free()
 	return
-
 
 func die() -> void:
 	is_dead = true

@@ -1,7 +1,7 @@
 # TODO
 
 ## Bugs
-- [ ] Round doesnt end if monster hits town and rest dead
+- [x] Round doesnt end if monster hits town and rest dead
 
 ## UI
 - [ ] Tower purchase menu has pictures + stats of towers
@@ -38,6 +38,7 @@
 - [ ] Tower Level Up Visual Effect
 - [ ] Tower DPS Meters (think WoW raid to see all tower DPS)
 - [ ] Basic Sound Effects
+    - [ ] Placed Tower
     - [ ] Monster Spawn
         - [ ] LollyGagger
         - [ ] Ninja
