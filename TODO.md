@@ -7,6 +7,9 @@
 - [ ] Tower purchase menu has pictures + stats of towers
 - [ ] Main Menu
 
+## Internals
+- [ ] Sound Manager - default + dynamic volume
+
 ## Advanced Gameplay
 - [ ] Ramping/diverse spawn rate with custom monster compositions
 - [ ] Tower fire tactics: (Front, Back, Lowest Health, Highest Health)
@@ -30,6 +33,7 @@
 
 ## Graphics, Sauce, QoL
 - [ ] Monster "Bobbing" animation
+- [ ] Monster loot drop animation (arc from monster to loot landing point)
 - [ ] Monster Death Animation + Gibs/Blood
 - [ ] XP Particles
 - [ ] Fix layers/z index for towers/monters/labels/etc
