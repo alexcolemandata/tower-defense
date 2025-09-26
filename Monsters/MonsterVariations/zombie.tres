@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="MonsterStats" load_steps=6 format=3 uid="uid://dob1w53owrhg4"]
+
+[ext_resource type="Script" uid="uid://bt5ffmv6m016a" path="res://Monsters/monster_stats.gd" id="1_p0pao"]
+[ext_resource type="Script" uid="uid://3ticgpq25u8c" path="res://Audio/sound_settings.gd" id="2_csodq"]
+[ext_resource type="AudioStream" uid="uid://cmq1wckppxjm" path="res://Audio/Zombie Groan Pitched Down (6).wav" id="3_chvig"]
+[ext_resource type="Texture2D" uid="uid://c62wbiwrttcma" path="res://Monsters/MonsterVariations/zombie.png" id="4_tysyc"]
+
+[sub_resource type="Resource" id="Resource_3c4cr"]
+script = ExtResource("2_csodq")
+stream = ExtResource("3_chvig")
+metadata/_custom_type_script = "uid://3ticgpq25u8c"
+
+[resource]
+script = ExtResource("1_p0pao")
+death_speech = "*inarticulate groan*"
+gold_on_death = 100
+max_health = 200.0
+speed_perc_per_sec = 1.0
+sprite_texture = ExtResource("4_tysyc")
+xp_on_death = 100
+sounds_death = SubResource("Resource_3c4cr")
+metadata/_custom_type_script = "uid://bt5ffmv6m016a"
