@@ -33,7 +33,7 @@ func _ready() -> void:
 	sprite_2d.texture = stats.texture
 	lvl_up_shader_sprite.texture = stats.texture
 	lvl_up_shader_sprite.visible = false
-	
+
 	refresh_level_display()
 
 
@@ -92,7 +92,11 @@ func attempt_shot() -> void:
 
 	for overlap in overlaps:
 		var target = overlap.get_parent()
-		if target.has_method("take_damage") and target.has_method("die") and not target.is_dead:
+		if (
+			target.has_method("take_damage")
+			and target.has_method("die")
+			and (target.state == Monster.State.ACTIVE)
+		):
 			shoot_at(target)
 			return
 	return
@@ -137,15 +141,15 @@ func level_up() -> void:
 	level += 1
 	xp_to_next_level = xp_to_next_level * level
 	xp = 0
-	
+
 	refresh_level_display()
-	
+
 	lvl_up_shader_sprite.visible = true
 	var tween = get_tree().create_tween()
 	tween.tween_property(self, "scale", Vector2.ONE * 1.2, 0.8)
 	tween.tween_property(self, "scale", Vector2.ONE * 1, 0.3)
-	tween.finished.connect(func (): lvl_up_shader_sprite.visible = false)
-	
+	tween.finished.connect(func(): lvl_up_shader_sprite.visible = false)
+
 	return
 
 

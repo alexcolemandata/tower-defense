@@ -14,7 +14,6 @@
 
 
 ## Advanced Gameplay
-- [ ] Monster invulnerability shortly after spawn
 - [ ] Ramping/diverse spawn rate with custom monster compositions
 - [ ] Tower fire tactics: (Front, Back, Lowest Health, Highest Health)
 - [ ] Different Towers
@@ -28,6 +27,7 @@
   - [ ] Slow
   - [ ] Wall
 - [ ] Different Maps
+- [x] Monster invulnerability shortly after spawn
 - [x] Different Monsters
     - [x] Ninja
 - [x] Monsters Drop Gold Piles which need to be collected with mouse

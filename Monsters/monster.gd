@@ -8,12 +8,18 @@ const GOLD = preload("uid://ncncsppuo7x2")
 
 var destination_town: Town
 var health: float
-var is_dead: bool = false
 var loot_handler
 
 @onready var health_bar: ProgressBar = %HealthBar
 @onready var speech_box: Label = %SpeechBox
 @onready var sprite_2d: Sprite2D = %Sprite2D
+
+enum State { SPAWNING, ACTIVE, DEAD }
+
+var state = State.SPAWNING
+
+const INVUL_TIME_S: float = 0.8
+var invul_time: float = 0
 
 
 func _ready() -> void:
@@ -21,11 +27,18 @@ func _ready() -> void:
 	health_bar.value = stats.max_health
 	health = stats.max_health
 	sprite_2d.texture = stats.sprite_texture
+	modulate.a = 0.5
 
 
 func _process(delta: float) -> void:
-	if is_dead:
+	if state == State.DEAD:
 		return
+
+	if state == State.SPAWNING:
+		invul_time += delta
+		if invul_time >= INVUL_TIME_S:
+			state = State.ACTIVE
+			modulate.a = 1.
 
 	var movement = stats.speed_perc_per_sec * delta / 100.0
 	if progress_ratio + movement >= 1.:
@@ -58,7 +71,7 @@ func destroy() -> void:
 
 
 func die() -> void:
-	is_dead = true
+	state = State.DEAD
 	health_bar.visible = false
 
 	if stats.sounds_death:
