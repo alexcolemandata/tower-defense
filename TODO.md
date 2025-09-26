@@ -12,6 +12,8 @@
 - [ ] Sound Manager - upper limit on per-sound polyphony
 - [x] Sound Manager - default + dynamic volume
 
+## Basic Stuff
+- [ ] Allow tower purchases in VICTORY state
 
 ## Advanced Gameplay
 - [ ] Tower fire tactics: (Front, Back, Lowest Health, Highest Health)
@@ -36,7 +38,9 @@
 - [x] Repo: Basic Directory Structure
 
 ## Graphics, Sauce, QoL
+- [ ] Dont trigger first wave immediately
 - [ ] Money + - amount indications
+- [ ] Money is attracted to cursor
 - [ ] Monster "Bobbing" animation
 - [ ] Monster loot drop animation (arc from monster to loot landing point)
 - [ ] Monster Death Animation + Gibs/Blood

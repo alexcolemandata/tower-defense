@@ -1,6 +1,6 @@
 extends Node2D
 
-enum GameState { PLAYING, PLACING_TOWER, GAME_OVER, VICTORY, LEVEL_END }
+enum GameState { PLAYING, GAME_OVER, VICTORY, LEVEL_END }
 
 const TOWER = preload("uid://eou4mq5n6oh3")
 
@@ -10,7 +10,7 @@ var game_state = GameState.PLAYING
 var money: int = 0
 var monsters_spawned: int = 0
 var groups_spawned: int = 0
-var purchase_tower_button: Button
+
 var seconds_since_group_spawn: float = 0.
 var wave: int = 1
 
@@ -22,11 +22,14 @@ var wave: int = 1
 @export var levels: Array[PackedScene]
 @export var current_level_num: int = 0
 
+var tower_purchase_buttons: Array[Button]
+
 func _ready() -> void:	
 
 	for tower_stat in tower_stats:
-		purchase_tower_button = in_game_ui.tower_purchase_menu.add_tower_to_purchase(tower_stat)
+		var purchase_tower_button: Button = in_game_ui.tower_purchase_menu.add_tower_to_purchase(tower_stat)
 		purchase_tower_button.pressed.connect(_attempt_purchase.bind(tower_stat))
+		tower_purchase_buttons.append(purchase_tower_button)
 
 	in_game_ui.next_wave_button.pressed.connect(trigger_next_wave)
 	await next_level()
@@ -35,7 +38,7 @@ func _ready() -> void:
 
 
 func _process(delta: float) -> void:
-	if (game_state == GameState.GAME_OVER) or (game_state == GameState.VICTORY):
+	if game_state != GameState.PLAYING:
 		return
 
 	if monsters_spawned < total_monsters_to_spawn_this_wave():
@@ -99,12 +102,10 @@ func seconds_per_group() -> float:
 func choosing_tower_placement(tower_stat: TowerStats) -> void:
 	print("placing: " + tower_stat.tower_name)
 	AudioManager.play_sound(AudioManager.sounds.tower_purchase)
-	game_state = GameState.PLACING_TOWER
 
 	var new_tower: Tower = TOWER.instantiate()
 	new_tower.state = Tower.State.PLACING
 	new_tower.stats = tower_stat
-	new_tower.placed.connect(finished_placing_tower.bind(new_tower))
 	new_tower.refunded.connect(refund_tower.bind(tower_stat))
 	level.add_child(new_tower)
 
@@ -117,11 +118,6 @@ func collect_loot(money_value: int) -> void:
 
 func exit_game() -> void:
 	get_tree().quit()
-
-
-func finished_placing_tower(_tower: Tower) -> void:
-	game_state = GameState.PLAYING
-	return
 
 
 func gain_money(amount: int) -> void:
@@ -193,13 +189,14 @@ func trigger_next_wave() -> void:
 
 
 func victory() -> void:
+	print("victory!!")
 	game_state = GameState.VICTORY
 	in_game_ui.set_next_wave_button_enabled(true)
 	level.town.start_celebrating()
 
 
 func _attempt_purchase(tower_stat: TowerStats) -> void:
-	if not game_state == GameState.PLAYING:
+	if not game_state in [GameState.PLAYING, GameState.VICTORY]:
 		return
 
 	if tower_stat.cost > money:
