@@ -1,22 +1,22 @@
 [gd_scene load_steps=11 format=3 uid="uid://bka00kwm83sv3"]
 
 [ext_resource type="Script" uid="uid://dry28hs6v2cxv" path="res://Game/game.gd" id="1_80nbo"]
-[ext_resource type="PackedScene" uid="uid://dxmbscpv7glme" path="res://Monsters/monster_trail.tscn" id="2_e2o6t"]
 [ext_resource type="PackedScene" uid="uid://c2r1oiupv6epm" path="res://Audio/audio_manager.tscn" id="2_fwxkx"]
 [ext_resource type="Script" uid="uid://rppbyrb3gjyg" path="res://Tower/tower_stats.gd" id="2_kul4i"]
 [ext_resource type="Resource" uid="uid://dlfj4lfms0w6c" path="res://Tower/TowerVariations/basic_tower.tres" id="3_7gi1t"]
-[ext_resource type="PackedScene" uid="uid://du65lrtiyds3j" path="res://Town/town.tscn" id="4_fc0e3"]
 [ext_resource type="Resource" uid="uid://du2ei4wrolyd7" path="res://Tower/TowerVariations/spiffy_tower.tres" id="4_fsxsm"]
 [ext_resource type="PackedScene" uid="uid://dwc1hnjb0rhp5" path="res://UI/in_game_ui.tscn" id="5_7jktm"]
 [ext_resource type="Resource" uid="uid://bw8ckc10op0ct" path="res://Tower/TowerVariations/fireball_tower.tres" id="5_glinl"]
+[ext_resource type="PackedScene" uid="uid://cbtvvr8oh0yq7" path="res://Levels/Levels/level_01.tscn" id="6_kul4i"]
+[ext_resource type="PackedScene" uid="uid://bsfbgtbux1gi7" path="res://Levels/Levels/level_02.tscn" id="7_kul4i"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_fc0e3"]
 font_size = 80
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_80nbo")
-seconds_per_monster = 2.0
 tower_stats = Array[ExtResource("2_kul4i")]([ExtResource("3_7gi1t"), ExtResource("4_fsxsm"), ExtResource("5_glinl")])
+levels = Array[PackedScene]([ExtResource("6_kul4i"), ExtResource("7_kul4i")])
 
 [node name="AudioManager" parent="." instance=ExtResource("2_fwxkx")]
 
@@ -28,20 +28,6 @@ offset_top = -47.0
 offset_right = 1221.0
 offset_bottom = 679.0
 mouse_filter = 2
-
-[node name="BackgroundGrass" type="ColorRect" parent="."]
-z_index = -100
-offset_left = -95.0
-offset_top = -90.0
-offset_right = 1305.0
-offset_bottom = 710.0
-mouse_filter = 2
-color = Color(4.548356e-06, 0.36466426, 0.101144485, 1)
-metadata/_edit_use_anchors_ = true
-
-[node name="MonsterTrail" parent="." instance=ExtResource("2_e2o6t")]
-unique_name_in_owner = true
-num_collision_points = 240
 
 [node name="GameOverScreen" type="ColorRect" parent="."]
 unique_name_in_owner = true
@@ -71,10 +57,6 @@ text = "GAME OVER"
 label_settings = SubResource("LabelSettings_fc0e3")
 horizontal_alignment = 1
 vertical_alignment = 1
-
-[node name="Town" parent="." instance=ExtResource("4_fc0e3")]
-unique_name_in_owner = true
-position = Vector2(1020, 559)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(582, 314)

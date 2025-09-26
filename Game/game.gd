@@ -1,41 +1,36 @@
 extends Node2D
 
-enum GameState { PLAYING, PLACING_TOWER, GAME_OVER, VICTORY }
+enum GameState { PLAYING, PLACING_TOWER, GAME_OVER, VICTORY, LEVEL_END }
 
-const SPIFFY_TOWER_TEXTURE = preload("uid://c5ktq13ybkphg")
 const TOWER = preload("uid://eou4mq5n6oh3")
-const TOWER_TEXTURE = preload("uid://8doeehu0sj6y")
 
-@export var seconds_per_monster: float = 1.0
-@export var total_monsters_to_spawn: int = 3
 @export var tower_stats: Array[TowerStats]
 
 var game_state = GameState.PLAYING
-var money: int = 100
+var money: int = 0
 var monsters_spawned: int = 0
+var groups_spawned: int = 0
 var purchase_tower_button: Button
-var seconds_since_monster: float = 0.
+var seconds_since_group_spawn: float = 0.
 var wave: int = 1
 
 @onready var game_over_screen: ColorRect = %GameOverScreen
 @onready var in_game_ui: InGameUI = %InGameUI
-@onready var monster_trail: MonsterTrail = %MonsterTrail
-@onready var town: Town = %Town
 
+@onready var level: Level
 
-func _ready() -> void:
-	town.death_manager = self
-	monster_trail.destination_town = town
-	monster_trail.loot_handler = self
-	game_over_screen.visible = false
-	refresh_ui()
+@export var levels: Array[PackedScene]
+@export var current_level_num: int = 0
+
+func _ready() -> void:	
+
 	for tower_stat in tower_stats:
 		purchase_tower_button = in_game_ui.tower_purchase_menu.add_tower_to_purchase(tower_stat)
 		purchase_tower_button.pressed.connect(_attempt_purchase.bind(tower_stat))
 
 	in_game_ui.next_wave_button.pressed.connect(trigger_next_wave)
+	await next_level()
 
-	AudioManager.play_sound(AudioManager.sounds.round_start, 0.2)
 	return
 
 
@@ -43,13 +38,13 @@ func _process(delta: float) -> void:
 	if (game_state == GameState.GAME_OVER) or (game_state == GameState.VICTORY):
 		return
 
-	if monsters_spawned < total_monsters_to_spawn:
-		seconds_since_monster += delta
-		if seconds_since_monster >= seconds_per_monster:
-			spawn_monster()
+	if monsters_spawned < total_monsters_to_spawn_this_wave():
+		seconds_since_group_spawn += delta
+		if seconds_since_group_spawn >= seconds_per_group():
+			spawn_current_group()
 		return
 	else:
-		if monster_trail.count_monsters == 0:
+		if level.monster_trail.count_monsters == 0:
 			victory()
 			return
 
@@ -61,7 +56,44 @@ func _input(event: InputEvent) -> void:
 		exit_game()
 
 	if event.is_action_released("debug_spawn_monster"):
-		spawn_monster()
+		level.monster_trail.spawn_monster(Monster.MonsterVariation.LOLLY_GAGGER)
+		
+func next_level() -> void:
+	current_level_num += 1
+	money += 100
+	if level:
+		level.queue_free()
+	level = levels[current_level_num - 1].instantiate()
+	add_child(level)
+	if not level.is_node_ready():
+		await level.ready
+	
+	level.town.death_manager = self
+	level.monster_trail.loot_handler = self
+	game_over_screen.visible = false
+	
+	AudioManager.play_sound(AudioManager.sounds.round_start, 0.2)
+	
+	monsters_spawned = 0
+	groups_spawned = 0
+	wave = 1
+	refresh_ui()
+	game_state = GameState.PLAYING
+	
+	return
+
+
+func current_spawn_pattern() -> MonsterSpawnPattern:
+	return level.wave_spawn_patterns[wave - 1]
+
+func total_monsters_to_spawn_this_wave() -> int:
+	var spawn_pattern = current_spawn_pattern()
+
+	return spawn_pattern.num_groups * len(spawn_pattern.group)
+
+func seconds_per_group() -> float:
+	var spawn_pattern = current_spawn_pattern()
+	return spawn_pattern.within_seconds / spawn_pattern.num_groups
 
 
 func choosing_tower_placement(tower_stat: TowerStats) -> void:
@@ -74,7 +106,7 @@ func choosing_tower_placement(tower_stat: TowerStats) -> void:
 	new_tower.stats = tower_stat
 	new_tower.placed.connect(finished_placing_tower.bind(new_tower))
 	new_tower.refunded.connect(refund_tower.bind(tower_stat))
-	add_child(new_tower)
+	level.add_child(new_tower)
 
 	return
 
@@ -113,7 +145,7 @@ func refresh_money() -> void:
 
 
 func refresh_monster_counts() -> void:
-	in_game_ui.set_monster_progress(monsters_spawned, total_monsters_to_spawn)
+	in_game_ui.set_monster_progress(monsters_spawned, total_monsters_to_spawn_this_wave())
 	in_game_ui.set_wave_number(wave)
 
 
@@ -129,31 +161,41 @@ func refund_tower(tower_stat: TowerStats) -> void:
 	return
 
 
-func spawn_monster() -> void:
-	if monsters_spawned >= total_monsters_to_spawn:
-		return
-	monsters_spawned += 1
-	seconds_since_monster = 0.
-	monster_trail.spawn_monster()
-	refresh_monster_counts()
+func spawn_current_group() -> void:
+	seconds_since_group_spawn = 0.0
+
+	for mv in current_spawn_pattern().group:
+		level.monster_trail.spawn_monster(mv)
+		monsters_spawned += 1
+
+		refresh_monster_counts()
+
+	groups_spawned += 1
 
 
 func trigger_next_wave() -> void:
-	AudioManager.play_sound(AudioManager.sounds.round_start)
-	wave += 1
 	monsters_spawned = 0
-	total_monsters_to_spawn *= 2
-	seconds_per_monster *= 0.9
-	refresh_monster_counts()
+	
 	in_game_ui.set_next_wave_button_enabled(false)
-	town.stop_celebrating()
-	game_state = GameState.PLAYING
+	level.town.stop_celebrating()
+	
+	if wave == len(level.wave_spawn_patterns):
+		game_state = GameState.LEVEL_END
+		next_level()
+	else:	
+		AudioManager.play_sound(AudioManager.sounds.round_start)
+		wave += 1
+	
+		game_state = GameState.PLAYING
+		
+	refresh_monster_counts()
+	return
 
 
 func victory() -> void:
 	game_state = GameState.VICTORY
 	in_game_ui.set_next_wave_button_enabled(true)
-	town.start_celebrating()
+	level.town.start_celebrating()
 
 
 func _attempt_purchase(tower_stat: TowerStats) -> void:

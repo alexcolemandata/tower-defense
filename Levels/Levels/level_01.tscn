@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://cbtvvr8oh0yq7"]
+
+[ext_resource type="Script" uid="uid://bt1bpbshj4y31" path="res://Levels/Levels/level_01.gd" id="1_gw0fd"]
+[ext_resource type="PackedScene" uid="uid://dxmbscpv7glme" path="res://Monsters/monster_trail.tscn" id="2_1cq4g"]
+[ext_resource type="PackedScene" uid="uid://du65lrtiyds3j" path="res://Town/town.tscn" id="3_ocwms"]
+
+[node name="Level" type="Node"]
+script = ExtResource("1_gw0fd")
+
+[node name="MonsterTrail" parent="." instance=ExtResource("2_1cq4g")]
+unique_name_in_owner = true
+num_collision_points = 240
+
+[node name="Town" parent="." instance=ExtResource("3_ocwms")]
+unique_name_in_owner = true
+position = Vector2(1020, 559)
+
+[node name="BackgroundGrass" type="ColorRect" parent="."]
+z_index = -100
+offset_left = -95.0
+offset_top = -90.0
+offset_right = 1305.0
+offset_bottom = 710.0
+mouse_filter = 2
+color = Color(4.548356e-06, 0.36466426, 0.101144485, 1)
+metadata/_edit_use_anchors_ = true

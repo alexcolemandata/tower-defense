@@ -16,6 +16,14 @@ var loot_handler
 
 enum State { SPAWNING, ACTIVE, DEAD }
 
+enum MonsterVariation { LOLLY_GAGGER, NINJA, ZOMBIE }
+
+const VARIATION_LOOKUP: Dictionary[MonsterVariation, MonsterStats] = {
+	MonsterVariation.LOLLY_GAGGER: preload("uid://bd2fp73xxonbw"),
+	MonsterVariation.NINJA: preload("uid://cbublyn32ri4m"),
+	MonsterVariation.ZOMBIE: preload("uid://dob1w53owrhg4"),
+}
+
 var state = State.SPAWNING
 
 const INVUL_TIME_S: float = 0.8

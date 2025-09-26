@@ -14,7 +14,6 @@
 
 
 ## Advanced Gameplay
-- [ ] Ramping/diverse spawn rate with custom monster compositions
 - [ ] Tower fire tactics: (Front, Back, Lowest Health, Highest Health)
 - [ ] Different Towers
   - [ ] Projectile Tower (arrow, magic ball, single target)
@@ -26,7 +25,8 @@
   - [ ] Chain Lightning
   - [ ] Slow
   - [ ] Wall
-- [ ] Different Maps
+- [x] Different Maps
+- [x] Ramping/diverse spawn rate with custom monster compositions
 - [x] Monster invulnerability shortly after spawn
 - [x] Different Monsters
     - [x] Ninja
