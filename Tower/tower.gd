@@ -24,12 +24,16 @@ var xp_to_next_level = 30
 @onready var vision_area: Area2D = %VisionArea
 @onready var vision_shape: CollisionShape2D = %VisionShape
 @onready var xp_level_progress_bar: ProgressBar = %XPLevelProgressBar
+@onready var lvl_up_shader_sprite: Sprite2D = $LvlUpShaderSprite
 
 
 func _ready() -> void:
 	var shape: CircleShape2D = vision_shape.shape
 	shape.radius = stats.vision_range
 	sprite_2d.texture = stats.texture
+	lvl_up_shader_sprite.texture = stats.texture
+	lvl_up_shader_sprite.visible = false
+	
 	refresh_level_display()
 
 
@@ -133,8 +137,15 @@ func level_up() -> void:
 	level += 1
 	xp_to_next_level = xp_to_next_level * level
 	xp = 0
-
+	
 	refresh_level_display()
+	
+	lvl_up_shader_sprite.visible = true
+	var tween = get_tree().create_tween()
+	tween.tween_property(self, "scale", Vector2.ONE * 1.2, 0.8)
+	tween.tween_property(self, "scale", Vector2.ONE * 1, 0.3)
+	tween.finished.connect(func (): lvl_up_shader_sprite.visible = false)
+	
 	return
 
 

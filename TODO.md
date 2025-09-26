@@ -14,6 +14,7 @@
 
 
 ## Advanced Gameplay
+- [ ] Monster invulnerability shortly after spawn
 - [ ] Ramping/diverse spawn rate with custom monster compositions
 - [ ] Tower fire tactics: (Front, Back, Lowest Health, Highest Health)
 - [ ] Different Towers
@@ -35,6 +36,7 @@
 - [x] Repo: Basic Directory Structure
 
 ## Graphics, Sauce, QoL
+- [ ] Money + - amount indications
 - [ ] Monster "Bobbing" animation
 - [ ] Monster loot drop animation (arc from monster to loot landing point)
 - [ ] Monster Death Animation + Gibs/Blood
@@ -42,8 +44,8 @@
 - [ ] Fix layers/z index for towers/monters/labels/etc
 - [ ] Trail Art
 - [ ] Grass Art
-- [ ] Tower Level Up Visual Effect
 - [ ] Tower DPS Meters (think WoW raid to see all tower DPS)
+- [x] Tower Level Up Visual Effect
 - [x] Basic Sound Effects
     - [x] Monster Death
         - [x] LollyGagger
