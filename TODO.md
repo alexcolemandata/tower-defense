@@ -9,11 +9,16 @@
 - [ ] Main Menu
 
 ## Internals
+- [ ] Convert to use actual state machine
+    - [ ] Game
+    - [ ] Monster
+    - [ ] Tower
 - [ ] Sound Manager - upper limit on per-sound polyphony
 - [x] Sound Manager - default + dynamic volume
 
 ## Basic Stuff
 - [ ] Allow tower purchases in VICTORY state
+- [x] Dont spawn all monsters in the same group at the same time
 
 ## Advanced Gameplay
 - [ ] Tower fire tactics: (Front, Back, Lowest Health, Highest Health)

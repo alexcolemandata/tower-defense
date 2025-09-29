@@ -21,6 +21,7 @@ var wave: int = 1
 
 @export var levels: Array[PackedScene]
 @export var current_level_num: int = 0
+@export_range(0, 1.0, 0.01) var inner_group_timing_sec: float = 0.1
 
 var tower_purchase_buttons: Array[Button]
 
@@ -163,8 +164,8 @@ func spawn_current_group() -> void:
 	for mv in current_spawn_pattern().group:
 		level.monster_trail.spawn_monster(mv)
 		monsters_spawned += 1
-
 		refresh_monster_counts()
+		await get_tree().create_timer(inner_group_timing_sec).timeout
 
 	groups_spawned += 1
 
