@@ -13,6 +13,7 @@ var loot_handler
 @onready var health_bar: ProgressBar = %HealthBar
 @onready var speech_box: Label = %SpeechBox
 @onready var sprite_2d: Sprite2D = %Sprite2D
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 enum State { SPAWNING, ACTIVE, DEAD }
 
@@ -36,6 +37,8 @@ func _ready() -> void:
 	health = stats.max_health
 	sprite_2d.texture = stats.sprite_texture
 	modulate.a = 0.5
+	animation_player.current_animation = "idle"
+	
 
 
 func _process(delta: float) -> void:

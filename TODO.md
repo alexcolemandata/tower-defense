@@ -16,10 +16,6 @@
 - [ ] Sound Manager - upper limit on per-sound polyphony
 - [x] Sound Manager - default + dynamic volume
 
-## Basic Stuff
-- [ ] Allow tower purchases in VICTORY state
-- [x] Dont spawn all monsters in the same group at the same time
-
 ## Advanced Gameplay
 - [ ] Tower fire tactics: (Front, Back, Lowest Health, Highest Health)
 - [ ] Different Towers
@@ -39,14 +35,11 @@
     - [x] Ninja
 - [x] Monsters Drop Gold Piles which need to be collected with mouse
 
-## Backend
-- [x] Repo: Basic Directory Structure
 
 ## Graphics, Sauce, QoL
 - [ ] Dont trigger first wave immediately
 - [ ] Money + - amount indications
 - [ ] Money is attracted to cursor
-- [ ] Monster "Bobbing" animation
 - [ ] Monster loot drop animation (arc from monster to loot landing point)
 - [ ] Monster Death Animation + Gibs/Blood
 - [ ] XP Particles
@@ -54,6 +47,7 @@
 - [ ] Trail Art
 - [ ] Grass Art
 - [ ] Tower DPS Meters (think WoW raid to see all tower DPS)
+- [x] Monster "Bobbing" animation
 - [x] Tower Level Up Visual Effect
 - [x] Basic Sound Effects
     - [x] Monster Death
@@ -71,6 +65,13 @@
     - [x] Collect Coins
 - [x] Basic Music
 - [x] Towers only show range on mouse over and placement
+
+## Backend
+- [x] Repo: Basic Directory Structure
+
+## Basic Stuff
+- [x] Allow tower purchases in VICTORY state
+- [x] Dont spawn all monsters in the same group at the same time
 
 ## Basic Gameplay
 - [x] Monsters that attack town shouldn't "die"
