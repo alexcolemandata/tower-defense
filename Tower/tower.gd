@@ -15,11 +15,14 @@ var placement_checker: Callable
 var state = State.ACTIVE
 var xp: int = 0
 var xp_to_next_level = 30
+var displayed_xp_amount: int = 0
+var time_since_last_xp: float = 0
+const xp_display_time: float = 1.0
 
 @onready var current_level_display: Label = %CurrentLevelDisplay
 @onready var footprint: Area2D = %Footprint
 @onready var footprint_shape: CollisionShape2D = %FootprintShape
-@onready var speech_box: Label = %SpeechBox
+@onready var gain_xp_display: Label = %GainXPDisplay
 @onready var sprite_2d: Sprite2D = $Sprite2D
 @onready var vision_area: Area2D = %VisionArea
 @onready var vision_shape: CollisionShape2D = %VisionShape
@@ -103,16 +106,14 @@ func attempt_shot() -> void:
 
 
 func gain_xp(amount: int) -> void:
+	time_since_last_xp = 0.0
 	xp += amount
 
 	if xp >= xp_to_next_level:
 		level_up()
-	else:
-		xp_level_progress_bar.value = xp
 
-	speech_box.text = "+" + str(amount) + "XP!"
-	await get_tree().create_timer(1.).timeout
-	speech_box.text = ""
+	xp_level_progress_bar.value = xp
+	displayed_xp_amount += amount
 
 	return
 
@@ -176,6 +177,15 @@ func _process_active(delta):
 	last_shot_time += delta
 	if last_shot_time >= 1 / stats.shoots_per_second:
 		attempt_shot()
+
+	time_since_last_xp += delta
+	if time_since_last_xp > xp_display_time:
+		displayed_xp_amount = 0
+		gain_xp_display.visible = false
+
+	if displayed_xp_amount > 0:
+		gain_xp_display.visible = true
+		gain_xp_display.text = "+" + str(displayed_xp_amount) + " XP!"
 
 
 func _process_placing(_delta) -> void:

@@ -48,7 +48,7 @@ collision_mask = 2
 unique_name_in_owner = true
 shape = SubResource("CircleShape2D_stebd")
 
-[node name="SpeechBox" type="Label" parent="."]
+[node name="GainXPDisplay" type="Label" parent="."]
 unique_name_in_owner = true
 offset_left = 46.0
 offset_top = -59.0

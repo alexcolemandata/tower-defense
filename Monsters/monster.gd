@@ -3,6 +3,7 @@ class_name Monster extends PathFollow2D
 signal destroyed
 
 const GOLD = preload("uid://ncncsppuo7x2")
+const XP_GEM = preload("uid://b6illm4ixruiy")
 
 @export var stats: MonsterStats = MonsterStats.new()
 
@@ -14,8 +15,6 @@ var loot_handler
 @onready var speech_box: Label = %SpeechBox
 @onready var sprite_2d: Sprite2D = %Sprite2D
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
-
-const XP_GEMS = preload("uid://fqsnw6o62xo6")
 
 enum State { SPAWNING, ACTIVE, DEAD }
 
@@ -108,12 +107,16 @@ func take_damage(damage: float, from: Node2D) -> void:
 	health_bar.value = health
 	if health <= 0:
 		die()
-		if from.has_method("gain_xp"):
-			from.gain_xp(stats.xp_on_death)
+		if is_instance_of(from, Tower):
+			spawn_xp_gems(from)
 
-			var xp_gems: XPGems = XP_GEMS.instantiate()
-			xp_gems.global_position = from.global_position
-			xp_gems.gem_origin_global_position = global_position
-			xp_gems.num_gems = stats.xp_on_death
-			xp_gems.ready.connect(func(): xp_gems.fire_and_free())
-			add_sibling(xp_gems)
+
+func spawn_xp_gems(target: Tower) -> void:
+	var time_between_gems = 0.5 / stats.xp_on_death
+	for n in range(stats.xp_on_death):
+		var xp_gem: XPGem = XP_GEM.instantiate()
+		xp_gem.target_position = target.global_position
+		xp_gem.global_position = global_position
+		xp_gem.target = target
+		add_sibling(xp_gem)
+		await get_tree().create_timer(time_between_gems).timeout
