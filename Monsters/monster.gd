@@ -15,6 +15,8 @@ var loot_handler
 @onready var sprite_2d: Sprite2D = %Sprite2D
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 
+const XP_GEMS = preload("uid://fqsnw6o62xo6")
+
 enum State { SPAWNING, ACTIVE, DEAD }
 
 enum MonsterVariation { LOLLY_GAGGER, NINJA, ZOMBIE }
@@ -38,7 +40,6 @@ func _ready() -> void:
 	sprite_2d.texture = stats.sprite_texture
 	modulate.a = 0.5
 	animation_player.current_animation = "idle"
-	
 
 
 func _process(delta: float) -> void:
@@ -109,3 +110,10 @@ func take_damage(damage: float, from: Node2D) -> void:
 		die()
 		if from.has_method("gain_xp"):
 			from.gain_xp(stats.xp_on_death)
+
+			var xp_gems: XPGems = XP_GEMS.instantiate()
+			xp_gems.global_position = from.global_position
+			xp_gems.gem_origin_global_position = global_position
+			xp_gems.num_gems = stats.xp_on_death
+			xp_gems.ready.connect(func(): xp_gems.fire_and_free())
+			add_sibling(xp_gems)
