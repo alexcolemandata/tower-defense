@@ -39,13 +39,13 @@
 ## Graphics, Sauce, QoL
 - [ ] Dont trigger first wave immediately
 - [ ] Money + - amount indications
-- [ ] Money is attracted to cursor
 - [ ] Monster loot drop animation (arc from monster to loot landing point)
 - [ ] Monster Death Animation + Gibs/Blood
 - [ ] Fix layers/z index for towers/monters/labels/etc
 - [ ] Trail Art
 - [ ] Grass Art
 - [ ] Tower DPS Meters (think WoW raid to see all tower DPS)
+- [x] Money is attracted to cursor
 - [x] XP Particles
 - [x] Monster "Bobbing" animation
 - [x] Tower Level Up Visual Effect
