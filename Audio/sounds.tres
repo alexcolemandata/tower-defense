@@ -7,10 +7,10 @@
 [ext_resource type="AudioStream" uid="uid://dj5fnysekj3y2" path="res://Audio/short-Male cackling and giggling 03.M.wav" id="3_k288x"]
 [ext_resource type="AudioStream" uid="uid://ql2kntlmohqk" path="res://Audio/badbeam.mp3" id="4_iyxtn"]
 [ext_resource type="AudioStream" uid="uid://cge6426i07hvr" path="res://Audio/badlvlup.mp3" id="5_4yc8t"]
-[ext_resource type="AudioStream" uid="uid://co573t432l8t2" path="res://Audio/badexplosion.mp3" id="5_wff8i"]
 [ext_resource type="AudioStream" uid="uid://42e5lyfdvkpr" path="res://Audio/badfireballthrow.mp3" id="6_iyxtn"]
 [ext_resource type="AudioStream" uid="uid://0hrxb33la38x" path="res://Audio/DSGNErie_Atmosphere Angst 006_MMSD.wav" id="6_scg27"]
 [ext_resource type="AudioStream" uid="uid://ceqt3pfuenva7" path="res://Audio/casting_charge_matter_grow_04.mp3" id="6_uuuj5"]
+[ext_resource type="AudioStream" uid="uid://di4bdboscgpb" path="res://Audio/EXPLDsgn_Explosion Rumble Distorted_07_SFRMS_SCIWPNS.wav" id="9_3xh5d"]
 [ext_resource type="AudioStream" uid="uid://c7jlw2obloyy6" path="res://Audio/Seq1.15 Hit #3 96 HK1.wav" id="9_wq25f"]
 [ext_resource type="AudioStream" uid="uid://ce2tlra1lstlj" path="res://Audio/door28.wav" id="10_v45cj"]
 [ext_resource type="AudioStream" uid="uid://cjlgigigr45gn" path="res://Audio/coins2.wav" id="11_arrox"]
@@ -52,8 +52,7 @@ metadata/_custom_type_script = "uid://3ticgpq25u8c"
 
 [sub_resource type="Resource" id="Resource_k288x"]
 script = ExtResource("1_4m7yd")
-stream = ExtResource("5_wff8i")
-default_volume = 1.5
+stream = ExtResource("9_3xh5d")
 metadata/_custom_type_script = "uid://3ticgpq25u8c"
 
 [sub_resource type="Resource" id="Resource_scg27"]
@@ -100,13 +99,13 @@ loot_gold = SubResource("Resource_wq25f")
 round_start = SubResource("Resource_v45cj")
 town_celebrate = SubResource("Resource_3xh5d")
 town_ouch = SubResource("Resource_2ls6a")
-tower_attack_beam_light = SubResource("Resource_arrox")
-tower_attack_fireball_explosion = SubResource("Resource_k288x")
-tower_attack_fireball_shoot = SubResource("Resource_scg27")
 tower_purchase = SubResource("Resource_ll8y1")
 tower_level_up = SubResource("Resource_uuuj5")
 tower_place = SubResource("Resource_hj6bg")
 tower_refund = SubResource("Resource_6p1bc")
+tower_attack_beam_light = SubResource("Resource_arrox")
+tower_attack_fireball_explosion = SubResource("Resource_k288x")
+tower_attack_fireball_shoot = SubResource("Resource_scg27")
 spell_buy = SubResource("Resource_ruyhu")
 spell_slow_drone = SubResource("Resource_tvvc2")
 monster_lollygagger_death = SubResource("Resource_jydca")

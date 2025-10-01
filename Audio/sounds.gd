@@ -7,13 +7,15 @@ class_name Sounds extends Resource
 @export var town_ouch: SoundSettings
 
 @export_group("Tower", "tower_")
-@export var tower_attack_beam_light: SoundSettings
-@export var tower_attack_fireball_explosion: SoundSettings
-@export var tower_attack_fireball_shoot: SoundSettings
 @export var tower_purchase: SoundSettings
 @export var tower_level_up: SoundSettings
 @export var tower_place: SoundSettings
 @export var tower_refund: SoundSettings
+
+@export_subgroup("Tower Attacks", "tower_attack_")
+@export var tower_attack_beam_light: SoundSettings
+@export var tower_attack_fireball_explosion: SoundSettings
+@export var tower_attack_fireball_shoot: SoundSettings
 
 @export_group("Spells", "spell_")
 @export var spell_buy: SoundSettings

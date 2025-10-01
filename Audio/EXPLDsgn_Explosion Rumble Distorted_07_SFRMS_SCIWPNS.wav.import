@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://di4bdboscgpb"
+path="res://.godot/imported/EXPLDsgn_Explosion Rumble Distorted_07_SFRMS_SCIWPNS.wav-4f4bfcea5a6c263aad9be366ccda73c8.sample"
+
+[deps]
+
+source_file="res://Audio/EXPLDsgn_Explosion Rumble Distorted_07_SFRMS_SCIWPNS.wav"
+dest_files=["res://.godot/imported/EXPLDsgn_Explosion Rumble Distorted_07_SFRMS_SCIWPNS.wav-4f4bfcea5a6c263aad9be366ccda73c8.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2
