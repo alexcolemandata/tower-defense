@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://cm5i4y5f527sg"]
+[gd_scene load_steps=7 format=3 uid="uid://cm5i4y5f527sg"]
 
 [ext_resource type="Texture2D" uid="uid://wbl4ck8sp38x" path="res://Spells/SlowAreaSprite.png" id="1_aclkw"]
 [ext_resource type="Script" uid="uid://bjvjk4dqamwrc" path="res://Spells/slow_spell.gd" id="1_ry2et"]
@@ -6,6 +6,44 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_ry2et"]
 resource_local_to_scene = true
 radius = 100.0
+
+[sub_resource type="Animation" id="Animation_ry2et"]
+resource_name = "idle"
+length = 20.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AreaSprite:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 10, 20),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 3.141592653589793, 6.283185307179586]
+}
+
+[sub_resource type="Animation" id="Animation_0lawe"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AreaSprite:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ralm5"]
+_data = {
+&"RESET": SubResource("Animation_0lawe"),
+&"idle": SubResource("Animation_ry2et")
+}
 
 [node name="SlowSpell" type="Node2D"]
 script = ExtResource("1_ry2et")
@@ -21,3 +59,9 @@ collision_mask = 2
 
 [node name="SpellAreaShape" type="CollisionShape2D" parent="SpellArea"]
 shape = SubResource("CircleShape2D_ry2et")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_ralm5")
+}
+speed_scale = 1.217

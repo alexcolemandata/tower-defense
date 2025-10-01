@@ -6,6 +6,7 @@ signal placed
 @export var active_time_sec: float = 3.0
 @export_range(0.0, 1.0, 0.05) var slow_factor: float = 0.3
 
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var spell_area: Area2D = $SpellArea
 @onready var spell_area_shape: CollisionShape2D = $SpellArea/SpellAreaShape
 @onready var area_sprite: Sprite2D = $AreaSprite
@@ -23,6 +24,8 @@ var _spell_sound_stream: AudioStreamPlayer2D
 
 func _ready() -> void:
 	var sprite_scaling_factor: float = aoe_radius * sprite_scale_per_unit_radius
+	animation_player.play("idle")
+	animation_player.speed_scale = 2.0
 	area_sprite.scale = Vector2(sprite_scaling_factor, sprite_scaling_factor)
 
 	var spell_circle: CircleShape2D = spell_area_shape.shape
@@ -56,6 +59,7 @@ func process_targetting_state(_delta: float) -> void:
 
 func process_active_state(delta: float) -> void:
 	active_timer += delta
+	animation_player.speed_scale = 1.0 - (active_timer / active_time_sec)
 	if active_timer >= active_time_sec:
 		finish_spell()
 		return
@@ -118,6 +122,8 @@ func place_spell() -> void:
 	placed.emit()
 	spell_area.monitoring = true
 	current_state = State.ACTIVE
+	
+	
 	_spell_sound_stream = AudioManager.play_sound_at_location(global_position, AudioManager.sounds.spell_slow_drone)
 
 	var overlapping: Array[Area2D] = spell_area.get_overlapping_areas()
