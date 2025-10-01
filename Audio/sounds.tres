@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Sounds" load_steps=27 format=3 uid="uid://cwnljjakm2nix"]
+[gd_resource type="Resource" script_class="Sounds" load_steps=29 format=3 uid="uid://cwnljjakm2nix"]
 
 [ext_resource type="Script" uid="uid://3ticgpq25u8c" path="res://Audio/sound_settings.gd" id="1_4m7yd"]
 [ext_resource type="Script" uid="uid://kdtihg0uklpe" path="res://Audio/sounds.gd" id="1_qs87w"]
@@ -10,6 +10,7 @@
 [ext_resource type="AudioStream" uid="uid://co573t432l8t2" path="res://Audio/badexplosion.mp3" id="5_wff8i"]
 [ext_resource type="AudioStream" uid="uid://42e5lyfdvkpr" path="res://Audio/badfireballthrow.mp3" id="6_iyxtn"]
 [ext_resource type="AudioStream" uid="uid://0hrxb33la38x" path="res://Audio/DSGNErie_Atmosphere Angst 006_MMSD.wav" id="6_scg27"]
+[ext_resource type="AudioStream" uid="uid://ceqt3pfuenva7" path="res://Audio/casting_charge_matter_grow_04.mp3" id="6_uuuj5"]
 [ext_resource type="AudioStream" uid="uid://c7jlw2obloyy6" path="res://Audio/Seq1.15 Hit #3 96 HK1.wav" id="9_wq25f"]
 [ext_resource type="AudioStream" uid="uid://ce2tlra1lstlj" path="res://Audio/door28.wav" id="10_v45cj"]
 [ext_resource type="AudioStream" uid="uid://cjlgigigr45gn" path="res://Audio/coins2.wav" id="11_arrox"]
@@ -30,6 +31,11 @@ metadata/_custom_type_script = "uid://3ticgpq25u8c"
 script = ExtResource("1_4m7yd")
 stream = ExtResource("2_wff8i")
 default_volume = 0.7
+metadata/_custom_type_script = "uid://3ticgpq25u8c"
+
+[sub_resource type="Resource" id="Resource_ruyhu"]
+script = ExtResource("1_4m7yd")
+stream = ExtResource("6_uuuj5")
 metadata/_custom_type_script = "uid://3ticgpq25u8c"
 
 [sub_resource type="Resource" id="Resource_tvvc2"]
@@ -94,6 +100,7 @@ tower_purchase = SubResource("Resource_ll8y1")
 tower_level_up = SubResource("Resource_uuuj5")
 tower_place = SubResource("Resource_hj6bg")
 tower_refund = SubResource("Resource_6p1bc")
+spell_buy = SubResource("Resource_ruyhu")
 spell_slow_drone = SubResource("Resource_tvvc2")
 monster_lollygagger_death = SubResource("Resource_jydca")
 metadata/_custom_type_script = "uid://kdtihg0uklpe"

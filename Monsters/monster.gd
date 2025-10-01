@@ -88,13 +88,17 @@ func attack_town() -> void:
 
 
 func death_animation() -> void:
-	sprite_2d.rotate(PI / 2.)
 	speech_box.text = stats.death_speech
 
 	var tween = get_tree().create_tween()
-	tween.tween_property(self, "modulate", Color(1., 1., 1., 0.), 2.0)
+	const ANIM_TIME: float = 2.0
+	tween.set_parallel(true)
+	tween.tween_property(sprite_2d, "global_rotation", PI / 2.0, ANIM_TIME)
+	tween.tween_property(self, "modulate", Color(1., 1., 1., 0.), ANIM_TIME)
+	tween.tween_property(self, "global_skew", PI / 8.0, ANIM_TIME)
+	tween.tween_property(self, "scale", Vector2(0.7, 0.7), ANIM_TIME)
+	tween.finished.connect(destroy)
 	await tween.finished
-	destroy()
 	return
 
 

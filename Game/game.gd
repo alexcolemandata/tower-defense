@@ -27,13 +27,13 @@ var wave: int = 1
 
 var tower_purchase_buttons: Array[Button]
 
-func _ready() -> void:	
 
+func _ready() -> void:
 	for tower_stat in tower_stats:
 		var purchase_tower_button: Button = in_game_ui.tower_purchase_menu.add_tower_to_purchase(tower_stat)
 		purchase_tower_button.pressed.connect(_attempt_purchase.bind(tower_stat))
 		tower_purchase_buttons.append(purchase_tower_button)
-		
+
 	var slow_spell_button = in_game_ui.spell_list.add_spell_to_cast(SpellStats.new("Slow", 42))
 	slow_spell_button.pressed.connect(cast_slow_at_mouse)
 
@@ -66,7 +66,8 @@ func _input(event: InputEvent) -> void:
 
 	if event.is_action_released("debug_spawn_monster"):
 		level.monster_trail.spawn_monster(Monster.MonsterVariation.LOLLY_GAGGER)
-		
+
+
 func next_level() -> void:
 	current_level_num += 1
 	money += 100
@@ -76,29 +77,31 @@ func next_level() -> void:
 	add_child(level)
 	if not level.is_node_ready():
 		await level.ready
-	
+
 	level.town.death_manager = self
 	level.monster_trail.loot_handler = self
 	game_over_screen.visible = false
-	
+
 	AudioManager.play_sound(AudioManager.sounds.round_start, 0.2)
-	
+
 	monsters_spawned = 0
 	groups_spawned = 0
 	wave = 1
 	refresh_ui()
 	game_state = GameState.PLAYING
-	
+
 	return
 
 
 func current_spawn_pattern() -> MonsterSpawnPattern:
 	return level.wave_spawn_patterns[wave - 1]
 
+
 func total_monsters_to_spawn_this_wave() -> int:
 	var spawn_pattern = current_spawn_pattern()
 
 	return spawn_pattern.num_groups * len(spawn_pattern.group)
+
 
 func seconds_per_group() -> float:
 	var spawn_pattern = current_spawn_pattern()
@@ -114,8 +117,8 @@ func choosing_tower_placement(tower_stat: TowerStats) -> void:
 	new_tower.state = Tower.State.PLACING
 	new_tower.stats = tower_stat
 	new_tower.refunded.connect(refund_tower.bind(tower_stat))
-	new_tower.placed.connect(func (): is_mouse_placing = false)
-	new_tower.refunded.connect(func (): is_mouse_placing = false)
+	new_tower.placed.connect(func(): is_mouse_placing = false)
+	new_tower.refunded.connect(func(): is_mouse_placing = false)
 	level.add_child(new_tower)
 
 	return
@@ -180,19 +183,19 @@ func spawn_current_group() -> void:
 
 func trigger_next_wave() -> void:
 	monsters_spawned = 0
-	
+
 	in_game_ui.set_next_wave_button_enabled(false)
 	level.town.stop_celebrating()
-	
+
 	if wave == len(level.wave_spawn_patterns):
 		game_state = GameState.LEVEL_END
 		next_level()
-	else:	
+	else:
 		AudioManager.play_sound(AudioManager.sounds.round_start)
 		wave += 1
-	
+
 		game_state = GameState.PLAYING
-		
+
 	refresh_monster_counts()
 	return
 
@@ -221,13 +224,15 @@ func _attempt_purchase(tower_stat: TowerStats) -> void:
 
 	return
 
+
 func cast_slow_at_mouse() -> void:
 	if is_mouse_placing:
 		return
 	print("casting slow!")
 	choosing_spell_placement()
-	
+
 	return
+
 
 func choosing_spell_placement() -> void:
 	is_mouse_placing = true
@@ -237,9 +242,9 @@ func choosing_spell_placement() -> void:
 	slow_spell.aoe_radius = 200.0
 	slow_spell.active_time_sec = 15.0
 	slow_spell.slow_factor = 0.4
-	slow_spell.placed.connect(func (): is_mouse_placing = false)
+	slow_spell.placed.connect(func(): is_mouse_placing = false)
 	level.add_child(slow_spell)
 
-	AudioManager.play_sound(AudioManager.sounds.tower_purchase)
+	AudioManager.play_sound(AudioManager.sounds.spell_buy)
 
 	return

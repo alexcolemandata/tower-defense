@@ -15,6 +15,7 @@ class_name Sounds extends Resource
 @export var tower_refund: SoundSettings
 
 @export_group("Spells", "spell_")
+@export var spell_buy: SoundSettings
 @export var spell_slow_drone: SoundSettings
 
 @export_group("Monster", "monster_")
