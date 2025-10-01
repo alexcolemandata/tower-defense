@@ -18,6 +18,8 @@ var affected_monsters: Array[Monster] = []
 
 const sprite_scale_per_unit_radius: float = 0.00068
 
+var _spell_sound_stream: AudioStreamPlayer2D
+
 
 func _ready() -> void:
 	var sprite_scaling_factor: float = aoe_radius * sprite_scale_per_unit_radius
@@ -97,9 +99,12 @@ func finish_spell() -> void:
 		remove_affected_monster(monster)
 
 	var tween: Tween = get_tree().create_tween()
+	const ANIM_TIME: float = 1.0
 	tween.set_parallel(true)
-	tween.tween_property(self, "scale", Vector2.ZERO, 1.0)
-	tween.tween_property(self, "modulate", Color(1, 1, 1, 0), 1.0)
+	tween.tween_property(self, "cale", Vector2.ZERO, ANIM_TIME)
+	tween.tween_property(self, "modulate", Color(1, 1, 1, 0), ANIM_TIME)
+	if _spell_sound_stream:
+		tween.tween_property(_spell_sound_stream, "volume_linear", 0.0, ANIM_TIME)
 	tween.finished.connect(delete_spell)
 
 
@@ -113,6 +118,7 @@ func place_spell() -> void:
 	placed.emit()
 	spell_area.monitoring = true
 	current_state = State.ACTIVE
+	_spell_sound_stream = AudioManager.play_sound_at_location(global_position, AudioManager.sounds.spell_slow_drone)
 
 	var overlapping: Array[Area2D] = spell_area.get_overlapping_areas()
 	for overlap in overlapping:

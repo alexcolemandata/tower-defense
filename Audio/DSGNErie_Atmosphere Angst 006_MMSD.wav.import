@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://0hrxb33la38x"
+path="res://.godot/imported/DSGNErie_Atmosphere Angst 006_MMSD.wav-4b5f8163441830d06966f582c23f52fd.sample"
+
+[deps]
+
+source_file="res://Audio/DSGNErie_Atmosphere Angst 006_MMSD.wav"
+dest_files=["res://.godot/imported/DSGNErie_Atmosphere Angst 006_MMSD.wav-4b5f8163441830d06966f582c23f52fd.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

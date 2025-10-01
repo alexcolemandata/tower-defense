@@ -1,5 +1,4 @@
-class_name Sounds
-extends Resource
+class_name Sounds extends Resource
 
 @export_group("General")
 @export var loot_gold: SoundSettings
@@ -14,6 +13,9 @@ extends Resource
 @export var tower_level_up: SoundSettings
 @export var tower_place: SoundSettings
 @export var tower_refund: SoundSettings
+
+@export_group("Spells", "spell_")
+@export var spell_slow_drone: SoundSettings
 
 @export_group("Monster", "monster_")
 @export var monster_lollygagger_death: SoundSettings
