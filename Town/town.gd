@@ -1,5 +1,4 @@
-class_name Town
-extends Node2D
+class_name Town extends Node2D
 
 @export var max_health: int = 20
 
@@ -48,6 +47,7 @@ func stop_celebrating() -> void:
 
 
 func take_damage(damage: int = 1) -> void:
+	AudioManager.play_sound_at_location(global_position, AudioManager.sounds.town_ouch)
 	health -= damage
 	health_bar.value = health
 

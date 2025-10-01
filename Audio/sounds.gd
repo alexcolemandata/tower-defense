@@ -4,6 +4,7 @@ class_name Sounds extends Resource
 @export var loot_gold: SoundSettings
 @export var round_start: SoundSettings
 @export var town_celebrate: SoundSettings
+@export var town_ouch: SoundSettings
 
 @export_group("Tower", "tower_")
 @export var tower_attack_beam_light: SoundSettings

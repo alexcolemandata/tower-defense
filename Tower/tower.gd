@@ -186,6 +186,10 @@ func _process_active(delta):
 	if displayed_xp_amount > 0:
 		gain_xp_display.visible = true
 		gain_xp_display.text = "+" + str(displayed_xp_amount) + " XP!"
+		gain_xp_display.add_theme_font_size_override(
+			"font_size",
+			clamp(displayed_xp_amount / 1.4, 14.0, 80.0),
+		)
 
 
 func _process_placing(_delta) -> void:

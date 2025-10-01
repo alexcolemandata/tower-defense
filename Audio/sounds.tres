@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Sounds" load_steps=29 format=3 uid="uid://cwnljjakm2nix"]
+[gd_resource type="Resource" script_class="Sounds" load_steps=31 format=3 uid="uid://cwnljjakm2nix"]
 
 [ext_resource type="Script" uid="uid://3ticgpq25u8c" path="res://Audio/sound_settings.gd" id="1_4m7yd"]
 [ext_resource type="Script" uid="uid://kdtihg0uklpe" path="res://Audio/sounds.gd" id="1_qs87w"]
@@ -15,6 +15,7 @@
 [ext_resource type="AudioStream" uid="uid://ce2tlra1lstlj" path="res://Audio/door28.wav" id="10_v45cj"]
 [ext_resource type="AudioStream" uid="uid://cjlgigigr45gn" path="res://Audio/coins2.wav" id="11_arrox"]
 [ext_resource type="AudioStream" uid="uid://bjjt366xyhl7r" path="res://Audio/Audience applauding 28.wav" id="13_k288x"]
+[ext_resource type="AudioStream" uid="uid://cmkd88nctnxib" path="res://Audio/Little Fighter Guy - Vocalizations - Crash Bump Fall_10.wav" id="16_3xh5d"]
 
 [sub_resource type="Resource" id="Resource_wq25f"]
 script = ExtResource("1_4m7yd")
@@ -88,11 +89,17 @@ stream = ExtResource("13_k288x")
 default_volume = 0.8
 metadata/_custom_type_script = "uid://3ticgpq25u8c"
 
+[sub_resource type="Resource" id="Resource_2ls6a"]
+script = ExtResource("1_4m7yd")
+stream = ExtResource("16_3xh5d")
+metadata/_custom_type_script = "uid://3ticgpq25u8c"
+
 [resource]
 script = ExtResource("1_qs87w")
 loot_gold = SubResource("Resource_wq25f")
 round_start = SubResource("Resource_v45cj")
 town_celebrate = SubResource("Resource_3xh5d")
+town_ouch = SubResource("Resource_2ls6a")
 tower_attack_beam_light = SubResource("Resource_arrox")
 tower_attack_fireball_explosion = SubResource("Resource_k288x")
 tower_attack_fireball_shoot = SubResource("Resource_scg27")
