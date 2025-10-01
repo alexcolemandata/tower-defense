@@ -39,11 +39,14 @@ func start_celebrating() -> void:
 	)
 	speech_bubble.text = "Hooray, Hoorah!"
 	celebrate_sprites.visible = true
+	for party_sprite in celebrate_sprites.get_children():
+		party_sprite.start_celebrating()
 
 
 func stop_celebrating() -> void:
 	speech_bubble.text = ""
-	celebrate_sprites.visible = false
+	for party_sprite in celebrate_sprites.get_children():
+		party_sprite.stop_celebrating()
 
 
 func take_damage(damage: int = 1) -> void:

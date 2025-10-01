@@ -1,0 +1,48 @@
+[gd_scene load_steps=8 format=3 uid="uid://c4osuvlt4w5ww"]
+
+[ext_resource type="Texture2D" uid="uid://dhu361mspjkx6" path="res://Town/party_popper.png" id="1_wefqp"]
+[ext_resource type="Script" uid="uid://7ku8au43qyc" path="res://Town/party_sprite.gd" id="2_621hn"]
+
+[sub_resource type="Curve" id="Curve_wefqp"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.09558824, 0.92428756), 0.0, 0.0, 0, 0, Vector2(0.6044118, 0.56183404), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_621hn"]
+curve = SubResource("Curve_wefqp")
+
+[sub_resource type="Curve" id="Curve_mi3aq"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.7294118, 0.9871129), 0.0, 0.0, 0, 0, Vector2(1, 0.85179687), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_a2tm2"]
+curve = SubResource("Curve_mi3aq")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_qxrtx"]
+lifetime_randomness = 0.28
+particle_flag_disable_z = true
+direction = Vector3(0.5, -1, 0)
+initial_velocity_min = 705.70996
+initial_velocity_max = 1000.0
+gravity = Vector3(0, 60, 0)
+scale_curve = SubResource("CurveTexture_a2tm2")
+color = Color(0.8, 0.45490196, 0.6392157, 1)
+alpha_curve = SubResource("CurveTexture_621hn")
+hue_variation_min = -1.0
+hue_variation_max = 0.19999997
+
+[node name="PartySprite" type="Sprite2D"]
+scale = Vector2(0.090000026, 0.090000026)
+texture = ExtResource("1_wefqp")
+script = ExtResource("2_621hn")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+emitting = false
+amount = 40
+lifetime = 1.2
+one_shot = true
+preprocess = 0.1
+speed_scale = 1.5
+explosiveness = 0.91
+randomness = 0.25
+trail_enabled = true
+process_material = SubResource("ParticleProcessMaterial_qxrtx")

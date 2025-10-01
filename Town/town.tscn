@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://4npg6m6ilw46" path="res://Town/town.gd" id="1_e8yg3"]
 [ext_resource type="Texture2D" uid="uid://wf2xay7a77x5" path="res://Town/town.png" id="1_x5mr4"]
 [ext_resource type="PackedScene" uid="uid://lo3xxa5dppt8" path="res://Town/fire.tscn" id="2_dwdjc"]
-[ext_resource type="Texture2D" uid="uid://dhu361mspjkx6" path="res://Town/party_popper.png" id="4_gwqsq"]
+[ext_resource type="PackedScene" uid="uid://c4osuvlt4w5ww" path="res://Town/party_sprite.tscn" id="4_dv18y"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_gwqsq"]
 radius = 116.15507
@@ -48,22 +48,16 @@ offset_bottom = 86.0
 [node name="CelebrateSprites" type="Node2D" parent="."]
 unique_name_in_owner = true
 
-[node name="PartySprite" type="Sprite2D" parent="CelebrateSprites"]
+[node name="PartySprite" parent="CelebrateSprites" instance=ExtResource("4_dv18y")]
 position = Vector2(43, -53)
-scale = Vector2(0.090000026, 0.090000026)
-texture = ExtResource("4_gwqsq")
 
-[node name="PartySprite2" type="Sprite2D" parent="CelebrateSprites"]
-position = Vector2(-65, -26)
-rotation = -1.7265687
-scale = Vector2(0.090000026, 0.090000026)
-texture = ExtResource("4_gwqsq")
+[node name="PartySprite2" parent="CelebrateSprites" instance=ExtResource("4_dv18y")]
+position = Vector2(-64, 18.000004)
+rotation = -1.7534539
 
-[node name="PartySprite3" type="Sprite2D" parent="CelebrateSprites"]
-position = Vector2(17.999998, 25.999998)
-rotation = -0.035622515
-scale = Vector2(0.090000026, 0.090000026)
-texture = ExtResource("4_gwqsq")
+[node name="PartySprite3" parent="CelebrateSprites" instance=ExtResource("4_dv18y")]
+position = Vector2(47, 27)
+rotation = 0.35959685
 
 [node name="SpeechBubble" type="Label" parent="."]
 unique_name_in_owner = true
