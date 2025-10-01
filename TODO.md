@@ -42,8 +42,8 @@
 - [ ] Monster loot drop animation (arc from monster to loot landing point)
 - [ ] Monster Death Animation + Gibs/Blood
 - [ ] Fix layers/z index for towers/monters/labels/etc
-- [ ] Grass Art
 - [ ] Tower DPS Meters (think WoW raid to see all tower DPS)
+- [x] Grass Art
 - [x] Trail Art
 - [x] Money is attracted to cursor
 - [x] XP Particles

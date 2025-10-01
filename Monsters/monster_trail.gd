@@ -4,7 +4,6 @@ extends Path2D
 
 const MONSTER = preload("uid://dt26jdmea8bpa")
 
-@export var line_color: Color = Color.WHITE
 @export var line_width: float = 64.0
 @export var num_collision_points: int = 50
 
@@ -22,10 +21,14 @@ func _ready() -> void:
 	var points = curve.get_baked_points()
 	if points.size() > 1:
 		line_2d.points = points
-		#line_2d.default_color = line_color
 		line_2d.width = line_width
 		
-
+func _draw() -> void:
+	if Engine.is_editor_hint():
+		var points = curve.get_baked_points()
+		if points.size() > 1:
+			draw_polyline(points, Color(1, 1, 1, 0.3), line_width, true)
+	
 
 func _process(_delta: float) -> void:
 	queue_redraw()

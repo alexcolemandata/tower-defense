@@ -114,7 +114,8 @@ func finish_spell() -> void:
 
 func delete_spell() -> void:
 	for monster in affected_monsters:
-		monster.apply_slow(-slow_factor)
+		if monster:
+			monster.apply_slow(-slow_factor)
 	queue_free()
 
 
@@ -122,8 +123,7 @@ func place_spell() -> void:
 	placed.emit()
 	spell_area.monitoring = true
 	current_state = State.ACTIVE
-	
-	
+
 	_spell_sound_stream = AudioManager.play_sound_at_location(global_position, AudioManager.sounds.spell_slow_drone)
 
 	var overlapping: Array[Area2D] = spell_area.get_overlapping_areas()

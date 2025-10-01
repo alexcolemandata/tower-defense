@@ -27,4 +27,5 @@ texture_repeat = 2
 texture = ExtResource("2_7hjyp")
 texture_mode = 1
 joint_mode = 2
+round_precision = 32
 antialiased = true

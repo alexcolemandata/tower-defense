@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://bsfbgtbux1gi7"]
+[gd_scene load_steps=6 format=3 uid="uid://bsfbgtbux1gi7"]
 
 [ext_resource type="Script" uid="uid://b7nrvfmpgl8n5" path="res://Levels/Levels/level_02.gd" id="1_sqw1y"]
 [ext_resource type="PackedScene" uid="uid://dxmbscpv7glme" path="res://Monsters/monster_trail.tscn" id="2_lvd57"]
 [ext_resource type="PackedScene" uid="uid://du65lrtiyds3j" path="res://Town/town.tscn" id="3_r1mb7"]
+[ext_resource type="Texture2D" uid="uid://dx45h4585wf6b" path="res://Levels/Sprites/Grass_12-512x512.png" id="4_lvd57"]
 
 [sub_resource type="Curve2D" id="Curve2D_sqw1y"]
 _data = {
@@ -23,12 +24,13 @@ num_collision_points = 240
 unique_name_in_owner = true
 position = Vector2(623, 386)
 
-[node name="BackgroundGrass" type="ColorRect" parent="."]
-z_index = -100
-offset_left = -95.0
-offset_top = -90.0
-offset_right = 1305.0
-offset_bottom = 710.0
+[node name="TextureRect" type="TextureRect" parent="."]
+z_index = -999
+texture_repeat = 2
+offset_left = -82.0
+offset_top = -83.0
+offset_right = 1340.0
+offset_bottom = 862.0
 mouse_filter = 2
-color = Color(0.36942172, 0.2725707, 0.23557433, 1)
-metadata/_edit_use_anchors_ = true
+texture = ExtResource("4_lvd57")
+stretch_mode = 1

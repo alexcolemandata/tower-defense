@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="TowerStats" load_steps=5 format=3 uid="uid://bu0dq7jg6smqa"]
+
+[ext_resource type="Script" uid="uid://rppbyrb3gjyg" path="res://Tower/tower_stats.gd" id="1_1oyef"]
+[ext_resource type="Script" uid="uid://dut5jbh6qv5mk" path="res://Tower/TowerAttackStrategies/beam_tower_attack.gd" id="1_gv10b"]
+[ext_resource type="Texture2D" uid="uid://cc5gggsithpme" path="res://Tower/TowerSprites/sudo_tower.png" id="3_p3tcn"]
+
+[sub_resource type="Resource" id="Resource_yfn4i"]
+script = ExtResource("1_gv10b")
+metadata/_custom_type_script = "uid://dut5jbh6qv5mk"
+
+[resource]
+script = ExtResource("1_1oyef")
+cost = 1
+damage_per_shot = 100
+shoots_per_second = 6.0
+texture = ExtResource("3_p3tcn")
+tower_name = "Sudo Tower"
+vision_range = 400.0
+attack_strategy = SubResource("Resource_yfn4i")
+metadata/_custom_type_script = "uid://rppbyrb3gjyg"
