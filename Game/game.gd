@@ -3,9 +3,11 @@ extends Node2D
 enum GameState { PLAYING, GAME_OVER, VICTORY, LEVEL_END }
 
 const TOWER = preload("uid://eou4mq5n6oh3")
+const SLOW_SPELL = preload("uid://cm5i4y5f527sg")
 
 @export var tower_stats: Array[TowerStats]
 
+var is_mouse_placing: bool = false
 var game_state = GameState.PLAYING
 var money: int = 0
 var monsters_spawned: int = 0
@@ -31,6 +33,9 @@ func _ready() -> void:
 		var purchase_tower_button: Button = in_game_ui.tower_purchase_menu.add_tower_to_purchase(tower_stat)
 		purchase_tower_button.pressed.connect(_attempt_purchase.bind(tower_stat))
 		tower_purchase_buttons.append(purchase_tower_button)
+		
+	var slow_spell_button = in_game_ui.spell_list.add_spell_to_cast(SpellStats.new("Slow", 42))
+	slow_spell_button.pressed.connect(cast_slow_at_mouse)
 
 	in_game_ui.next_wave_button.pressed.connect(trigger_next_wave)
 	await next_level()
@@ -101,6 +106,7 @@ func seconds_per_group() -> float:
 
 
 func choosing_tower_placement(tower_stat: TowerStats) -> void:
+	is_mouse_placing = true
 	print("placing: " + tower_stat.tower_name)
 	AudioManager.play_sound(AudioManager.sounds.tower_purchase)
 
@@ -108,6 +114,8 @@ func choosing_tower_placement(tower_stat: TowerStats) -> void:
 	new_tower.state = Tower.State.PLACING
 	new_tower.stats = tower_stat
 	new_tower.refunded.connect(refund_tower.bind(tower_stat))
+	new_tower.placed.connect(func (): is_mouse_placing = false)
+	new_tower.refunded.connect(func (): is_mouse_placing = false)
 	level.add_child(new_tower)
 
 	return
@@ -200,6 +208,9 @@ func _attempt_purchase(tower_stat: TowerStats) -> void:
 	if not game_state in [GameState.PLAYING, GameState.VICTORY]:
 		return
 
+	if is_mouse_placing:
+		return
+
 	if tower_stat.cost > money:
 		print("not enough money")
 		return
@@ -207,5 +218,28 @@ func _attempt_purchase(tower_stat: TowerStats) -> void:
 	print("purchased ", tower_stat.tower_name, " for $", str(tower_stat.cost))
 	choosing_tower_placement(tower_stat)
 	refresh_money()
+
+	return
+
+func cast_slow_at_mouse() -> void:
+	if is_mouse_placing:
+		return
+	print("casting slow!")
+	choosing_spell_placement()
+	
+	return
+
+func choosing_spell_placement() -> void:
+	is_mouse_placing = true
+	print("casting: slow")
+	var slow_spell: SlowSpell = SLOW_SPELL.instantiate()
+	slow_spell.global_position = get_global_mouse_position()
+	slow_spell.aoe_radius = 200.0
+	slow_spell.active_time_sec = 15.0
+	slow_spell.slow_factor = 0.4
+	slow_spell.placed.connect(func (): is_mouse_placing = false)
+	level.add_child(slow_spell)
+
+	AudioManager.play_sound(AudioManager.sounds.tower_purchase)
 
 	return

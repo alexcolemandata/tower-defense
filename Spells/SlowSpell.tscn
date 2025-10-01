@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://cm5i4y5f527sg"]
+
+[ext_resource type="Texture2D" uid="uid://wbl4ck8sp38x" path="res://Spells/SlowAreaSprite.png" id="1_aclkw"]
+[ext_resource type="Script" uid="uid://bjvjk4dqamwrc" path="res://Spells/slow_spell.gd" id="1_ry2et"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ry2et"]
+resource_local_to_scene = true
+radius = 100.0
+
+[node name="SlowSpell" type="Node2D"]
+script = ExtResource("1_ry2et")
+aoe_radius = 20.0
+
+[node name="AreaSprite" type="Sprite2D" parent="."]
+scale = Vector2(0.068, 0.068)
+texture = ExtResource("1_aclkw")
+
+[node name="SpellArea" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="SpellAreaShape" type="CollisionShape2D" parent="SpellArea"]
+shape = SubResource("CircleShape2D_ry2et")

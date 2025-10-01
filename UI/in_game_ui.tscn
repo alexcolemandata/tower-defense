@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://dwc1hnjb0rhp5"]
+[gd_scene load_steps=6 format=3 uid="uid://dwc1hnjb0rhp5"]
 
 [ext_resource type="Script" uid="uid://2m4xc5qluom4" path="res://UI/in_game_ui.gd" id="1_kenku"]
 [ext_resource type="Script" uid="uid://b2n7jq12tyr8s" path="res://UI/tower_purchase_menu.gd" id="2_onc8m"]
 [ext_resource type="Script" uid="uid://clsra33cl10n0" path="res://UI/ui_footprint.gd" id="3_e6quo"]
+[ext_resource type="Script" uid="uid://l02fm3yhwe0n" path="res://UI/spell_list.gd" id="4_d0vji"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_onc8m"]
 size = Vector2(154, 1081)
@@ -38,10 +39,10 @@ unique_name_in_owner = true
 layout_mode = 2
 script = ExtResource("2_onc8m")
 
-[node name="Footprint" type="Area2D" parent="LeftPanel"]
+[node name="TowerRefundFootprint" type="Area2D" parent="LeftPanel"]
 script = ExtResource("3_e6quo")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="LeftPanel/Footprint"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LeftPanel/TowerRefundFootprint"]
 position = Vector2(77, 540.5)
 shape = SubResource("RectangleShape2D_onc8m")
 
@@ -100,3 +101,28 @@ offset_bottom = -209.0
 grow_horizontal = 0
 grow_vertical = 0
 text = "Next Wave??"
+
+[node name="SpellPanel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -177.0
+offset_bottom = 352.0
+grow_horizontal = 0
+
+[node name="SpellPanelContainer" type="VBoxContainer" parent="SpellPanel"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+
+[node name="SpellPanelTitle" type="Label" parent="SpellPanel/SpellPanelContainer"]
+layout_mode = 2
+text = "Spells!!"
+horizontal_alignment = 1
+
+[node name="SpellList" type="VBoxContainer" parent="SpellPanel/SpellPanelContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+script = ExtResource("4_d0vji")

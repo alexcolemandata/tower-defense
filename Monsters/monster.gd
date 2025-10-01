@@ -10,6 +10,7 @@ const XP_GEM = preload("uid://b6illm4ixruiy")
 var destination_town: Town
 var health: float
 var loot_handler
+var slow_amount: float = 0.0
 
 @onready var health_bar: ProgressBar = %HealthBar
 @onready var speech_box: Label = %SpeechBox
@@ -49,14 +50,36 @@ func _process(delta: float) -> void:
 		invul_time += delta
 		if invul_time >= INVUL_TIME_S:
 			state = State.ACTIVE
-			modulate.a = 1.
+			modulate.a = 1.0
 
-	var movement = stats.speed_perc_per_sec * delta / 100.0
-	if progress_ratio + movement >= 1.:
+	var movement = get_movement(delta)
+	if progress_ratio + movement >= 1:
 		attack_town()
 	else:
-		progress_ratio += stats.speed_perc_per_sec * delta / 100.0
-		global_rotation = 0.
+		progress_ratio += movement
+		global_rotation = 0
+
+	return
+
+
+func get_movement(delta: float) -> float:
+	return stats.speed_perc_per_sec * (1.0 - clamp(slow_amount, 0.0, 1.0)) * delta / 100.0
+
+
+func apply_slow(slow_factor: float) -> void:
+	slow_amount += slow_factor
+	var tween: Tween = get_tree().create_tween()
+	const anim_time: float = 0.3
+	tween.set_parallel(true)
+	tween.tween_property(self, "modulate", Color.WHITE.lerp(Color.CYAN, slow_amount), anim_time)
+	tween.tween_property(
+		animation_player,
+		"speed_scale",
+		clamp(1.0 - slow_amount, 0.0, 1.0),
+		anim_time,
+	)
+
+	return
 
 
 func attack_town() -> void:
