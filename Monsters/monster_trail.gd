@@ -5,7 +5,7 @@ extends Path2D
 const MONSTER = preload("uid://dt26jdmea8bpa")
 
 @export var line_color: Color = Color.WHITE
-@export var line_width: float = 4.
+@export var line_width: float = 64.0
 @export var num_collision_points: int = 50
 
 var total_monsters: int = 0
@@ -14,20 +14,21 @@ var destination_town: Town
 var loot_handler
 
 @onready var footprint_polygon: CollisionPolygon2D = $Footprint/FootprintPolygon
+@onready var line_2d: Line2D = $Line2D
 
 
 func _ready() -> void:
 	generate_footprint()
+	var points = curve.get_baked_points()
+	if points.size() > 1:
+		line_2d.points = points
+		#line_2d.default_color = line_color
+		line_2d.width = line_width
+		
 
 
 func _process(_delta: float) -> void:
 	queue_redraw()
-
-
-func _draw() -> void:
-	var points = curve.get_baked_points()
-	if points.size() > 1:
-		draw_polyline(points, line_color, line_width)
 
 
 func decrement_monster_count() -> void:
