@@ -8,6 +8,7 @@ enum State { PLACING, ACTIVE }
 const BADLVLUP = preload("uid://cge6426i07hvr")
 
 @export var stats: TowerStats
+@export_range(2, 4) var max_level: int = 5
 
 var last_shot_time: float = 0.
 var level: int = 1
@@ -19,7 +20,6 @@ var displayed_xp_amount: int = 0
 var time_since_last_xp: float = 0
 const xp_display_time: float = 1.0
 
-@onready var current_level_display: Label = %CurrentLevelDisplay
 @onready var footprint: Area2D = %Footprint
 @onready var footprint_shape: CollisionShape2D = %FootprintShape
 @onready var gain_xp_display: Label = %GainXPDisplay
@@ -28,6 +28,7 @@ const xp_display_time: float = 1.0
 @onready var vision_shape: CollisionShape2D = %VisionShape
 @onready var xp_level_progress_bar: ProgressBar = %XPLevelProgressBar
 @onready var lvl_up_shader_sprite: Sprite2D = $LvlUpShaderSprite
+@onready var tower_level_stars: TowerLevelStars = $TowerLevelStars
 
 
 func _ready() -> void:
@@ -36,6 +37,7 @@ func _ready() -> void:
 	sprite_2d.texture = stats.texture
 	lvl_up_shader_sprite.texture = stats.texture
 	lvl_up_shader_sprite.visible = false
+	tower_level_stars.max_stars = max_level -2
 
 	refresh_level_display()
 
@@ -116,6 +118,9 @@ func attempt_shot() -> void:
 
 
 func gain_xp(amount: int) -> void:
+	if level >= max_level:
+		return
+
 	time_since_last_xp = 0.0
 	xp += amount
 
@@ -130,7 +135,6 @@ func gain_xp(amount: int) -> void:
 
 func is_placeable() -> bool:
 	var overlapping: Array[Area2D] = footprint.get_overlapping_areas()
-	var is_overlapping: bool = false
 	for overlap in overlapping:
 		if footprint != overlap:
 			return false
@@ -166,9 +170,12 @@ func level_up() -> void:
 
 
 func refresh_level_display() -> void:
-	current_level_display.text = "Level: " + str(level)
 	xp_level_progress_bar.max_value = xp_to_next_level
 	xp_level_progress_bar.value = xp
+	tower_level_stars.num_stars = level - 1
+
+	if level >= max_level:
+		xp_level_progress_bar.visible = false
 
 
 func shoot_at(target) -> void:

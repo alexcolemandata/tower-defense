@@ -1,8 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://eou4mq5n6oh3"]
+[gd_scene load_steps=10 format=3 uid="uid://eou4mq5n6oh3"]
 
 [ext_resource type="Texture2D" uid="uid://8doeehu0sj6y" path="res://Tower/TowerSprites/tower.png" id="1_k1sas"]
 [ext_resource type="Script" uid="uid://dhnso5msyby6y" path="res://Tower/tower.gd" id="1_vedim"]
 [ext_resource type="Shader" uid="uid://ce1mx5xoqq8iy" path="res://Tower/tower-lvlup.gdshader" id="2_okia5"]
+[ext_resource type="Script" uid="uid://c2ptdtafpswnv" path="res://Tower/tower_level_stars.gd" id="4_jnpw3"]
+[ext_resource type="Texture2D" uid="uid://dyya37emvk4b0" path="res://Tower/TowerSprites/level_star.png" id="5_rt5j0"]
+[ext_resource type="Texture2D" uid="uid://g77a4lilbx0a" path="res://Tower/TowerSprites/level_star_hat.png" id="6_rt5j0"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_e70sp"]
 shader = ExtResource("2_okia5")
@@ -58,14 +61,6 @@ theme_override_font_sizes/font_size = 16
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="CurrentLevelDisplay" type="Label" parent="."]
-unique_name_in_owner = true
-offset_left = -27.0
-offset_top = 32.0
-offset_right = 31.0
-offset_bottom = 55.0
-text = "Level: 1"
-
 [node name="XPLevelProgressBar" type="ProgressBar" parent="."]
 unique_name_in_owner = true
 offset_left = -66.0
@@ -81,3 +76,13 @@ unique_name_in_owner = true
 unique_name_in_owner = true
 position = Vector2(-2, 6)
 shape = SubResource("CircleShape2D_vedim")
+
+[node name="TowerLevelStars" type="VBoxContainer" parent="."]
+offset_left = 37.0
+offset_top = -42.0
+offset_right = 52.0
+offset_bottom = 8.0
+mouse_filter = 2
+script = ExtResource("4_jnpw3")
+star_texture = ExtResource("5_rt5j0")
+hat_after_max_stars = ExtResource("6_rt5j0")
