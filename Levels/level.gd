@@ -3,6 +3,8 @@ class_name Level extends Node
 @onready var town: Town = %Town
 @onready var monster_trail: MonsterTrail = %MonsterTrail
 
+@export var starting_gold: int = 100
+
 var wave_spawn_patterns: Array[MonsterSpawnPattern]
 
 

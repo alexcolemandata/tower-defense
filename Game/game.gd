@@ -70,7 +70,6 @@ func _input(event: InputEvent) -> void:
 
 func next_level() -> void:
 	current_level_num += 1
-	money += 100
 	if level:
 		level.queue_free()
 	level = levels[current_level_num - 1].instantiate()
@@ -78,6 +77,7 @@ func next_level() -> void:
 	if not level.is_node_ready():
 		await level.ready
 
+	money = level.starting_gold
 	level.town.death_manager = self
 	level.monster_trail.loot_handler = self
 	game_over_screen.visible = false
