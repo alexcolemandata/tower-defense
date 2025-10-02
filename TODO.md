@@ -1,11 +1,11 @@
 # TODO
 
-## Bugs
-- [x] Loot always placed in lower right 90degrees (multiply loot angle by 2pi)
-- [x] Round doesnt end if monster hits town and rest dead
+## Bugs and Bad things
+- [ ] The whole camera/playable area/level placement is terrible
 
 ## UI
 - [ ] Tower purchase menu has pictures + stats of towers
+- [ ] Show footprint outlines if tower blocked from placement
 - [ ] Main Menu
 
 ## Internals
@@ -85,3 +85,7 @@
 - [x] Win State
 - [x] Ability to place towers with mouse
 - [x] Fail state
+
+## Squashed Bugs
+- [x] Loot always placed in lower right 90degrees (multiply loot angle by 2pi)
+- [x] Round doesnt end if monster hits town and rest dead
