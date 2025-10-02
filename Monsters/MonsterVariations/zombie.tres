@@ -13,7 +13,7 @@ metadata/_custom_type_script = "uid://3ticgpq25u8c"
 [resource]
 script = ExtResource("1_p0pao")
 death_speech = "*inarticulate groan*"
-gold_on_death = 100
+gold_on_death = 20
 max_health = 200.0
 speed_perc_per_sec = 1.0
 sprite_texture = ExtResource("4_tysyc")

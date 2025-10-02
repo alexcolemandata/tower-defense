@@ -2,6 +2,7 @@
 
 ## Bugs and Bad things
 - [ ] The whole camera/playable area/level placement is terrible
+- [ ] Monster speed should be consistent, and not percentage of trail
 
 ## UI
 - [ ] Tower purchase menu has pictures + stats of towers
