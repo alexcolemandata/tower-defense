@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://eou4mq5n6oh3"]
+[gd_scene load_steps=12 format=3 uid="uid://eou4mq5n6oh3"]
 
 [ext_resource type="Texture2D" uid="uid://8doeehu0sj6y" path="res://Tower/TowerSprites/tower.png" id="1_k1sas"]
 [ext_resource type="Script" uid="uid://dhnso5msyby6y" path="res://Tower/tower.gd" id="1_vedim"]
@@ -23,6 +23,13 @@ shader_parameter/Alpha = 1.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_stebd"]
 resource_local_to_scene = true
 radius = 219.67
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rt5j0"]
+bg_color = Color(0, 0.7163037, 0.3955693, 1)
+shadow_size = 5
+
+[sub_resource type="Theme" id="Theme_fe3rl"]
+ProgressBar/styles/fill = SubResource("StyleBoxFlat_rt5j0")
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_vedim"]
 radius = 46.0
@@ -67,6 +74,7 @@ offset_left = -66.0
 offset_top = 55.0
 offset_right = 65.0
 offset_bottom = 61.0
+theme = SubResource("Theme_fe3rl")
 show_percentage = false
 
 [node name="Footprint" type="Area2D" parent="."]
