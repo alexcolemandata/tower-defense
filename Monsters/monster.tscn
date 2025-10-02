@@ -1,58 +1,24 @@
-[gd_scene load_steps=8 format=3 uid="uid://dt26jdmea8bpa"]
+[gd_scene load_steps=5 format=3 uid="uid://dt26jdmea8bpa"]
 
 [ext_resource type="Script" uid="uid://dml0sl5curbo" path="res://Monsters/monster.gd" id="1_ga5te"]
-[ext_resource type="Texture2D" uid="uid://b0ox2w53tlsyg" path="res://Monsters/MonsterVariations/lolly_gagger.png" id="1_mrqeg"]
+[ext_resource type="Texture2D" uid="uid://bjmnblsu1q8ax" path="res://Monsters/MonsterSprites/Enemy_001.png" id="2_l4fi5"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_mrqeg"]
 radius = 19.104973
 
 [sub_resource type="AudioStreamInteractive" id="AudioStreamInteractive_l4fi5"]
 
-[sub_resource type="Animation" id="Animation_bs0r6"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:position:y")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0.0]
-}
-
-[sub_resource type="Animation" id="Animation_l4fi5"]
-resource_name = "idle"
-length = 0.6
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:position:y")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.26666668),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0.0, -14.0]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_ywxya"]
-_data = {
-&"RESET": SubResource("Animation_bs0r6"),
-&"idle": SubResource("Animation_l4fi5")
-}
-
 [node name="Monster" type="PathFollow2D"]
 script = ExtResource("1_ga5te")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 unique_name_in_owner = true
-scale = Vector2(0.1, 0.1)
-texture = ExtResource("1_mrqeg")
+position = Vector2(1, -29)
+scale = Vector2(1.1388888, 1.1388888)
+texture = ExtResource("2_l4fi5")
+hframes = 4
+vframes = 5
+frame = 3
 
 [node name="HealthBar" type="ProgressBar" parent="."]
 unique_name_in_owner = true
@@ -81,8 +47,3 @@ offset_bottom = -3.0
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = SubResource("AudioStreamInteractive_l4fi5")
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_ywxya")
-}

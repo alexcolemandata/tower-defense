@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" uid="uid://3ticgpq25u8c" path="res://Audio/sound_settings.gd" id="1_exmrb"]
 [ext_resource type="Script" uid="uid://bt5ffmv6m016a" path="res://Monsters/monster_stats.gd" id="1_g2bv0"]
-[ext_resource type="Texture2D" uid="uid://b0ox2w53tlsyg" path="res://Monsters/MonsterVariations/lolly_gagger.png" id="2_fhw0t"]
 [ext_resource type="AudioStream" uid="uid://dj5fnysekj3y2" path="res://Audio/short-Male cackling and giggling 03.M.wav" id="2_nxuaf"]
+[ext_resource type="Texture2D" uid="uid://ca7b6y48g8giy" path="res://Monsters/MonsterVariations/dev.png" id="4_exmrb"]
 
 [sub_resource type="Resource" id="Resource_exmrb"]
 script = ExtResource("1_exmrb")
@@ -14,6 +14,5 @@ metadata/_custom_type_script = "uid://3ticgpq25u8c"
 [resource]
 script = ExtResource("1_g2bv0")
 death_speech = "I'm Dead Now!"
-sprite_texture = ExtResource("2_fhw0t")
 sounds_death = SubResource("Resource_exmrb")
 metadata/_custom_type_script = "uid://bt5ffmv6m016a"

@@ -4,11 +4,12 @@ func _ready() -> void:
 	super._ready()
 	wave_spawn_patterns = [
 		MonsterSpawnPattern.new(
-			4,
-			4,
+			1,
+			1,
 			[
 				Monster.MonsterVariation.LOLLY_GAGGER,
-				Monster.MonsterVariation.LOLLY_GAGGER,
+				Monster.MonsterVariation.ZOMBIE,
+				Monster.MonsterVariation.NINJA,
 			],
 		),
 		MonsterSpawnPattern.new(

@@ -15,7 +15,6 @@ var slow_amount: float = 0.0
 @onready var health_bar: ProgressBar = %HealthBar
 @onready var speech_box: Label = %SpeechBox
 @onready var sprite_2d: Sprite2D = %Sprite2D
-@onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 enum State { SPAWNING, ACTIVE, DEAD }
 
@@ -32,6 +31,16 @@ var state = State.SPAWNING
 const INVUL_TIME_S: float = 0.8
 var invul_time: float = 0
 
+@export var frames_per_sec: float = 3.0
+var time_since_last_frame: float = 0
+var secs_per_frame: float:
+	get:
+		return 1.0 / frames_per_sec
+	set(value):
+		frames_per_sec = 1.0 / value
+
+var position_last_frame: Vector2 = Vector2.ZERO
+
 
 func _ready() -> void:
 	health_bar.max_value = stats.max_health
@@ -39,12 +48,16 @@ func _ready() -> void:
 	health = stats.max_health
 	sprite_2d.texture = stats.sprite_texture
 	modulate.a = 0.5
-	animation_player.current_animation = "idle"
 
 
 func _process(delta: float) -> void:
 	if state == State.DEAD:
 		return
+
+	time_since_last_frame += delta
+	if time_since_last_frame >= secs_per_frame:
+		time_since_last_frame = clamp(time_since_last_frame - secs_per_frame, 0.0, secs_per_frame - delta)
+		play_next_sprite_frame()
 
 	if state == State.SPAWNING:
 		invul_time += delta
@@ -62,6 +75,29 @@ func _process(delta: float) -> void:
 	return
 
 
+func play_next_sprite_frame() -> void:
+	var travel_angle: float = (
+		(global_position - position_last_frame).angle()
+	) + PI
+
+	var direction_id = clamp(int(round(travel_angle / TAU * 4.0)), 0, 3)
+	const DIRECTION_ID_TO_FRAME_ROW: Dictionary = {
+		0: 1,
+		1: 3,
+		2: 2,
+		3: 0,
+	}
+
+	var new_frame_row = DIRECTION_ID_TO_FRAME_ROW[direction_id]
+	var new_frame_col = (sprite_2d.frame_coords.x + 1) % 4
+	if new_frame_row != sprite_2d.frame_coords.y:
+		new_frame_col = 0
+
+	sprite_2d.frame_coords = Vector2(new_frame_col, new_frame_row)
+
+	position_last_frame = global_position
+
+
 func get_movement(delta: float) -> float:
 	return stats.speed_perc_per_sec * (1.0 - clamp(slow_amount, 0.0, 1.0)) * delta / 100.0
 
@@ -72,12 +108,6 @@ func apply_slow(slow_factor: float) -> void:
 	const anim_time: float = 0.3
 	tween.set_parallel(true)
 	tween.tween_property(self, "modulate", Color.WHITE.lerp(Color.CYAN, slow_amount), anim_time)
-	tween.tween_property(
-		animation_player,
-		"speed_scale",
-		clamp(1.0 - slow_amount, 0.0, 1.0),
-		anim_time,
-	)
 
 	return
 
@@ -136,6 +166,10 @@ func take_damage(damage: float, from: Node2D) -> void:
 		die()
 		if is_instance_of(from, Tower):
 			spawn_xp_gems(from)
+	else:
+		var tween: Tween = get_tree().create_tween()
+		tween.tween_property(sprite_2d, "modulate", Color.RED, 0.1)
+		tween.tween_property(sprite_2d, "modulate", Color.WHITE, 0.2)
 
 
 func spawn_xp_gems(target: Tower) -> void:

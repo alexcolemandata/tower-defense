@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b0ox2w53tlsyg"
-path="res://.godot/imported/lolly_gagger.png-4b26e3990c7107f930fa5f1eda705554.ctex"
+uid="uid://dclnrqeh530bj"
+path="res://.godot/imported/Enemy_008.png-502e78748b5a7ebc6966fea5b0bd915b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Monsters/MonsterVariations/lolly_gagger.png"
-dest_files=["res://.godot/imported/lolly_gagger.png-4b26e3990c7107f930fa5f1eda705554.ctex"]
+source_file="res://Monsters/MonsterSprites/Enemy_008.png"
+dest_files=["res://.godot/imported/Enemy_008.png-502e78748b5a7ebc6966fea5b0bd915b.ctex"]
 
 [params]
 

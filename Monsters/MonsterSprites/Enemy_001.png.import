@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://s8tv5uo0tvj1"
-path="res://.godot/imported/ninja.png-0ccee23c8235185811be48940b1271a2.ctex"
+uid="uid://bjmnblsu1q8ax"
+path="res://.godot/imported/Enemy_001.png-5d93f0c59681a68a9b37c7d0110a3a6f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Monsters/MonsterVariations/ninja.png"
-dest_files=["res://.godot/imported/ninja.png-0ccee23c8235185811be48940b1271a2.ctex"]
+source_file="res://Monsters/MonsterSprites/Enemy_001.png"
+dest_files=["res://.godot/imported/Enemy_001.png-5d93f0c59681a68a9b37c7d0110a3a6f.ctex"]
 
 [params]
 

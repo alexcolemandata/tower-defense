@@ -13,6 +13,7 @@ point_count = 15
 
 [node name="Level" type="Node"]
 script = ExtResource("1_gw0fd")
+starting_gold = 50
 
 [node name="MonsterTrail" parent="." instance=ExtResource("2_1cq4g")]
 unique_name_in_owner = true
@@ -25,7 +26,7 @@ position = Vector2(1020, 559)
 
 [node name="TextureRect" type="TextureRect" parent="."]
 z_index = -999
-anchors_preset = -1
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = -83.0

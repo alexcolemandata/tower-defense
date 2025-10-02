@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="MonsterStats" load_steps=3 format=3 uid="uid://c2suxf0wr4mvw"]
+
+[ext_resource type="Script" uid="uid://bt5ffmv6m016a" path="res://Monsters/monster_stats.gd" id="1_77w0i"]
+[ext_resource type="Texture2D" uid="uid://ca7b6y48g8giy" path="res://Monsters/MonsterVariations/dev.png" id="2_10qcy"]
+
+[resource]
+script = ExtResource("1_77w0i")
+metadata/_custom_type_script = "uid://bt5ffmv6m016a"
