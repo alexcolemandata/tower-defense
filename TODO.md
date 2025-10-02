@@ -5,8 +5,8 @@
 
 ## UI
 - [ ] Tower purchase menu has pictures + stats of towers
-- [ ] Show footprint outlines if tower blocked from placement
 - [ ] Main Menu
+- [x] Show footprint outlines if tower blocked from placement
 
 ## Internals
 - [ ] Convert to use actual state machine

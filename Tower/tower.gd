@@ -67,6 +67,16 @@ func _draw() -> void:
 			2.0,
 			true,
 		)
+	
+	if not is_placeable() or is_refundable():
+		draw_circle(
+			Vector2.ZERO,
+			footprint_shape.shape.radius,
+			Color.WHITE,
+			false,
+			2.0,
+			true
+		)
 
 
 func attempt_placement(new_global_position: Vector2) -> void:
@@ -119,7 +129,8 @@ func gain_xp(amount: int) -> void:
 
 
 func is_placeable() -> bool:
-	var overlapping = footprint.get_overlapping_areas()
+	var overlapping: Array[Area2D] = footprint.get_overlapping_areas()
+	var is_overlapping: bool = false
 	for overlap in overlapping:
 		if footprint != overlap:
 			return false
