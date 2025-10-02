@@ -9,8 +9,8 @@ var money_value: int = 10
 var current_velocity := Vector2.ZERO
 
 @export var max_speed: float = 200.0
-@export var max_accel: float = 200.0
-@export var inertia_weight: float = 0.4
+@export var max_accel: float = 800000000.0
+@export var inertia_weight: float = 0.1
 
 @onready var mouse_over_area: Area2D = $MouseOverArea
 @onready var mouse_attract_shape: CollisionShape2D = $MouseAttractArea/MouseAttractShape
@@ -48,11 +48,5 @@ func _physics_process(delta: float) -> void:
 		(mouse_attract_shape.shape.radius - vec_to_mouse.length()) / (mouse_attract_shape.shape.radius)
 	)
 	
-	var desired_velocity: Vector2 = lerp(current_velocity, weighted_mouse_vector, inertia_weight)
-	var accel: Vector2 = desired_velocity - current_velocity
-	if accel.length() > max_accel:
-		accel = accel.normalized() * max_accel
-
-	current_velocity += accel * delta
-		
-		
+	current_velocity = lerp(current_velocity, weighted_mouse_vector, inertia_weight)
+	return
