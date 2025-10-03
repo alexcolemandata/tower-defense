@@ -9,7 +9,7 @@ const TOWER = preload("uid://8doeehu0sj6y")
 @export var tower_name: String
 @export var vision_range: float
 @export var attack_strategy: TowerAttackStrategy
-
+@export var sprite_row: TowerSpritePart.SpriteRow
 
 func _init(
 		p_tower_name: String = "Unnamed Tower",
@@ -19,6 +19,7 @@ func _init(
 		p_cost: int = 10,
 		p_texture: Texture2D = TOWER,
 		p_attack_strategy: TowerAttackStrategy = BeamTowerAttack.new(),
+		p_sprite_row: TowerSpritePart.SpriteRow = TowerSpritePart.SpriteRow.TOWER_DOOR,
 ) -> void:
 	tower_name = p_tower_name
 	vision_range = p_vision_range
@@ -27,3 +28,4 @@ func _init(
 	cost = p_cost
 	texture = p_texture
 	attack_strategy = p_attack_strategy
+	sprite_row = p_sprite_row

@@ -1,8 +1,7 @@
-[gd_resource type="Resource" script_class="TowerStats" load_steps=5 format=3 uid="uid://du2ei4wrolyd7"]
+[gd_resource type="Resource" script_class="TowerStats" load_steps=4 format=3 uid="uid://du2ei4wrolyd7"]
 
 [ext_resource type="Script" uid="uid://dut5jbh6qv5mk" path="res://Tower/TowerAttackStrategies/beam_tower_attack.gd" id="1_2rlft"]
 [ext_resource type="Script" uid="uid://rppbyrb3gjyg" path="res://Tower/tower_stats.gd" id="1_dpjxa"]
-[ext_resource type="Texture2D" uid="uid://c5ktq13ybkphg" path="res://Tower/TowerSprites/spiffy_tower.png" id="2_niexv"]
 
 [sub_resource type="Resource" id="Resource_w1jk1"]
 script = ExtResource("1_2rlft")
@@ -13,8 +12,8 @@ script = ExtResource("1_dpjxa")
 cost = 45
 damage_per_shot = 2
 shoots_per_second = 1.2
-texture = ExtResource("2_niexv")
 tower_name = "Spiffy Tower"
 vision_range = 200.0
 attack_strategy = SubResource("Resource_w1jk1")
+sprite_row = 6
 metadata/_custom_type_script = "uid://rppbyrb3gjyg"

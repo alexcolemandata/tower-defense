@@ -29,16 +29,15 @@ const xp_display_time: float = 1.0
 @onready var xp_level_progress_bar: ProgressBar = %XPLevelProgressBar
 @onready var lvl_up_shader_sprite: Sprite2D = $LvlUpShaderSprite
 @onready var tower_level_stars: TowerLevelStars = $TowerLevelStars
+@onready var tower_sprite_parts: TowerSpriteParts = $TowerSpriteParts
 
 
 func _ready() -> void:
 	var shape: CircleShape2D = vision_shape.shape
 	shape.radius = stats.vision_range
-	sprite_2d.texture = stats.texture
-	lvl_up_shader_sprite.texture = stats.texture
 	lvl_up_shader_sprite.visible = false
-	tower_level_stars.max_stars = max_level -2
-
+	tower_level_stars.max_stars = max_level - 2
+	tower_sprite_parts.set_sprite_row(stats.sprite_row)
 	refresh_level_display()
 
 
@@ -69,7 +68,7 @@ func _draw() -> void:
 			2.0,
 			true,
 		)
-	
+
 	if not is_placeable() or is_refundable():
 		draw_circle(
 			Vector2.ZERO,
@@ -77,7 +76,7 @@ func _draw() -> void:
 			Color.WHITE,
 			false,
 			2.0,
-			true
+			true,
 		)
 
 
@@ -91,12 +90,15 @@ func attempt_placement(new_global_position: Vector2) -> void:
 		return
 	global_position = new_global_position
 	state = State.ACTIVE
-	modulate.a = 1.
-	placed.emit()
+	modulate.a = 1.0
+
 	AudioManager.play_sound_at_location(
 		new_global_position,
 		AudioManager.sounds.tower_place,
 	)
+	tower_sprite_parts.play_build_animation()
+
+	placed.emit()
 	return
 
 
@@ -211,6 +213,7 @@ func _process_active(delta):
 
 
 func _process_placing(_delta) -> void:
+	tower_sprite_parts.frame_col = TowerSpriteParts.FrameCol.UNDAMAGED
 	var can_place = is_placeable()
 	if can_place:
 		modulate = Color(1, 1, 1, 0.3)
