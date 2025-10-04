@@ -29,15 +29,18 @@ const xp_display_time: float = 1.0
 @onready var xp_level_progress_bar: ProgressBar = %XPLevelProgressBar
 @onready var lvl_up_shader_sprite: Sprite2D = $LvlUpShaderSprite
 @onready var tower_level_stars: TowerLevelStars = $TowerLevelStars
-@onready var tower_sprite_parts: TowerSpriteParts = $TowerSpriteParts
+
+var tower_sprite_parts: TowerSpriteParts
 
 
 func _ready() -> void:
 	var shape: CircleShape2D = vision_shape.shape
+	tower_sprite_parts = stats.sprite_parts.instantiate()
+	add_child(tower_sprite_parts)
+	move_child(tower_sprite_parts, 0)
 	shape.radius = stats.vision_range
 	lvl_up_shader_sprite.visible = false
 	tower_level_stars.max_stars = max_level - 2
-	tower_sprite_parts.set_sprite_row(stats.sprite_row)
 	refresh_level_display()
 
 
@@ -164,8 +167,8 @@ func level_up() -> void:
 
 	lvl_up_shader_sprite.visible = true
 	var tween = get_tree().create_tween()
-	tween.tween_property(self, "scale", Vector2.ONE * 1.2, 0.8)
-	tween.tween_property(self, "scale", Vector2.ONE * 1, 0.3)
+	tween.tween_property(tower_sprite_parts, "scale", Vector2.ONE * 1.2, 0.3)
+	tween.tween_property(tower_sprite_parts, "scale", Vector2.ONE * 1, 0.1)
 	tween.finished.connect(func(): lvl_up_shader_sprite.visible = false)
 
 	return

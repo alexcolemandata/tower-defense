@@ -15,5 +15,4 @@ shoots_per_second = 6.0
 tower_name = "Sudo Tower"
 vision_range = 400.0
 attack_strategy = SubResource("Resource_yfn4i")
-sprite_row = 1
 metadata/_custom_type_script = "uid://rppbyrb3gjyg"

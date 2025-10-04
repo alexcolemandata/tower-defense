@@ -1,11 +1,8 @@
-[gd_scene load_steps=14 format=3 uid="uid://eou4mq5n6oh3"]
+[gd_scene load_steps=11 format=3 uid="uid://eou4mq5n6oh3"]
 
 [ext_resource type="Script" uid="uid://dhnso5msyby6y" path="res://Tower/tower.gd" id="1_vedim"]
-[ext_resource type="Texture2D" uid="uid://66nv1i1gfu4s" path="res://Tower/TowerSprites/tower_defense_01_d.png" id="2_fe3rl"]
-[ext_resource type="Script" uid="uid://dgk8wi0c4aep0" path="res://Tower/tower_sprite_parts.gd" id="2_nrwet"]
 [ext_resource type="Shader" uid="uid://ce1mx5xoqq8iy" path="res://Tower/tower-lvlup.gdshader" id="2_okia5"]
 [ext_resource type="Script" uid="uid://c2ptdtafpswnv" path="res://Tower/tower_level_stars.gd" id="4_jnpw3"]
-[ext_resource type="Script" uid="uid://gxomawtqif3c" path="res://Tower/tower_sprite_part.gd" id="4_nrwet"]
 [ext_resource type="Texture2D" uid="uid://dyya37emvk4b0" path="res://Tower/TowerSprites/level_star.png" id="5_rt5j0"]
 [ext_resource type="Texture2D" uid="uid://g77a4lilbx0a" path="res://Tower/TowerSprites/level_star_hat.png" id="6_rt5j0"]
 
@@ -38,45 +35,6 @@ radius = 46.0
 
 [node name="Tower" type="Node2D"]
 script = ExtResource("1_vedim")
-
-[node name="TowerSpriteParts" type="Node2D" parent="."]
-script = ExtResource("2_nrwet")
-
-[node name="TowerSpritePart" type="Sprite2D" parent="TowerSpriteParts"]
-texture_filter = 1
-position = Vector2(-10.999999, -3.9999998)
-scale = Vector2(1.0630183, 1.0630183)
-texture = ExtResource("2_fe3rl")
-hframes = 9
-vframes = 8
-frame = 57
-region_enabled = true
-region_rect = Rect2(0, 0, 288, 256)
-script = ExtResource("4_nrwet")
-
-[node name="TowerSpritePart2" type="Sprite2D" parent="TowerSpriteParts"]
-texture_filter = 1
-position = Vector2(13.999997, -3)
-scale = Vector2(1.0630183, 1.0630183)
-texture = ExtResource("2_fe3rl")
-hframes = 9
-vframes = 8
-frame = 3
-region_enabled = true
-region_rect = Rect2(0, 0, 288, 256)
-script = ExtResource("4_nrwet")
-
-[node name="TowerSpritePart3" type="Sprite2D" parent="TowerSpriteParts"]
-texture_filter = 1
-position = Vector2(14.000001, -19)
-scale = Vector2(1.0630183, 1.0630183)
-texture = ExtResource("2_fe3rl")
-hframes = 9
-vframes = 8
-frame = 3
-region_enabled = true
-region_rect = Rect2(0, 0, 288, 256)
-script = ExtResource("4_nrwet")
 
 [node name="LvlUpShaderSprite" type="Sprite2D" parent="."]
 visible = false

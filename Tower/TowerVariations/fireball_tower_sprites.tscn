@@ -1,0 +1,47 @@
+[gd_scene load_steps=4 format=3 uid="uid://b7leybpmo53j6"]
+
+[ext_resource type="Script" uid="uid://dgk8wi0c4aep0" path="res://Tower/tower_sprite_parts.gd" id="1_phiwh"]
+[ext_resource type="Texture2D" uid="uid://66nv1i1gfu4s" path="res://Tower/TowerSprites/tower_defense_01_d.png" id="2_fur6a"]
+[ext_resource type="Script" uid="uid://gxomawtqif3c" path="res://Tower/tower_sprite_part.gd" id="3_gobw2"]
+
+[node name="TowerSpriteParts" type="Node2D"]
+script = ExtResource("1_phiwh")
+
+[node name="TowerSpritePart2" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(1.0000005, 3)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("2_fur6a")
+hframes = 9
+vframes = 8
+frame = 39
+region_enabled = true
+region_rect = Rect2(0, 0, 288, 256)
+script = ExtResource("3_gobw2")
+sprite_row = 4
+
+[node name="TowerSpritePart" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(1, -17)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("2_fur6a")
+hframes = 9
+vframes = 8
+frame = 30
+region_enabled = true
+region_rect = Rect2(0, 0, 288, 256)
+script = ExtResource("3_gobw2")
+sprite_row = 3
+
+[node name="TowerSpritePart3" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(1, -36)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("2_fur6a")
+hframes = 9
+vframes = 8
+frame = 30
+region_enabled = true
+region_rect = Rect2(0, 0, 288, 256)
+script = ExtResource("3_gobw2")
+sprite_row = 3

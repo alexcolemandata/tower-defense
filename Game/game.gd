@@ -185,7 +185,6 @@ func trigger_next_wave() -> void:
 	monsters_spawned = 0
 
 	in_game_ui.set_next_wave_button_enabled(false)
-	level.town.stop_celebrating()
 
 	if wave == len(level.wave_spawn_patterns):
 		game_state = GameState.LEVEL_END
@@ -204,7 +203,6 @@ func victory() -> void:
 	print("victory!!")
 	game_state = GameState.VICTORY
 	in_game_ui.set_next_wave_button_enabled(true)
-	level.town.start_celebrating()
 
 
 func _attempt_purchase(tower_stat: TowerStats) -> void:

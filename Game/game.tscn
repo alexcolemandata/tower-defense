@@ -1,10 +1,9 @@
-[gd_scene load_steps=12 format=3 uid="uid://bka00kwm83sv3"]
+[gd_scene load_steps=11 format=3 uid="uid://bka00kwm83sv3"]
 
 [ext_resource type="Script" uid="uid://dry28hs6v2cxv" path="res://Game/game.gd" id="1_80nbo"]
 [ext_resource type="PackedScene" uid="uid://c2r1oiupv6epm" path="res://Audio/audio_manager.tscn" id="2_fwxkx"]
 [ext_resource type="Script" uid="uid://rppbyrb3gjyg" path="res://Tower/tower_stats.gd" id="2_kul4i"]
 [ext_resource type="Resource" uid="uid://dlfj4lfms0w6c" path="res://Tower/TowerVariations/basic_tower.tres" id="3_7gi1t"]
-[ext_resource type="Resource" uid="uid://du2ei4wrolyd7" path="res://Tower/TowerVariations/spiffy_tower.tres" id="4_fsxsm"]
 [ext_resource type="PackedScene" uid="uid://dwc1hnjb0rhp5" path="res://UI/in_game_ui.tscn" id="5_7jktm"]
 [ext_resource type="Resource" uid="uid://bw8ckc10op0ct" path="res://Tower/TowerVariations/fireball_tower.tres" id="5_glinl"]
 [ext_resource type="Resource" uid="uid://bu0dq7jg6smqa" path="res://Tower/TowerVariations/sudo_tower.tres" id="6_7gi1t"]
@@ -16,7 +15,7 @@ font_size = 80
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_80nbo")
-tower_stats = Array[ExtResource("2_kul4i")]([ExtResource("3_7gi1t"), ExtResource("4_fsxsm"), ExtResource("5_glinl"), ExtResource("6_7gi1t")])
+tower_stats = Array[ExtResource("2_kul4i")]([ExtResource("3_7gi1t"), ExtResource("5_glinl"), ExtResource("6_7gi1t")])
 levels = Array[PackedScene]([ExtResource("6_kul4i"), ExtResource("7_kul4i")])
 
 [node name="AudioManager" parent="." instance=ExtResource("2_fwxkx")]

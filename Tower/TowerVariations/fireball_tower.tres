@@ -15,5 +15,4 @@ shoots_per_second = 0.5
 tower_name = "Fireball Tower"
 vision_range = 300.0
 attack_strategy = SubResource("Resource_llh84")
-sprite_row = 5
 metadata/_custom_type_script = "uid://rppbyrb3gjyg"
