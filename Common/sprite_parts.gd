@@ -36,8 +36,6 @@ func _ready() -> void:
 
 
 func _process(delta) -> void:
-	set_sprite_frame()
-
 	if state == State.BUILDING:
 		sec_since_frame += delta
 		if sec_since_frame > sec_per_frame:
@@ -47,6 +45,7 @@ func _process(delta) -> void:
 				state = State.STATIC
 			else:
 				frame_col = (frame_col + 1) as FrameCol
+			set_sprite_frame()
 
 
 func _update_parts() -> void:

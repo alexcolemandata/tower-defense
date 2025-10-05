@@ -1,2 +1,1 @@
-@tool
 class_name SpritePart extends Sprite2D

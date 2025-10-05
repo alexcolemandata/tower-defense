@@ -1,10 +1,10 @@
 class_name Town extends Node2D
 
 @export var max_health: int = 20
+@export var town_sprite_parts: TownSpriteParts
 
 var death_manager
 var health: int
-var is_on_fire: bool = false
 
 @onready var health_bar: ProgressBar = %HealthBar
 @onready var speech_bubble: Label = %SpeechBubble
@@ -35,9 +35,8 @@ func take_damage(damage: int = 1) -> void:
 	AudioManager.play_sound_at_location(global_position, AudioManager.sounds.town_ouch)
 	health -= damage
 	health_bar.value = health
-
-	if health <= max_health / 2.0:
-		is_on_fire = true
+	town_sprite_parts.hp_ratio = health / (max_health as float)
+	
 	if health <= 0:
 		die()
 	return

@@ -8,119 +8,67 @@
 [node name="TownSpriteParts" type="Node2D"]
 script = ExtResource("1_4e8lv")
 
-[node name="TownSpritePart11" type="Sprite2D" parent="."]
-y_sort_enabled = true
-texture_filter = 1
-position = Vector2(-80, -72)
-scale = Vector2(1.85, 1.85)
-texture = ExtResource("2_nwipe")
-hframes = 9
-vframes = 8
-frame = 3
-region_enabled = true
-region_rect = Rect2(0, 0, 288, 256)
-script = ExtResource("3_38td2")
-
 [node name="TownSpritePart5" type="Sprite2D" parent="."]
 y_sort_enabled = true
 texture_filter = 1
-position = Vector2(56.000004, -40.000004)
+position = Vector2(48.00001, -56.000008)
 scale = Vector2(1.85, 1.85)
-texture = ExtResource("2_nwipe")
+texture = ExtResource("1_m6eol")
 hframes = 9
-vframes = 8
-frame = 3
+vframes = 5
+frame = 21
 region_enabled = true
-region_rect = Rect2(0, 0, 288, 256)
-script = ExtResource("3_38td2")
-
-[node name="TownSpritePart8" type="Sprite2D" parent="."]
-y_sort_enabled = true
-texture_filter = 1
-position = Vector2(-80.00001, -56.000004)
-scale = Vector2(1.85, 1.85)
-texture = ExtResource("2_nwipe")
-hframes = 9
-vframes = 8
-frame = 3
-region_enabled = true
-region_rect = Rect2(0, 0, 288, 256)
-script = ExtResource("3_38td2")
-
-[node name="TownSpritePart4" type="Sprite2D" parent="."]
-y_sort_enabled = true
-texture_filter = 1
-position = Vector2(56, -24)
-scale = Vector2(1.8499999, 1.8499999)
-texture = ExtResource("2_nwipe")
-hframes = 9
-vframes = 8
-frame = 3
-region_enabled = true
-region_rect = Rect2(0, 0, 288, 256)
+region_rect = Rect2(0, 0, 432, 240)
 script = ExtResource("3_38td2")
 
 [node name="TownSpritePart6" type="Sprite2D" parent="."]
 y_sort_enabled = true
 texture_filter = 1
-position = Vector2(-80, -32.000004)
+position = Vector2(-7.9999924, -40.000008)
 scale = Vector2(1.85, 1.85)
-texture = ExtResource("2_nwipe")
+texture = ExtResource("1_m6eol")
 hframes = 9
-vframes = 8
-frame = 3
+vframes = 5
+frame = 21
 region_enabled = true
-region_rect = Rect2(0, 0, 288, 256)
-script = ExtResource("3_38td2")
-
-[node name="TownSpritePart7" type="Sprite2D" parent="."]
-y_sort_enabled = true
-texture_filter = 1
-position = Vector2(-40.000015, -72)
-scale = Vector2(1.8499999, 1.8499999)
-texture = ExtResource("2_nwipe")
-hframes = 9
-vframes = 8
-frame = 3
-region_enabled = true
-region_rect = Rect2(0, 0, 288, 256)
-script = ExtResource("3_38td2")
-
-[node name="TownSpritePart2" type="Sprite2D" parent="."]
-y_sort_enabled = true
-texture_filter = 1
-position = Vector2(-40, -8)
-scale = Vector2(1.85, 1.85)
-texture = ExtResource("2_nwipe")
-hframes = 9
-vframes = 8
-frame = 3
-region_enabled = true
-region_rect = Rect2(0, 0, 288, 256)
-script = ExtResource("3_38td2")
-
-[node name="TownSpritePart9" type="Sprite2D" parent="."]
-y_sort_enabled = true
-texture_filter = 1
-position = Vector2(-80, -8)
-scale = Vector2(1.85, 1.85)
-texture = ExtResource("2_nwipe")
-hframes = 9
-vframes = 8
-frame = 3
-region_enabled = true
-region_rect = Rect2(0, 0, 288, 256)
+region_rect = Rect2(0, 0, 432, 240)
 script = ExtResource("3_38td2")
 
 [node name="TownSpritePart3" type="Sprite2D" parent="."]
 y_sort_enabled = true
 texture_filter = 1
-position = Vector2(56.00001, -7.999996)
+position = Vector2(96.00001, -24.000002)
+scale = Vector2(1.85, 1.85)
+texture = ExtResource("1_m6eol")
+hframes = 9
+vframes = 5
+frame = 12
+region_enabled = true
+region_rect = Rect2(0, 0, 432, 240)
+script = ExtResource("3_38td2")
+
+[node name="TownSpritePart2" type="Sprite2D" parent="."]
+y_sort_enabled = true
+texture_filter = 1
+position = Vector2(-72, -24.000002)
+scale = Vector2(1.85, 1.85)
+texture = ExtResource("1_m6eol")
+hframes = 9
+vframes = 5
+frame = 39
+region_enabled = true
+region_rect = Rect2(0, 0, 432, 240)
+script = ExtResource("3_38td2")
+
+[node name="TownSpritePart4" type="Sprite2D" parent="."]
+y_sort_enabled = true
+texture_filter = 1
+position = Vector2(32.000004, -8.000008)
 scale = Vector2(1.85, 1.85)
 texture = ExtResource("2_nwipe")
 hframes = 9
 vframes = 8
-frame = 66
+frame = 57
 region_enabled = true
 region_rect = Rect2(0, 0, 288, 256)
 script = ExtResource("3_38td2")
